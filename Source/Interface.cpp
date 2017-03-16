@@ -108,6 +108,23 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == selectDirectoryButton)
     {
         //[UserButtonCode_selectDirectoryButton] -- add your button handler code here..
+        
+        FileChooser fc ("Choose a directory...",
+                        File::getCurrentWorkingDirectory(),
+                        "*",
+                        true);
+        
+        
+        FileChooser fs ("stuff",
+                        File::getCurrentWorkingDirectory(),
+                        "dude",
+                        true,
+                        true
+                        );
+        
+        fs.showDialog(1, <#juce::FilePreviewComponent *previewComponent#>)
+        
+        
         //[/UserButtonCode_selectDirectoryButton]
     }
     else if (buttonThatWasClicked == eradicateEmptyFoldersButton)
