@@ -34,7 +34,8 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class Interface  : public Component
+class Interface  : public Component,
+                   public ButtonListener
 {
 public:
     //==============================================================================
@@ -47,6 +48,7 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
+    void buttonClicked (Button* buttonThatWasClicked) override;
 
 
 
@@ -56,6 +58,8 @@ private:
 
     //==============================================================================
     ScopedPointer<Label> titleText;
+    ScopedPointer<TextButton> selectDirectoryButton;
+    ScopedPointer<TextButton> eradicateEmptyFoldersButton;
 
 
     //==============================================================================
