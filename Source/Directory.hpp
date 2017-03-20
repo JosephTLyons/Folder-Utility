@@ -17,10 +17,13 @@ private:
     
     File originalPathwaySelected;
     String listOfFoldersRemoved;
+    int numberOfFilesRemoved;
     
     bool folderIsEmpty(File fileHolder);
     
 public:
+    
+    Directory();
     
     void removeEmptyFolders();
     

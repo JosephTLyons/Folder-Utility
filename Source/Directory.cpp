@@ -8,6 +8,11 @@
 
 #include "Directory.hpp"
 
+Directory::Directory()
+{
+    numberOfFilesRemoved = 0;
+}
+
 void Directory::removeEmptyFolders()
 {
     // Scans files and directories recursively, but skips hidden files
@@ -25,13 +30,23 @@ void Directory::removeEmptyFolders()
         {
             if(folderIsEmpty(fileHolder))
             {
+                // Move file
                 fileHolder.moveToTrash();
                 
+                // Add filename to list of removed files
                 listOfFoldersRemoved += fileHolder.getFileName();
                 listOfFoldersRemoved += '\n';
+                
+                // Increment number of files removed
+                numberOfFilesRemoved++;
             }
         }
     }
+    
+    // Add remaining infomrmation to text string for textEditor
+    listOfFoldersRemoved += "\nCompleted: ";
+    listOfFoldersRemoved += (String) numberOfFilesRemoved;
+    listOfFoldersRemoved += " empty folders moved to trash.";
 }
 
 bool Directory::folderIsEmpty(File fileHolder)
