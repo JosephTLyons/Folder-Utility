@@ -114,6 +114,9 @@ void Interface::resized()
 void Interface::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
+    
+    File fileHolder;
+    
     //[/UserbuttonClicked_Pre]
 
     if (buttonThatWasClicked == selectDirectoryButton)
@@ -133,22 +136,14 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
                         true
                         );
 
-        ScopedPointer<int64> empty1;
-        ScopedPointer<Time> empty2;
-        ScopedPointer<Time> empty3;
-        ScopedPointer<bool> empty4;
-
-        empty1 = nullptr;
-        empty2 = nullptr;
-        empty3 = nullptr;
-        empty4 = nullptr;
-
-        DirectoryIterator dirIter (File ("/Users/josephlyons/Desktop/Test File"), false);
-
-        //dirIter.next(true, true, empty1, empty2, empty3, empty4);
-
-
-        File holder = dirIter.getFile();
+        DirectoryIterator dirIter (File ("/Users/josephlyons/Desktop/Test File"), false, "*", File::findDirectories);
+        
+        while (dirIter.getEstimatedProgress() != 1)
+        {
+            dirIter.next();
+            
+            fileHolder = dirIter.getFile();
+        }
 
 
 
