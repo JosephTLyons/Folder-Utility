@@ -34,24 +34,15 @@ void removeEmptyFolders(const char *directoryPath)
 bool folderIsEmpty(File fileHolder)
 {
     // Scans files and directories non-recursively, but skips hidden files
-    // MAKE AN OPTION TO NOT DELETE FOLDERS WITH HIDDEN ITEMS?
     DirectoryIterator dirIter (File (fileHolder.getFullPathName()), false, "*",
                                File::findFilesAndDirectories + File::ignoreHiddenFiles);
     
-    int fileCount = 0;
-    
-    while (dirIter.next())
-    {
-        fileHolder = dirIter.getFile();
-        
-        return false;
-    }
-    
-    if(fileCount != 0)
+    // This will return true if the directory iterator can advance to a file or folder
+    // If it cannot, there is no file or folder in this pathway
+    if(dirIter.next())
     {
         return false;
     }
     
-    else
-        return true;
+    return true;
 }

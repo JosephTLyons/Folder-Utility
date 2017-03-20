@@ -137,7 +137,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
                         );
         // set path (Change this to receive whatever path is obtained from dialog box)
         directoryPath = "/Users/josephlyons/Desktop/Test File";
-        
+
         directoryPathDisplay->setText(directoryPath);
 
         //fs.showDialog(1, )
@@ -150,7 +150,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_eradicateEmptyFoldersButton] -- add your button handler code here..
         
         removeEmptyFolders(directoryPath);
-        
+
         //[/UserButtonCode_eradicateEmptyFoldersButton]
     }
 
