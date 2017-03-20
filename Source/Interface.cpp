@@ -55,7 +55,7 @@ Interface::Interface ()
     eradicateEmptyFoldersButton->addListener (this);
 
     addAndMakeVisible (directoryPathDisplay = new TextEditor ("directoryPathDisplay"));
-    directoryPathDisplay->setMultiLine (false);
+    directoryPathDisplay->setMultiLine (true);
     directoryPathDisplay->setReturnKeyStartsNewLine (false);
     directoryPathDisplay->setReadOnly (true);
     directoryPathDisplay->setScrollbarsShown (true);
@@ -67,7 +67,7 @@ Interface::Interface ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (300, 175);
+    setSize (300, 200);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -111,9 +111,9 @@ void Interface::resized()
     //[/UserPreResize]
 
     titleText->setBounds (0, 0, 300, 50);
-    selectDirectoryButton->setBounds (0, 75, 300, 50);
-    eradicateEmptyFoldersButton->setBounds (0, 125, 300, 50);
-    directoryPathDisplay->setBounds (0, 50, 300, 25);
+    selectDirectoryButton->setBounds (0, 100, 300, 50);
+    eradicateEmptyFoldersButton->setBounds (0, 150, 300, 50);
+    directoryPathDisplay->setBounds (0, 50, 300, 50);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -121,12 +121,12 @@ void Interface::resized()
 void Interface::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
-    
+
     FileChooser fileChooser ("Choose a directory...",
                              File::getCurrentWorkingDirectory(),
                              "*",
                              true);
-    
+
     // Enable button (its off until a path is set to keep from bad things from happening
     // IE Directory Iterator trying to iterate when no path has been set
     eradicateEmptyFoldersButton->setEnabled(true);
@@ -136,13 +136,13 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == selectDirectoryButton)
     {
         //[UserButtonCode_selectDirectoryButton] -- add your button handler code here..
-        
+
         fileChooser.browseForDirectory();
-        
+
         holdsFirstPathPicked = fileChooser.getResult();
 
         directoryPathDisplay->setText(holdsFirstPathPicked.getFullPathName());
-        
+
         //[/UserButtonCode_selectDirectoryButton]
     }
     else if (buttonThatWasClicked == eradicateEmptyFoldersButton)
@@ -176,7 +176,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="Interface" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="300" initialHeight="175">
+                 fixedSize="1" initialWidth="300" initialHeight="200">
   <BACKGROUND backgroundColour="ff393939"/>
   <LABEL name="titleText" id="b7a12fdcde89fe51" memberName="titleText"
          virtualName="" explicitFocusOrder="0" pos="0 0 300 50" textCol="ffffffff"
@@ -186,14 +186,14 @@ BEGIN_JUCER_METADATA
          italic="0" justification="36"/>
   <TEXTBUTTON name="selectDirectoryselectDirectoryButton" id="48724a493ca7e66e"
               memberName="selectDirectoryButton" virtualName="" explicitFocusOrder="0"
-              pos="0 75 300 50" buttonText="Select Directory" connectedEdges="3"
+              pos="0 100 300 50" buttonText="Select Directory" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="eradicateEmptyFoldersButton" id="4ad96e211ef69bb7" memberName="eradicateEmptyFoldersButton"
-              virtualName="" explicitFocusOrder="0" pos="0 125 300 50" buttonText="Eradicate Empty Folders"
+              virtualName="" explicitFocusOrder="0" pos="0 150 300 50" buttonText="Eradicate Empty Folders"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTEDITOR name="directoryPathDisplay" id="1fdfeaa5b403b983" memberName="directoryPathDisplay"
-              virtualName="" explicitFocusOrder="0" pos="0 50 300 25" initialText=""
-              multiline="0" retKeyStartsLine="0" readonly="1" scrollbars="1"
+              virtualName="" explicitFocusOrder="0" pos="0 50 300 50" initialText=""
+              multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
 </JUCER_COMPONENT>
 
