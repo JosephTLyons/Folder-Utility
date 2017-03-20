@@ -16,13 +16,18 @@ class Directory
 private:
     
     File originalPathwaySelected;
+    String listOfFoldersRemoved;
+    
     bool folderIsEmpty(File fileHolder);
     
 public:
     
+    void removeEmptyFolders();
+    
     void setOriginalPathWay(File holdsFirstPathPicked);
     File getOriginalPathway();
-    void removeEmptyFolders();
+    
+    String getListOfFoldersRemoved();
 };
 
 #endif /* Directory_hpp */

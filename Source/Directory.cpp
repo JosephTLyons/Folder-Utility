@@ -8,16 +8,6 @@
 
 #include "Directory.hpp"
 
-void Directory::setOriginalPathWay(File holdsFirstPathPicked)
-{
-    originalPathwaySelected = holdsFirstPathPicked;
-}
-
-File Directory::getOriginalPathway()
-{
-    return originalPathwaySelected;
-}
-
 void Directory::removeEmptyFolders()
 {
     // Scans files and directories recursively, but skips hidden files
@@ -36,6 +26,9 @@ void Directory::removeEmptyFolders()
             if(folderIsEmpty(fileHolder))
             {
                 fileHolder.moveToTrash();
+                
+                listOfFoldersRemoved += fileHolder.getFileName();
+                listOfFoldersRemoved += '\n';
             }
         }
     }
@@ -55,4 +48,19 @@ bool Directory::folderIsEmpty(File fileHolder)
     }
     
     return true;
+}
+
+void Directory::setOriginalPathWay(File holdsFirstPathPicked)
+{
+    originalPathwaySelected = holdsFirstPathPicked;
+}
+
+File Directory::getOriginalPathway()
+{
+    return originalPathwaySelected;
+}
+
+String Directory::getListOfFoldersRemoved()
+{
+    return listOfFoldersRemoved;
 }

@@ -63,11 +63,20 @@ Interface::Interface ()
     directoryPathDisplay->setPopupMenuEnabled (true);
     directoryPathDisplay->setText (String());
 
+    addAndMakeVisible (listOfFoldersRemovedEditor = new TextEditor ("listOfFoldersRemovedEditor"));
+    listOfFoldersRemovedEditor->setMultiLine (true);
+    listOfFoldersRemovedEditor->setReturnKeyStartsNewLine (false);
+    listOfFoldersRemovedEditor->setReadOnly (true);
+    listOfFoldersRemovedEditor->setScrollbarsShown (true);
+    listOfFoldersRemovedEditor->setCaretVisible (false);
+    listOfFoldersRemovedEditor->setPopupMenuEnabled (true);
+    listOfFoldersRemovedEditor->setText (String());
+
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (300, 200);
+    setSize (300, 400);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -87,6 +96,7 @@ Interface::~Interface()
     selectDirectoryButton = nullptr;
     eradicateEmptyFoldersButton = nullptr;
     directoryPathDisplay = nullptr;
+    listOfFoldersRemovedEditor = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -114,6 +124,7 @@ void Interface::resized()
     selectDirectoryButton->setBounds (0, 100, 300, 50);
     eradicateEmptyFoldersButton->setBounds (0, 150, 300, 50);
     directoryPathDisplay->setBounds (0, 50, 300, 50);
+    listOfFoldersRemovedEditor->setBounds (0, 200, 300, 200);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -151,6 +162,8 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         directory.removeEmptyFolders();
 
+        listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
+
         //[/UserButtonCode_eradicateEmptyFoldersButton]
     }
 
@@ -176,7 +189,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="Interface" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="300" initialHeight="200">
+                 fixedSize="1" initialWidth="300" initialHeight="400">
   <BACKGROUND backgroundColour="ff393939"/>
   <LABEL name="titleText" id="b7a12fdcde89fe51" memberName="titleText"
          virtualName="" explicitFocusOrder="0" pos="0 0 300 50" textCol="ffffffff"
@@ -193,6 +206,10 @@ BEGIN_JUCER_METADATA
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTEDITOR name="directoryPathDisplay" id="1fdfeaa5b403b983" memberName="directoryPathDisplay"
               virtualName="" explicitFocusOrder="0" pos="0 50 300 50" initialText=""
+              multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
+              caret="0" popupmenu="1"/>
+  <TEXTEDITOR name="listOfFoldersRemovedEditor" id="e96280133f57cb22" memberName="listOfFoldersRemovedEditor"
+              virtualName="" explicitFocusOrder="0" pos="0 200 300 200" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
 </JUCER_COMPONENT>

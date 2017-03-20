@@ -54,10 +54,10 @@ public:
 
 
 private:
-    //[UserVariables]   -- You can add your own custom variables in this section
+    //[UserVariables]   -- You can add your own custom variables in this section.
 
     Directory directory;
-    
+
     //[/UserVariables]
 
     //==============================================================================
@@ -65,6 +65,7 @@ private:
     ScopedPointer<TextButton> selectDirectoryButton;
     ScopedPointer<TextButton> eradicateEmptyFoldersButton;
     ScopedPointer<TextEditor> directoryPathDisplay;
+    ScopedPointer<TextEditor> listOfFoldersRemovedEditor;
 
 
     //==============================================================================
