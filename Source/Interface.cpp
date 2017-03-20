@@ -121,7 +121,12 @@ void Interface::resized()
 void Interface::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
-
+    
+    FileChooser fileChooser ("Choose a directory...",
+                             File::getCurrentWorkingDirectory(),
+                             "*",
+                             true);
+    
     // Enable button (its off until a path is set to keep from bad things from happening
     // IE Directory Iterator trying to iterate when no path has been set
     eradicateEmptyFoldersButton->setEnabled(true);
@@ -131,34 +136,20 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == selectDirectoryButton)
     {
         //[UserButtonCode_selectDirectoryButton] -- add your button handler code here..
+        
+        fileChooser.browseForDirectory();
+        
+        holdsFirstPathPicked = fileChooser.getResult();
 
-        FileChooser fc ("Choose a directory...",
-                        File::getCurrentWorkingDirectory(),
-                        "*",
-                        true);
-
-
-        FileChooser fs ("stuff",
-                        File::getCurrentWorkingDirectory(),
-                        "dude",
-                        true,
-                        true
-                        );
-        // set path (Change this to receive whatever path is obtained from dialog box)
-        directoryPath = "/Users/josephlyons/Desktop/Test File";
-
-        directoryPathDisplay->setText(directoryPath);
-
-        //fs.showDialog(1, )
-
-
+        directoryPathDisplay->setText(holdsFirstPathPicked.getFullPathName());
+        
         //[/UserButtonCode_selectDirectoryButton]
     }
     else if (buttonThatWasClicked == eradicateEmptyFoldersButton)
     {
         //[UserButtonCode_eradicateEmptyFoldersButton] -- add your button handler code here..
 
-        removeEmptyFolders(directoryPath);
+        removeEmptyFolders(holdsFirstPathPicked.getFullPathName());
 
         //[/UserButtonCode_eradicateEmptyFoldersButton]
     }

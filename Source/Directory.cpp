@@ -8,10 +8,10 @@
 
 #include "Directory.hpp"
 
-void removeEmptyFolders(const char *directoryPath)
+void removeEmptyFolders(File holdsFirstPathPicked)
 {
     // Scans files and directories recursively, but skips hidden files
-    DirectoryIterator dirIter (File (directoryPath), true, "*",
+    DirectoryIterator dirIter (File (holdsFirstPathPicked.getFullPathName()), true, "*",
                                File::findFilesAndDirectories + File::ignoreHiddenFiles);
     
     File fileHolder;

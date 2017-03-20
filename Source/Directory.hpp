@@ -11,7 +11,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-void removeEmptyFolders(const char *directoryPath);
+void removeEmptyFolders(File holdsFirstPathPicked);
 bool folderIsEmpty(File fileHolder);
 
 #endif /* Directory_hpp */
