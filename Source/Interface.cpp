@@ -71,6 +71,10 @@ Interface::Interface ()
 
 
     //[Constructor] You can add your own custom stuff here..
+
+    // Button is off until path is set
+    eradicateEmptyFoldersButton->setEnabled(false);
+
     //[/Constructor]
 }
 
@@ -117,6 +121,11 @@ void Interface::resized()
 void Interface::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
+
+    // Enable button (its off until a path is set to keep from bad things from happening
+    // IE Directory Iterator trying to iterate when no path has been set
+    eradicateEmptyFoldersButton->setEnabled(true);
+
     //[/UserbuttonClicked_Pre]
 
     if (buttonThatWasClicked == selectDirectoryButton)
@@ -148,7 +157,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == eradicateEmptyFoldersButton)
     {
         //[UserButtonCode_eradicateEmptyFoldersButton] -- add your button handler code here..
-        
+
         removeEmptyFolders(directoryPath);
 
         //[/UserButtonCode_eradicateEmptyFoldersButton]
