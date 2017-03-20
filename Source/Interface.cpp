@@ -136,7 +136,8 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
                         true
                         );
 
-        DirectoryIterator dirIter (File ("/Users/josephlyons/Desktop/Test File"), false, "*", File::findDirectories);
+        DirectoryIterator dirIter (File ("/Users/josephlyons/Desktop/Test File"),
+                                   false, "*", File::findFilesAndDirectories + File::ignoreHiddenFiles);
         
         while (dirIter.getEstimatedProgress() != 1)
         {
