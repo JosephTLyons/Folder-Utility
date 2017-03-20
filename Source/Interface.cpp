@@ -18,6 +18,9 @@
 */
 
 //[Headers] You can add your own extra header files here...
+
+#include "Directory.hpp"
+
 //[/Headers]
 
 #include "Interface.h"
@@ -114,9 +117,6 @@ void Interface::resized()
 void Interface::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
-    
-    File fileHolder;
-    
     //[/UserbuttonClicked_Pre]
 
     if (buttonThatWasClicked == selectDirectoryButton)
@@ -135,18 +135,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
                         true,
                         true
                         );
-
-        DirectoryIterator dirIter (File ("/Users/josephlyons/Desktop/Test File"),
-                                   false, "*", File::findFilesAndDirectories + File::ignoreHiddenFiles);
+        // set path (Change this to receive whatever path is obtained from dialog box)
+        directoryPath = "/Users/josephlyons/Desktop/Test File";
         
-        while (dirIter.getEstimatedProgress() != 1)
-        {
-            dirIter.next();
-            
-            fileHolder = dirIter.getFile();
-        }
-
-
+        directoryPathDisplay->setText(directoryPath);
 
         //fs.showDialog(1, )
 
@@ -156,6 +148,9 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == eradicateEmptyFoldersButton)
     {
         //[UserButtonCode_eradicateEmptyFoldersButton] -- add your button handler code here..
+        
+        removeEmptyFolders(directoryPath);
+        
         //[/UserButtonCode_eradicateEmptyFoldersButton]
     }
 
