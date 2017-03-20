@@ -72,6 +72,24 @@ Interface::Interface ()
     listOfFoldersRemovedEditor->setPopupMenuEnabled (true);
     listOfFoldersRemovedEditor->setText (String());
 
+    addAndMakeVisible (foldersRemovedLabel = new Label ("foldersRemovedLabel",
+                                                        TRANS("Folders Removed:")));
+    foldersRemovedLabel->setFont (Font (15.00f, Font::plain));
+    foldersRemovedLabel->setJustificationType (Justification::centred);
+    foldersRemovedLabel->setEditable (false, false, false);
+    foldersRemovedLabel->setColour (Label::textColourId, Colours::white);
+    foldersRemovedLabel->setColour (TextEditor::textColourId, Colours::black);
+    foldersRemovedLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    addAndMakeVisible (directoryPathwayLabel = new Label ("directoryPathwayLabel",
+                                                          TRANS("Directory Pathway:")));
+    directoryPathwayLabel->setFont (Font (15.00f, Font::plain));
+    directoryPathwayLabel->setJustificationType (Justification::centred);
+    directoryPathwayLabel->setEditable (false, false, false);
+    directoryPathwayLabel->setColour (Label::textColourId, Colours::white);
+    directoryPathwayLabel->setColour (TextEditor::textColourId, Colours::black);
+    directoryPathwayLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -97,6 +115,8 @@ Interface::~Interface()
     eradicateEmptyFoldersButton = nullptr;
     directoryPathDisplay = nullptr;
     listOfFoldersRemovedEditor = nullptr;
+    foldersRemovedLabel = nullptr;
+    directoryPathwayLabel = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -121,10 +141,12 @@ void Interface::resized()
     //[/UserPreResize]
 
     titleText->setBounds (0, 0, 300, 50);
-    selectDirectoryButton->setBounds (0, 100, 300, 50);
-    eradicateEmptyFoldersButton->setBounds (0, 150, 300, 50);
-    directoryPathDisplay->setBounds (0, 50, 300, 50);
-    listOfFoldersRemovedEditor->setBounds (0, 200, 300, 200);
+    selectDirectoryButton->setBounds (0, 125, 300, 50);
+    eradicateEmptyFoldersButton->setBounds (0, 175, 300, 50);
+    directoryPathDisplay->setBounds (0, 75, 300, 50);
+    listOfFoldersRemovedEditor->setBounds (0, 250, 300, 150);
+    foldersRemovedLabel->setBounds (0, 225, 300, 25);
+    directoryPathwayLabel->setBounds (0, 50, 300, 25);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -199,19 +221,29 @@ BEGIN_JUCER_METADATA
          italic="0" justification="36"/>
   <TEXTBUTTON name="selectDirectoryselectDirectoryButton" id="48724a493ca7e66e"
               memberName="selectDirectoryButton" virtualName="" explicitFocusOrder="0"
-              pos="0 100 300 50" buttonText="Select Directory" connectedEdges="3"
+              pos="0 125 300 50" buttonText="Select Directory" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="eradicateEmptyFoldersButton" id="4ad96e211ef69bb7" memberName="eradicateEmptyFoldersButton"
-              virtualName="" explicitFocusOrder="0" pos="0 150 300 50" buttonText="Eradicate Empty Folders"
+              virtualName="" explicitFocusOrder="0" pos="0 175 300 50" buttonText="Eradicate Empty Folders"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTEDITOR name="directoryPathDisplay" id="1fdfeaa5b403b983" memberName="directoryPathDisplay"
-              virtualName="" explicitFocusOrder="0" pos="0 50 300 50" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="0 75 300 50" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <TEXTEDITOR name="listOfFoldersRemovedEditor" id="e96280133f57cb22" memberName="listOfFoldersRemovedEditor"
-              virtualName="" explicitFocusOrder="0" pos="0 200 300 200" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="0 250 300 150" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
+  <LABEL name="foldersRemovedLabel" id="66a66b2dca7d8008" memberName="foldersRemovedLabel"
+         virtualName="" explicitFocusOrder="0" pos="0 225 300 25" textCol="ffffffff"
+         edTextCol="ff000000" edBkgCol="0" labelText="Folders Removed:"
+         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
+         fontname="Default font" fontsize="15" bold="0" italic="0" justification="36"/>
+  <LABEL name="directoryPathwayLabel" id="1b6b6d72a7200e14" memberName="directoryPathwayLabel"
+         virtualName="" explicitFocusOrder="0" pos="0 50 300 25" textCol="ffffffff"
+         edTextCol="ff000000" edBkgCol="0" labelText="Directory Pathway:"
+         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
+         fontname="Default font" fontsize="15" bold="0" italic="0" justification="36"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

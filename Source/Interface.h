@@ -66,6 +66,8 @@ private:
     ScopedPointer<TextButton> eradicateEmptyFoldersButton;
     ScopedPointer<TextEditor> directoryPathDisplay;
     ScopedPointer<TextEditor> listOfFoldersRemovedEditor;
+    ScopedPointer<Label> foldersRemovedLabel;
+    ScopedPointer<Label> directoryPathwayLabel;
 
 
     //==============================================================================
