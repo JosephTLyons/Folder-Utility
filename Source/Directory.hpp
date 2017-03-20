@@ -11,7 +11,18 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-void removeEmptyFolders(File holdsFirstPathPicked);
-bool folderIsEmpty(File fileHolder);
+class Directory
+{
+private:
+    
+    File originalPathwaySelected;
+    bool folderIsEmpty(File fileHolder);
+    
+public:
+    
+    void setOriginalPathWay(File holdsFirstPathPicked);
+    File getOriginalPathway();
+    void removeEmptyFolders();
+};
 
 #endif /* Directory_hpp */

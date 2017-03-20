@@ -8,10 +8,20 @@
 
 #include "Directory.hpp"
 
-void removeEmptyFolders(File holdsFirstPathPicked)
+void Directory::setOriginalPathWay(File holdsFirstPathPicked)
+{
+    originalPathwaySelected = holdsFirstPathPicked;
+}
+
+File Directory::getOriginalPathway()
+{
+    return originalPathwaySelected;
+}
+
+void Directory::removeEmptyFolders()
 {
     // Scans files and directories recursively, but skips hidden files
-    DirectoryIterator dirIter (File (holdsFirstPathPicked.getFullPathName()), true, "*",
+    DirectoryIterator dirIter (File (originalPathwaySelected.getFullPathName()), true, "*",
                                File::findFilesAndDirectories + File::ignoreHiddenFiles);
     
     File fileHolder;
@@ -31,7 +41,7 @@ void removeEmptyFolders(File holdsFirstPathPicked)
     }
 }
 
-bool folderIsEmpty(File fileHolder)
+bool Directory::folderIsEmpty(File fileHolder)
 {
     // Scans files and directories non-recursively, but skips hidden files
     DirectoryIterator dirIter (File (fileHolder.getFullPathName()), false, "*",

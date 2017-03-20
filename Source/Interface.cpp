@@ -139,9 +139,9 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         fileChooser.browseForDirectory();
 
-        holdsFirstPathPicked = fileChooser.getResult();
+        directory.setOriginalPathWay(fileChooser.getResult());
 
-        directoryPathDisplay->setText(holdsFirstPathPicked.getFullPathName());
+        directoryPathDisplay->setText(directory.getOriginalPathway().getFullPathName());
 
         //[/UserButtonCode_selectDirectoryButton]
     }
@@ -149,7 +149,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_eradicateEmptyFoldersButton] -- add your button handler code here..
 
-        removeEmptyFolders(holdsFirstPathPicked.getFullPathName());
+        directory.removeEmptyFolders();
 
         //[/UserButtonCode_eradicateEmptyFoldersButton]
     }
