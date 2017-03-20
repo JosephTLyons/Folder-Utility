@@ -60,6 +60,7 @@ private:
     ScopedPointer<Label> titleText;
     ScopedPointer<TextButton> selectDirectoryButton;
     ScopedPointer<TextButton> eradicateEmptyFoldersButton;
+    ScopedPointer<TextEditor> directoryPathDisplay;
 
 
     //==============================================================================

@@ -51,11 +51,20 @@ Interface::Interface ()
     eradicateEmptyFoldersButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     eradicateEmptyFoldersButton->addListener (this);
 
+    addAndMakeVisible (directoryPathDisplay = new TextEditor ("directoryPathDisplay"));
+    directoryPathDisplay->setMultiLine (false);
+    directoryPathDisplay->setReturnKeyStartsNewLine (false);
+    directoryPathDisplay->setReadOnly (true);
+    directoryPathDisplay->setScrollbarsShown (true);
+    directoryPathDisplay->setCaretVisible (false);
+    directoryPathDisplay->setPopupMenuEnabled (true);
+    directoryPathDisplay->setText (String());
+
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (300, 150);
+    setSize (300, 175);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -70,6 +79,7 @@ Interface::~Interface()
     titleText = nullptr;
     selectDirectoryButton = nullptr;
     eradicateEmptyFoldersButton = nullptr;
+    directoryPathDisplay = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -94,8 +104,9 @@ void Interface::resized()
     //[/UserPreResize]
 
     titleText->setBounds (0, 0, 300, 50);
-    selectDirectoryButton->setBounds (0, 50, 300, 50);
-    eradicateEmptyFoldersButton->setBounds (0, 100, 300, 50);
+    selectDirectoryButton->setBounds (0, 75, 300, 50);
+    eradicateEmptyFoldersButton->setBounds (0, 125, 300, 50);
+    directoryPathDisplay->setBounds (0, 50, 300, 25);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -108,23 +119,42 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == selectDirectoryButton)
     {
         //[UserButtonCode_selectDirectoryButton] -- add your button handler code here..
-        
+
         FileChooser fc ("Choose a directory...",
                         File::getCurrentWorkingDirectory(),
                         "*",
                         true);
-        
-        
+
+
         FileChooser fs ("stuff",
                         File::getCurrentWorkingDirectory(),
                         "dude",
                         true,
                         true
                         );
-        
-        fs.showDialog(1, <#juce::FilePreviewComponent *previewComponent#>)
-        
-        
+
+        ScopedPointer<int64> empty1;
+        ScopedPointer<Time> empty2;
+        ScopedPointer<Time> empty3;
+        ScopedPointer<bool> empty4;
+
+        empty1 = nullptr;
+        empty2 = nullptr;
+        empty3 = nullptr;
+        empty4 = nullptr;
+
+        DirectoryIterator dirIter (File ("/Users/josephlyons/Desktop/Test File"), false);
+
+        //dirIter.next(true, true, empty1, empty2, empty3, empty4);
+
+
+        File holder = dirIter.getFile();
+
+
+
+        //fs.showDialog(1, )
+
+
         //[/UserButtonCode_selectDirectoryButton]
     }
     else if (buttonThatWasClicked == eradicateEmptyFoldersButton)
@@ -155,7 +185,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="Interface" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="300" initialHeight="150">
+                 fixedSize="1" initialWidth="300" initialHeight="175">
   <BACKGROUND backgroundColour="ff393939"/>
   <LABEL name="titleText" id="b7a12fdcde89fe51" memberName="titleText"
          virtualName="" explicitFocusOrder="0" pos="0 0 300 50" textCol="ffffffff"
@@ -165,11 +195,15 @@ BEGIN_JUCER_METADATA
          italic="0" justification="36"/>
   <TEXTBUTTON name="selectDirectoryselectDirectoryButton" id="48724a493ca7e66e"
               memberName="selectDirectoryButton" virtualName="" explicitFocusOrder="0"
-              pos="0 50 300 50" buttonText="Select Directory" connectedEdges="3"
+              pos="0 75 300 50" buttonText="Select Directory" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="eradicateEmptyFoldersButton" id="4ad96e211ef69bb7" memberName="eradicateEmptyFoldersButton"
-              virtualName="" explicitFocusOrder="0" pos="0 100 300 50" buttonText="Eradicate Empty Folders"
+              virtualName="" explicitFocusOrder="0" pos="0 125 300 50" buttonText="Eradicate Empty Folders"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
+  <TEXTEDITOR name="directoryPathDisplay" id="1fdfeaa5b403b983" memberName="directoryPathDisplay"
+              virtualName="" explicitFocusOrder="0" pos="0 50 300 25" initialText=""
+              multiline="0" retKeyStartsLine="0" readonly="1" scrollbars="1"
+              caret="0" popupmenu="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
