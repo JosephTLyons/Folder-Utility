@@ -17,7 +17,7 @@ Directory::Directory()
 void Directory::removeEmptyFolders()
 {
     // Scans files and directories recursively, but skips hidden files
-    DirectoryIterator dirIter (File (originalPathwaySelected.getFullPathName()), true, "*",
+    DirectoryIterator dirIter (File (mainPathway.getFullPathName()), true, "*",
                                File::findFilesAndDirectories + File::ignoreHiddenFiles);
     File fileHolder;
     
@@ -76,14 +76,14 @@ bool Directory::folderIsEmpty(File fileHolder)
     return true;
 }
 
-void Directory::setOriginalPathWay(File holdsFirstPathPicked)
+void Directory::setMainPathway(File holdsFirstPathSelected)
 {
-    originalPathwaySelected = holdsFirstPathPicked;
+    mainPathway = holdsFirstPathSelected;
 }
 
-File Directory::getOriginalPathway()
+File Directory::getMainPathway()
 {
-    return originalPathwaySelected;
+    return mainPathway;
 }
 
 String Directory::getListOfFoldersRemoved()

@@ -174,10 +174,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         fileChooser.browseForDirectory();
 
         // Assign path chosen to my class' path holder
-        directory.setOriginalPathWay(fileChooser.getResult());
+        directory.setMainPathway(fileChooser.getResult());
 
         // Display path in text editor (Consider refactoring names in this code)
-        directoryPathDisplay->setText(directory.getOriginalPathway().getFullPathName());
+        directoryPathDisplay->setText(directory.getMainPathway().getFullPathName());
 
         //[/UserButtonCode_selectDirectoryButton]
     }

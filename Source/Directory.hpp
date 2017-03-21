@@ -15,7 +15,7 @@ class Directory
 {
 private:
     
-    File originalPathwaySelected;
+    File mainPathway;
     String listOfFoldersRemoved;
     int numberOfFilesRemoved;
     bool iterateAgain;
@@ -26,8 +26,8 @@ public:
     
     Directory();
     void removeEmptyFolders();
-    void setOriginalPathWay(File holdsFirstPathPicked);
-    File getOriginalPathway();
+    void setMainPathway(File holdsFirstPathSelected);
+    File getMainPathway();
     String getListOfFoldersRemoved();
     int getNumberOfFilesRemoved();
     void clearListOfFoldersRemoved();
