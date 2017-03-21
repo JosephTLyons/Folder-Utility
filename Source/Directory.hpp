@@ -21,11 +21,12 @@ private:
     bool iterateAgain;
     
     bool folderIsEmpty(File fileHolder);
+    void removeSingleEmptyFolder(const File &fileHolder);
     
 public:
     
     Directory();
-    void removeEmptyFolders();
+    void removeAllEmptyFolders();
     void setMainPathway(File holdsFirstPathSelected);
     File getMainPathway();
     String getListOfFoldersRemoved();

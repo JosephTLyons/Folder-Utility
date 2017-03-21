@@ -189,7 +189,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         listOfFoldersRemovedEditor->clear();
         directory.clearNumberOfFilesRemoved();
 
-        directory.removeEmptyFolders();
+        directory.removeAllEmptyFolders();
 
         // Set history string to text editor
         listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());

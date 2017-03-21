@@ -14,7 +14,7 @@ Directory::Directory()
     iterateAgain = true;
 }
 
-void Directory::removeEmptyFolders()
+void Directory::removeAllEmptyFolders()
 {
     // Scans files and directories recursively, but skips hidden files
     DirectoryIterator dirIter (File (mainPathway.getFullPathName()), true, "*",
@@ -37,27 +37,32 @@ void Directory::removeEmptyFolders()
                 if(folderIsEmpty(fileHolder))
                 {
                     iterateAgain = true;
-                    
-                    // Move file
-                    fileHolder.moveToTrash();
-                    
-                    // Add filename to list of removed files
-                    listOfFoldersRemoved += fileHolder.getFullPathName();
-                    listOfFoldersRemoved += "\n\n";
-                    
-                    // Increment number of files removed
-                    numberOfFilesRemoved++;
+                    removeSingleEmptyFolder(fileHolder);
                 }
             }
         }
     }
     
+    // Set to true so that if the user clicks the remove empty folder again, this function will work
     iterateAgain = true;
     
     // Add remaining infomrmation to text string for textEditor
     listOfFoldersRemoved += "Completed: ";
     listOfFoldersRemoved += (String) numberOfFilesRemoved;
     listOfFoldersRemoved += " empty folder(s) moved to trash.";
+}
+
+void Directory::removeSingleEmptyFolder(const File &fileHolder)
+{
+    // Move file
+    fileHolder.moveToTrash();
+
+    // Add filename to list of removed files
+    listOfFoldersRemoved += fileHolder.getFullPathName();
+    listOfFoldersRemoved += "\n\n";
+
+    // Increment number of files removed
+    numberOfFilesRemoved++;
 }
 
 bool Directory::folderIsEmpty(File fileHolder)
