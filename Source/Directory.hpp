@@ -18,6 +18,8 @@ private:
     File originalPathwaySelected;
     String listOfFoldersRemoved;
     int numberOfFilesRemoved;
+    bool iterateAgain;
+    
     bool folderIsEmpty(File fileHolder);
     
 public:
@@ -27,6 +29,7 @@ public:
     void setOriginalPathWay(File holdsFirstPathPicked);
     File getOriginalPathway();
     String getListOfFoldersRemoved();
+    int getNumberOfFilesRemoved();
     void clearListOfFoldersRemoved();
     void clearNumberOfFilesRemoved();
 };

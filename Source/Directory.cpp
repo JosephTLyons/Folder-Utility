@@ -11,6 +11,7 @@
 Directory::Directory()
 {
     clearNumberOfFilesRemoved();
+    iterateAgain = true;
 }
 
 void Directory::removeEmptyFolders()
@@ -18,33 +19,41 @@ void Directory::removeEmptyFolders()
     // Scans files and directories recursively, but skips hidden files
     DirectoryIterator dirIter (File (originalPathwaySelected.getFullPathName()), true, "*",
                                File::findFilesAndDirectories + File::ignoreHiddenFiles);
-    
     File fileHolder;
     
-    // Iterate through all files and directories
-    while (dirIter.next())
+    // This loop repeats until folders stop being moved to trash
+    // It uses a flag similar to how the bubble sort works
+    while(iterateAgain)
     {
-        fileHolder = dirIter.getFile();
+        iterateAgain = false;
         
-        if(fileHolder.isDirectory())
+        // Iterate through all files and directories
+        while (dirIter.next())
         {
-            if(folderIsEmpty(fileHolder))
+            fileHolder = dirIter.getFile();
+            
+            if(fileHolder.isDirectory())
             {
-                // Move file
-                fileHolder.moveToTrash();
-                
-                // Add filename to list of removed files
-                listOfFoldersRemoved += fileHolder.getFileName();
-                listOfFoldersRemoved += '\n';
-                
-                // Increment number of files removed
-                numberOfFilesRemoved++;
+                if(folderIsEmpty(fileHolder))
+                {
+                    iterateAgain = true;
+                    
+                    // Move file
+                    fileHolder.moveToTrash();
+                    
+                    // Add filename to list of removed files
+                    listOfFoldersRemoved += fileHolder.getFullPathName();
+                    listOfFoldersRemoved += "\n\n";
+                    
+                    // Increment number of files removed
+                    numberOfFilesRemoved++;
+                }
             }
         }
     }
     
     // Add remaining infomrmation to text string for textEditor
-    listOfFoldersRemoved += "\nCompleted: ";
+    listOfFoldersRemoved += "Completed: ";
     listOfFoldersRemoved += (String) numberOfFilesRemoved;
     listOfFoldersRemoved += " empty folder(s) moved to trash.";
 }
@@ -78,6 +87,11 @@ File Directory::getOriginalPathway()
 String Directory::getListOfFoldersRemoved()
 {
     return listOfFoldersRemoved;
+}
+
+int Directory::getNumberOfFilesRemoved()
+{
+    return numberOfFilesRemoved;
 }
 
 void Directory::clearListOfFoldersRemoved()
