@@ -10,7 +10,7 @@
 
 Directory::Directory()
 {
-    numberOfFilesRemoved = 0;
+    clearNumberOfFilesRemoved();
 }
 
 void Directory::removeEmptyFolders()
@@ -46,7 +46,7 @@ void Directory::removeEmptyFolders()
     // Add remaining infomrmation to text string for textEditor
     listOfFoldersRemoved += "\nCompleted: ";
     listOfFoldersRemoved += (String) numberOfFilesRemoved;
-    listOfFoldersRemoved += " empty folders moved to trash.";
+    listOfFoldersRemoved += " empty folder(s) moved to trash.";
 }
 
 bool Directory::folderIsEmpty(File fileHolder)
@@ -78,4 +78,14 @@ File Directory::getOriginalPathway()
 String Directory::getListOfFoldersRemoved()
 {
     return listOfFoldersRemoved;
+}
+
+void Directory::clearListOfFoldersRemoved()
+{
+    listOfFoldersRemoved.clear();
+}
+
+void Directory::clearNumberOfFilesRemoved()
+{
+    numberOfFilesRemoved = 0;
 }

@@ -170,10 +170,13 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_selectDirectoryButton] -- add your button handler code here..
 
+        // Launch browser window
         fileChooser.browseForDirectory();
 
+        // Assign path chosen to my class' path holder
         directory.setOriginalPathWay(fileChooser.getResult());
 
+        // Display path in text editor (Consider refactoring names in this code)
         directoryPathDisplay->setText(directory.getOriginalPathway().getFullPathName());
 
         //[/UserButtonCode_selectDirectoryButton]
@@ -182,8 +185,13 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_eradicateEmptyFoldersButton] -- add your button handler code here..
 
+        // Reset history fields
+        directory.clearListOfFoldersRemoved();
+        directory.clearNumberOfFilesRemoved();
+        
         directory.removeEmptyFolders();
 
+        // Set history string to text editor
         listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
 
         //[/UserButtonCode_eradicateEmptyFoldersButton]

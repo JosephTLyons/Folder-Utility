@@ -18,19 +18,17 @@ private:
     File originalPathwaySelected;
     String listOfFoldersRemoved;
     int numberOfFilesRemoved;
-    
     bool folderIsEmpty(File fileHolder);
     
 public:
     
     Directory();
-    
     void removeEmptyFolders();
-    
     void setOriginalPathWay(File holdsFirstPathPicked);
     File getOriginalPathway();
-    
     String getListOfFoldersRemoved();
+    void clearListOfFoldersRemoved();
+    void clearNumberOfFilesRemoved();
 };
 
 #endif /* Directory_hpp */
