@@ -19,7 +19,6 @@ void Directory::removeAllEmptyFolders()
     // Scans files and directories recursively, but skips hidden files
     DirectoryIterator dirIter (File (mainPathway.getFullPathName()), true, "*",
                                File::findFilesAndDirectories + File::ignoreHiddenFiles);
-    File fileHolder;
     
     // This loop repeats until folders stop being moved to trash
     // It uses a flag similar to how the bubble sort works
@@ -34,10 +33,10 @@ void Directory::removeAllEmptyFolders()
             
             if(fileHolder.isDirectory())
             {
-                if(folderIsEmpty(fileHolder))
+                if(folderIsEmpty())
                 {
                     iterateAgain = true;
-                    removeSingleEmptyFolder(fileHolder);
+                    removeSingleEmptyFolder();
                 }
             }
         }
@@ -52,7 +51,7 @@ void Directory::removeAllEmptyFolders()
     listOfFoldersRemoved += " empty folder(s) moved to trash.";
 }
 
-void Directory::removeSingleEmptyFolder(const File &fileHolder)
+void Directory::removeSingleEmptyFolder()
 {
     // Move file
     fileHolder.moveToTrash();
@@ -65,7 +64,7 @@ void Directory::removeSingleEmptyFolder(const File &fileHolder)
     numberOfFilesRemoved++;
 }
 
-bool Directory::folderIsEmpty(File fileHolder)
+bool Directory::folderIsEmpty()
 {
     // Scans files and directories non-recursively, but skips hidden files
     DirectoryIterator dirIter (File (fileHolder.getFullPathName()), false, "*",

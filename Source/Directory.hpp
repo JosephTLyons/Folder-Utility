@@ -15,13 +15,14 @@ class Directory
 {
 private:
     
+    File fileHolder;
     File mainPathway;
     String listOfFoldersRemoved;
     int numberOfFilesRemoved;
     bool iterateAgain;
     
-    bool folderIsEmpty(File fileHolder);
-    void removeSingleEmptyFolder(const File &fileHolder);
+    bool folderIsEmpty();
+    void removeSingleEmptyFolder();
     
 public:
     
