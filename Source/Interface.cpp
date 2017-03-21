@@ -186,7 +186,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_eradicateEmptyFoldersButton] -- add your button handler code here..
 
         // Reset history fields
-        directoryPathDisplay->clear();
+        listOfFoldersRemovedEditor->clear();
         directory.clearNumberOfFilesRemoved();
 
         directory.removeEmptyFolders();

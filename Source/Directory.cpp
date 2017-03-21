@@ -52,6 +52,8 @@ void Directory::removeEmptyFolders()
         }
     }
     
+    iterateAgain = true;
+    
     // Add remaining infomrmation to text string for textEditor
     listOfFoldersRemoved += "Completed: ";
     listOfFoldersRemoved += (String) numberOfFilesRemoved;
