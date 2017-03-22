@@ -129,7 +129,7 @@ void Interface::paint (Graphics& g)
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
-    g.fillAll (Colour (0xff393939));
+    g.fillAll (Colour (0xff323232));
 
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
@@ -220,7 +220,7 @@ BEGIN_JUCER_METADATA
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="400" initialHeight="400">
-  <BACKGROUND backgroundColour="ff393939"/>
+  <BACKGROUND backgroundColour="ff323232"/>
   <LABEL name="titleText" id="b7a12fdcde89fe51" memberName="titleText"
          virtualName="" explicitFocusOrder="0" pos="0 0 400 50" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="Eradicate Empty Folders"
