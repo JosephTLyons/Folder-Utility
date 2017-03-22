@@ -10,6 +10,7 @@
 
 Directory::Directory()
 {
+    counter = 1;
     clearNumberOfFilesRemoved();
     iterateAgain = true;
 }
@@ -57,7 +58,9 @@ void Directory::removeSingleEmptyFolder()
     fileHolder.moveToTrash();
 
     // Add filename to list of removed files
-    listOfFoldersRemoved += fileHolder.getFullPathName();
+    listOfFoldersRemoved += counter++;
+    listOfFoldersRemoved += ": ";
+    listOfFoldersRemoved += fileHolder.getRelativePathFrom(mainPathway.getFullPathName());
     listOfFoldersRemoved += "\n\n";
 
     // Increment number of files removed

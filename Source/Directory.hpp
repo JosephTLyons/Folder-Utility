@@ -15,6 +15,7 @@ class Directory
 {
 private:
     
+    int counter;
     File fileHolder;
     File mainPathway;
     String listOfFoldersRemoved;
