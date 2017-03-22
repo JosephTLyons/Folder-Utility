@@ -1,7 +1,7 @@
 # Empty-Folder-Remover
 A simple application that removes all empty files, recursively, in a specified directory.
 
-![alt tag](https://github.com/JosephTLyons/Empty-Folder-Remover/blob/master/Images/Empty%20Folder%20Remover.png)
+![alt tag](https://github.com/JosephTLyons/Empty-Folder-Remover/blob/master/Images/Empty%20Folder%20Remover%20GUI.png)
 
 WARNING: Empty Folder Remover hasn't been tested in every case.  I've only tested it in small, controlled
 directories.  However, for the removal of the folders detected as being empty, I'm using JUCE code
