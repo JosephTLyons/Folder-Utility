@@ -48,7 +48,7 @@ void Directory::removeAllEmptyFolders()
     // Add remaining infomrmation to text string for textEditor
     listOfFoldersRemoved += "Completed: ";
     listOfFoldersRemoved += (String) numberOfFilesRemoved;
-    listOfFoldersRemoved += " empty folder(s) moved to trash.";
+    listOfFoldersRemoved += " empty folder(s) moved to trash.\n\n";
 }
 
 void Directory::removeSingleEmptyFolder()
