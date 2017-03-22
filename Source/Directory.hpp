@@ -20,6 +20,7 @@ private:
     String listOfFoldersRemoved;
     int numberOfFilesRemoved;
     bool iterateAgain;
+    Array<File> filesArray;
     
     bool folderIsEmpty();
     void removeSingleEmptyFolder();

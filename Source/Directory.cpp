@@ -11,7 +11,7 @@
 Directory::Directory()
 {
     clearNumberOfFilesRemoved();
-    iterateAgain = true;
+    iterateAgain = false;
 }
 
 void Directory::removeAllEmptyFolders()
@@ -20,16 +20,19 @@ void Directory::removeAllEmptyFolders()
     DirectoryIterator dirIter (File (mainPathway.getFullPathName()), true, "*",
                                File::findFilesAndDirectories + File::ignoreHiddenFiles);
     
-    // This loop repeats until folders stop being moved to trash
-    // It uses a flag similar to how the bubble sort works
-    while(iterateAgain)
+    // Iterate and collect all files and store in filesArray
+    while(dirIter.next())
+    {
+        filesArray.add(dirIter.getFile());
+    }
+    
+    do
     {
         iterateAgain = false;
         
-        // Iterate through all files and directories
-        while (dirIter.next())
+        for(int i = 0; (i < filesArray.size()) && (iterateAgain == false); i++)
         {
-            fileHolder = dirIter.getFile();
+            fileHolder = filesArray[i];
             
             if(fileHolder.isDirectory())
             {
@@ -41,9 +44,7 @@ void Directory::removeAllEmptyFolders()
             }
         }
     }
-    
-    // Set to true so that if the user clicks the remove empty folder again, this function will work
-    iterateAgain = true;
+    while(iterateAgain);
     
     // Add remaining infomrmation to text string for textEditor
     listOfFoldersRemoved += "Completed: ";
