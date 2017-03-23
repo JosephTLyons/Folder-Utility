@@ -37,7 +37,7 @@ Interface::Interface ()
 
     addAndMakeVisible (folderUtilityLabel = new Label ("folderUtilityLabel",
                                                        TRANS("Folder Utility")));
-    folderUtilityLabel->setFont (Font (27.40f, Font::plain));
+    folderUtilityLabel->setFont (Font (45.60f, Font::plain));
     folderUtilityLabel->setJustificationType (Justification::centred);
     folderUtilityLabel->setEditable (false, false, false);
     folderUtilityLabel->setColour (Label::textColourId, Colours::white);
@@ -289,7 +289,7 @@ BEGIN_JUCER_METADATA
          virtualName="" explicitFocusOrder="0" pos="0 0 400 50" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="Folder Utility"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="27.399999999999998579" bold="0"
+         fontname="Default font" fontsize="45.600000000000001421" bold="0"
          italic="0" justification="36"/>
   <TEXTBUTTON name="selectDirectoryselectDirectoryButton" id="48724a493ca7e66e"
               memberName="selectDirectoryButton" virtualName="" explicitFocusOrder="0"
