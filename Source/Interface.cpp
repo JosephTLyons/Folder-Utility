@@ -35,24 +35,24 @@ Interface::Interface ()
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    addAndMakeVisible (titleText = new Label ("titleText",
-                                              TRANS("Eradicate Empty Folders")));
-    titleText->setFont (Font (27.40f, Font::plain));
-    titleText->setJustificationType (Justification::centred);
-    titleText->setEditable (false, false, false);
-    titleText->setColour (Label::textColourId, Colours::white);
-    titleText->setColour (TextEditor::textColourId, Colours::black);
-    titleText->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    addAndMakeVisible (folderUtilityLabel = new Label ("folderUtilityLabel",
+                                                       TRANS("Folder Utility")));
+    folderUtilityLabel->setFont (Font (27.40f, Font::plain));
+    folderUtilityLabel->setJustificationType (Justification::centred);
+    folderUtilityLabel->setEditable (false, false, false);
+    folderUtilityLabel->setColour (Label::textColourId, Colours::white);
+    folderUtilityLabel->setColour (TextEditor::textColourId, Colours::black);
+    folderUtilityLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     addAndMakeVisible (selectDirectoryButton = new TextButton ("selectDirectoryselectDirectoryButton"));
     selectDirectoryButton->setButtonText (TRANS("Select Directory"));
     selectDirectoryButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     selectDirectoryButton->addListener (this);
 
-    addAndMakeVisible (eradicateEmptyFoldersButton = new TextButton ("eradicateEmptyFoldersButton"));
-    eradicateEmptyFoldersButton->setButtonText (TRANS("Eradicate Empty Folders"));
-    eradicateEmptyFoldersButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
-    eradicateEmptyFoldersButton->addListener (this);
+    addAndMakeVisible (removeEmptyFolders = new TextButton ("removeEmptyFolders"));
+    removeEmptyFolders->setButtonText (TRANS("Remove Empty Folders"));
+    removeEmptyFolders->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    removeEmptyFolders->addListener (this);
 
     addAndMakeVisible (directoryPathDisplay = new TextEditor ("directoryPathDisplay"));
     directoryPathDisplay->setMultiLine (true);
@@ -72,14 +72,14 @@ Interface::Interface ()
     listOfFoldersRemovedEditor->setPopupMenuEnabled (true);
     listOfFoldersRemovedEditor->setText (String());
 
-    addAndMakeVisible (foldersRemovedLabel = new Label ("foldersRemovedLabel",
-                                                        TRANS("Folders Removed:")));
-    foldersRemovedLabel->setFont (Font (15.00f, Font::plain));
-    foldersRemovedLabel->setJustificationType (Justification::centred);
-    foldersRemovedLabel->setEditable (false, false, false);
-    foldersRemovedLabel->setColour (Label::textColourId, Colours::white);
-    foldersRemovedLabel->setColour (TextEditor::textColourId, Colours::black);
-    foldersRemovedLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    addAndMakeVisible (OutputLabel = new Label ("folderUtilityLabel",
+                                                TRANS("Output:")));
+    OutputLabel->setFont (Font (15.00f, Font::plain));
+    OutputLabel->setJustificationType (Justification::centred);
+    OutputLabel->setEditable (false, false, false);
+    OutputLabel->setColour (Label::textColourId, Colours::white);
+    OutputLabel->setColour (TextEditor::textColourId, Colours::black);
+    OutputLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     addAndMakeVisible (directoryPathwayLabel = new Label ("directoryPathwayLabel",
                                                           TRANS("Directory Pathway:")));
@@ -100,7 +100,7 @@ Interface::Interface ()
     //[Constructor] You can add your own custom stuff here..
 
     // Button is off until path is set
-    eradicateEmptyFoldersButton->setEnabled(false);
+    removeEmptyFolders->setEnabled(false);
 
     //[/Constructor]
 }
@@ -110,12 +110,12 @@ Interface::~Interface()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    titleText = nullptr;
+    folderUtilityLabel = nullptr;
     selectDirectoryButton = nullptr;
-    eradicateEmptyFoldersButton = nullptr;
+    removeEmptyFolders = nullptr;
     directoryPathDisplay = nullptr;
     listOfFoldersRemovedEditor = nullptr;
-    foldersRemovedLabel = nullptr;
+    OutputLabel = nullptr;
     directoryPathwayLabel = nullptr;
 
 
@@ -140,12 +140,12 @@ void Interface::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    titleText->setBounds (0, 0, 400, 50);
+    folderUtilityLabel->setBounds (0, 0, 400, 50);
     selectDirectoryButton->setBounds (0, 125, 400, 50);
-    eradicateEmptyFoldersButton->setBounds (0, 175, 400, 50);
+    removeEmptyFolders->setBounds (0, 175, 400, 50);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
     listOfFoldersRemovedEditor->setBounds (0, 250, 400, 150);
-    foldersRemovedLabel->setBounds (0, 225, 400, 25);
+    OutputLabel->setBounds (0, 225, 400, 25);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
@@ -162,7 +162,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
     // Enable button (its off until a path is set to keep from bad things from happening
     // IE Directory Iterator trying to iterate when no path has been set
-    eradicateEmptyFoldersButton->setEnabled(true);
+    removeEmptyFolders->setEnabled(true);
 
     //[/UserbuttonClicked_Pre]
 
@@ -181,22 +181,22 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         //[/UserButtonCode_selectDirectoryButton]
     }
-    else if (buttonThatWasClicked == eradicateEmptyFoldersButton)
+    else if (buttonThatWasClicked == removeEmptyFolders)
     {
         //[UserButtonCode_eradicateEmptyFoldersButton] -- add your button handler code here..
-
+        
         // Reset history fields
         listOfFoldersRemovedEditor->clear();
         directory.clearNumberOfFilesRemoved();
-
+        
         directory.removeAllEmptyFolders();
-
+        
         // Set history string to text editor
         listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
-
-        //[/UserButtonCode_eradicateEmptyFoldersButton]
+        
+        //[/
     }
-
+    
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
 }
@@ -221,9 +221,9 @@ BEGIN_JUCER_METADATA
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="400" initialHeight="400">
   <BACKGROUND backgroundColour="ff323232"/>
-  <LABEL name="titleText" id="b7a12fdcde89fe51" memberName="titleText"
+  <LABEL name="folderUtilityLabel" id="b7a12fdcde89fe51" memberName="folderUtilityLabel"
          virtualName="" explicitFocusOrder="0" pos="0 0 400 50" textCol="ffffffff"
-         edTextCol="ff000000" edBkgCol="0" labelText="Eradicate Empty Folders"
+         edTextCol="ff000000" edBkgCol="0" labelText="Folder Utility"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="27.399999999999998579" bold="0"
          italic="0" justification="36"/>
@@ -231,8 +231,8 @@ BEGIN_JUCER_METADATA
               memberName="selectDirectoryButton" virtualName="" explicitFocusOrder="0"
               pos="0 125 400 50" buttonText="Select Directory" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="eradicateEmptyFoldersButton" id="4ad96e211ef69bb7" memberName="eradicateEmptyFoldersButton"
-              virtualName="" explicitFocusOrder="0" pos="0 175 400 50" buttonText="Eradicate Empty Folders"
+  <TEXTBUTTON name="removeEmptyFolders" id="4ad96e211ef69bb7" memberName="removeEmptyFolders"
+              virtualName="" explicitFocusOrder="0" pos="0 175 400 50" buttonText="Remove Empty Folders"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTEDITOR name="directoryPathDisplay" id="1fdfeaa5b403b983" memberName="directoryPathDisplay"
               virtualName="" explicitFocusOrder="0" pos="0 75 400 50" initialText=""
@@ -242,11 +242,11 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="0 250 400 150" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
-  <LABEL name="foldersRemovedLabel" id="66a66b2dca7d8008" memberName="foldersRemovedLabel"
+  <LABEL name="folderUtilityLabel" id="66a66b2dca7d8008" memberName="OutputLabel"
          virtualName="" explicitFocusOrder="0" pos="0 225 400 25" textCol="ffffffff"
-         edTextCol="ff000000" edBkgCol="0" labelText="Folders Removed:"
-         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15" bold="0" italic="0" justification="36"/>
+         edTextCol="ff000000" edBkgCol="0" labelText="Output:" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="15" bold="0" italic="0" justification="36"/>
   <LABEL name="directoryPathwayLabel" id="1b6b6d72a7200e14" memberName="directoryPathwayLabel"
          virtualName="" explicitFocusOrder="0" pos="0 50 400 25" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="Directory Pathway:"
