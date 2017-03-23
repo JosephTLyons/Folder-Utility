@@ -57,8 +57,8 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
 
-    Directory directory;
-    CapitalizeItems capitalizeItems;
+    Directory directoryObject;
+    CapitalizeItems capitalizeItemsObject;
 
     //[/UserVariables]
 

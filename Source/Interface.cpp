@@ -201,10 +201,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         fileChooser.browseForDirectory();
 
         // Assign path chosen to my class' path holder
-        directory.setMainPathway(fileChooser.getResult());
+        directoryObject.setMainPathway(fileChooser.getResult());
 
         // Display path in text editor (Consider refactoring names in this code)
-        directoryPathDisplay->setText(directory.getMainPathway().getFullPathName());
+        directoryPathDisplay->setText(directoryObject.getMainPathway().getFullPathName());
 
         //[/UserButtonCode_selectDirectoryButton]
     }
@@ -214,12 +214,12 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         
         // Reset history fields
         listOfFoldersRemovedEditor->clear();
-        directory.clearNumberOfFilesRemoved();
+        directoryObject.clearNumberOfFilesRemoved();
         
-        directory.removeAllEmptyFolders();
+        directoryObject.removeAllEmptyFolders();
         
         // Set history string to text editor
-        listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
+        listOfFoldersRemovedEditor->setText(directoryObject.getListOfFoldersRemoved());
         
         //[/UserButtonCode_removeEmptyFolders]
     }
@@ -231,7 +231,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         //****** listOfFoldersRemovedEditor->clear();
         //****** directory.clearNumberOfFilesRemoved();
         
-        capitalizeItems.capitalizeItems();
+        capitalizeItemsObject.capitalizeItems();
         
         // Set history string to text editor
         //****** listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
