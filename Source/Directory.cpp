@@ -33,7 +33,7 @@ void Directory::removeAllEmptyFolders()
     {
         iterateAgain = false;
         
-        for(int i = 0; i < filesArray.size(); i++)
+        for(int i = 0; (i < filesArray.size()) && (iterateAgain == false); i++)
         {
             fileHolder = filesArray[i];
             
@@ -56,6 +56,19 @@ void Directory::removeAllEmptyFolders()
     listOfFoldersRemoved += " empty folder(s) moved to trash.\n\n";
 }
 
+bool Directory::folderIsEmpty()
+{
+    int numberOfFiles = fileHolder.getNumberOfChildFiles(File::findFilesAndDirectories +
+                                                         File::ignoreHiddenFiles);
+    
+    if(numberOfFiles != 0)
+    {
+        return false;
+    }
+    
+    return true;
+}
+
 void Directory::removeSingleEmptyFolder()
 {
     // Move file
@@ -69,19 +82,6 @@ void Directory::removeSingleEmptyFolder()
 
     // Increment number of files removed
     numberOfFilesRemoved++;
-}
-
-bool Directory::folderIsEmpty()
-{
-    int numberOfFiles = fileHolder.getNumberOfChildFiles(File::findFilesAndDirectories +
-                                                         File::ignoreHiddenFiles);
-    
-    if(numberOfFiles != 0)
-    {
-        return false;
-    }
-    
-    return true;
 }
 
 void Directory::setMainPathway(File holdsFirstPathSelected)
