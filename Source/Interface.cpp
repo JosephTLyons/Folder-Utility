@@ -48,11 +48,15 @@ Interface::Interface ()
     selectDirectoryButton->setButtonText (TRANS("Select Directory"));
     selectDirectoryButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     selectDirectoryButton->addListener (this);
+    selectDirectoryButton->setColour (TextButton::buttonColourId, Colour (0xff48b96d));
+    selectDirectoryButton->setColour (TextButton::textColourOffId, Colours::white);
 
     addAndMakeVisible (removeEmptyFolders = new TextButton ("removeEmptyFolders"));
     removeEmptyFolders->setButtonText (TRANS("Remove Empty Folders"));
     removeEmptyFolders->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     removeEmptyFolders->addListener (this);
+    removeEmptyFolders->setColour (TextButton::buttonColourId, Colours::cornflowerblue);
+    removeEmptyFolders->setColour (TextButton::textColourOffId, Colours::white);
 
     addAndMakeVisible (directoryPathDisplay = new TextEditor ("directoryPathDisplay"));
     directoryPathDisplay->setMultiLine (true);
@@ -77,7 +81,7 @@ Interface::Interface ()
     summaryLabel->setFont (Font (15.00f, Font::plain));
     summaryLabel->setJustificationType (Justification::centred);
     summaryLabel->setEditable (false, false, false);
-    summaryLabel->setColour (Label::textColourId, Colours::white);
+    summaryLabel->setColour (Label::textColourId, Colour (0xffc6c6c6));
     summaryLabel->setColour (TextEditor::textColourId, Colours::black);
     summaryLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
@@ -86,7 +90,7 @@ Interface::Interface ()
     directoryPathwayLabel->setFont (Font (15.00f, Font::plain));
     directoryPathwayLabel->setJustificationType (Justification::centred);
     directoryPathwayLabel->setEditable (false, false, false);
-    directoryPathwayLabel->setColour (Label::textColourId, Colours::white);
+    directoryPathwayLabel->setColour (Label::textColourId, Colour (0xffc6c6c6));
     directoryPathwayLabel->setColour (TextEditor::textColourId, Colours::black);
     directoryPathwayLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
@@ -94,6 +98,8 @@ Interface::Interface ()
     capitalizeItemsButton->setButtonText (TRANS("Capitilize Files"));
     capitalizeItemsButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     capitalizeItemsButton->addListener (this);
+    capitalizeItemsButton->setColour (TextButton::buttonColourId, Colours::cornflowerblue);
+    capitalizeItemsButton->setColour (TextButton::textColourOffId, Colours::white);
 
     addAndMakeVisible (filesOptionToggle = new TextButton ("filesOptionToggle"));
     filesOptionToggle->setButtonText (TRANS("Files"));
@@ -152,7 +158,7 @@ void Interface::paint (Graphics& g)
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
-    g.fillAll (Colour (0xff323232));
+    g.fillAll (Colour (0xff3e3e3e));
 
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
@@ -274,7 +280,7 @@ BEGIN_JUCER_METADATA
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="400" initialHeight="500">
-  <BACKGROUND backgroundColour="ff323232"/>
+  <BACKGROUND backgroundColour="ff3e3e3e"/>
   <LABEL name="folderUtilityLabel" id="b7a12fdcde89fe51" memberName="folderUtilityLabel"
          virtualName="" explicitFocusOrder="0" pos="0 0 400 50" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="Folder Utility"
@@ -283,11 +289,12 @@ BEGIN_JUCER_METADATA
          italic="0" justification="36"/>
   <TEXTBUTTON name="selectDirectoryselectDirectoryButton" id="48724a493ca7e66e"
               memberName="selectDirectoryButton" virtualName="" explicitFocusOrder="0"
-              pos="0 125 400 50" buttonText="Select Directory" connectedEdges="3"
-              needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="removeEmptyFolders" id="4ad96e211ef69bb7" memberName="removeEmptyFolders"
-              virtualName="" explicitFocusOrder="0" pos="0 175 400 50" buttonText="Remove Empty Folders"
+              pos="0 125 400 50" bgColOff="ff48b96d" textCol="ffffffff" buttonText="Select Directory"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="removeEmptyFolders" id="4ad96e211ef69bb7" memberName="removeEmptyFolders"
+              virtualName="" explicitFocusOrder="0" pos="0 175 400 50" bgColOff="ff6495ed"
+              textCol="ffffffff" buttonText="Remove Empty Folders" connectedEdges="3"
+              needsCallback="1" radioGroupId="0"/>
   <TEXTEDITOR name="directoryPathDisplay" id="1fdfeaa5b403b983" memberName="directoryPathDisplay"
               virtualName="" explicitFocusOrder="0" pos="0 75 400 50" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
@@ -297,18 +304,19 @@ BEGIN_JUCER_METADATA
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <LABEL name="summaryLabel" id="66a66b2dca7d8008" memberName="summaryLabel"
-         virtualName="" explicitFocusOrder="0" pos="0 275 400 25" textCol="ffffffff"
+         virtualName="" explicitFocusOrder="0" pos="0 275 400 25" textCol="ffc6c6c6"
          edTextCol="ff000000" edBkgCol="0" labelText="Summary:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15" bold="0" italic="0" justification="36"/>
   <LABEL name="directoryPathwayLabel" id="1b6b6d72a7200e14" memberName="directoryPathwayLabel"
-         virtualName="" explicitFocusOrder="0" pos="0 50 400 25" textCol="ffffffff"
+         virtualName="" explicitFocusOrder="0" pos="0 50 400 25" textCol="ffc6c6c6"
          edTextCol="ff000000" edBkgCol="0" labelText="Directory Pathway:"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15" bold="0" italic="0" justification="36"/>
   <TEXTBUTTON name="capitalizeItemsButton" id="bd92522c60a73c65" memberName="capitalizeItemsButton"
-              virtualName="" explicitFocusOrder="0" pos="200 225 200 50" buttonText="Capitilize Files"
-              connectedEdges="3" needsCallback="1" radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="200 225 200 50" bgColOff="ff6495ed"
+              textCol="ffffffff" buttonText="Capitilize Files" connectedEdges="3"
+              needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="filesOptionToggle" id="631d75a04a9c0263" memberName="filesOptionToggle"
               virtualName="" explicitFocusOrder="0" pos="0 225 100 50" buttonText="Files"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
