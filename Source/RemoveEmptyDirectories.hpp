@@ -37,4 +37,4 @@ public:
     void clearNumberOfFilesRemoved();
 };
 
-#endif /* Directory_hpp */
+#endif /* RemoveEmptyDirectories_hpp */

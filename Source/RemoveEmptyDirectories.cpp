@@ -58,10 +58,13 @@ void RemoveEmptyDirectories::removeAllEmptyFolders()
 
 bool RemoveEmptyDirectories::folderIsEmpty()
 {
-    int numberOfFiles = fileHolder.getNumberOfChildFiles(File::findFilesAndDirectories +
-                                                         File::ignoreHiddenFiles);
+    // Scans files and directories non-recursively, but skips hidden files
+    DirectoryIterator dirIter (File (fileHolder.getFullPathName()), false, "*",
+                               File::findFilesAndDirectories + File::ignoreHiddenFiles);
     
-    if(numberOfFiles != 0)
+    // This will return true if the directory iterator can advance to a file or folder
+    // If it cannot, there is no file or folder in this pathway
+    if(dirIter.next())
     {
         return false;
     }
