@@ -8,10 +8,23 @@
 
 #include "CapitalizeItems.hpp"
 
-void CapitalizeItems::capitalizeItems()
+void CapitalizeItems::capitalizeItems(const bool &files, const bool &folders)
 {
-    DirectoryIterator dirIter (File (mainPathway.getFullPathName()), true, "*",
-                               File::findFilesAndDirectories + File::ignoreHiddenFiles);
+    // Only execute function if either or is selected
+    if (files || folders)
+    {
+        DirectoryIterator dirIterFiles (File (mainPathway.getFullPathName()), true, "*",
+                                        File::findFiles + File::ignoreHiddenFiles);
+        
+        DirectoryIterator dirIterFolders (File (mainPathway.getFullPathName()), true, "*",
+                                          File::findDirectories + File::ignoreHiddenFiles);
+        
+        DirectoryIterator dirIterFilesAndFolders (File (mainPathway.getFullPathName()), true, "*",
+                                                  File::findFilesAndDirectories +
+                                                  File::ignoreHiddenFiles);
+        
+        // Call function here and pass correct iter into it
+    }
 }
 
 void CapitalizeItems::setMainPathway(File holdsFirstPathSelected)

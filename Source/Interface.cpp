@@ -91,7 +91,7 @@ Interface::Interface ()
     directoryPathwayLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     addAndMakeVisible (capitalizeItemsButton = new TextButton ("capitalizeItemsButton"));
-    capitalizeItemsButton->setButtonText (TRANS("Capitilize Files:"));
+    capitalizeItemsButton->setButtonText (TRANS("Capitilize Files"));
     capitalizeItemsButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     capitalizeItemsButton->addListener (this);
 
@@ -117,7 +117,7 @@ Interface::Interface ()
     // These buttons are off until path is set
     removeEmptyFolders->setEnabled(false);
     capitalizeItemsButton->setEnabled(false);
-    
+
     // Set these buttons to be toggle switches
     filesOptionToggle->setClickingTogglesState(true);
     foldersOptionToggle2->setClickingTogglesState(true);
@@ -191,17 +191,18 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == selectDirectoryButton)
     {
         //[UserButtonCode_selectDirectoryButton] -- add your button handler code here..
-        
+
         // Enable buttons (are off until a path is set to keep from bad things from happening
         // IE Directory Iterator trying to iterate when no path has been set
         removeEmptyFolders->setEnabled(true);
         capitalizeItemsButton->setEnabled(true);
-        
+
         // Launch browser window
         fileChooser.browseForDirectory();
 
         // Assign path chosen to my class' path holder
         directoryObject.setMainPathway(fileChooser.getResult());
+        capitalizeItemsObject.setMainPathway(fileChooser.getResult());
 
         // Display path in text editor (Consider refactoring names in this code)
         directoryPathDisplay->setText(directoryObject.getMainPathway().getFullPathName());
@@ -211,31 +212,32 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == removeEmptyFolders)
     {
         //[UserButtonCode_removeEmptyFolders] -- add your button handler code here..
-        
+
         // Reset history fields
         listOfFoldersRemovedEditor->clear();
         directoryObject.clearNumberOfFilesRemoved();
-        
+
         directoryObject.removeAllEmptyFolders();
-        
+
         // Set history string to text editor
         listOfFoldersRemovedEditor->setText(directoryObject.getListOfFoldersRemoved());
-        
+
         //[/UserButtonCode_removeEmptyFolders]
     }
     else if (buttonThatWasClicked == capitalizeItemsButton)
     {
         //[UserButtonCode_capitalizeItemsButton] -- add your button handler code here..
-        
+
         // Reset history fields
         //****** listOfFoldersRemovedEditor->clear();
         //****** directory.clearNumberOfFilesRemoved();
-        
-        capitalizeItemsObject.capitalizeItems();
-        
+
+        capitalizeItemsObject.capitalizeItems(filesOptionToggle->getToggleState(),
+                                              foldersOptionToggle2->getToggleState());
+
         // Set history string to text editor
         //****** listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
-        
+
         //[/UserButtonCode_capitalizeItemsButton]
     }
     else if (buttonThatWasClicked == filesOptionToggle)
@@ -305,7 +307,7 @@ BEGIN_JUCER_METADATA
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15" bold="0" italic="0" justification="36"/>
   <TEXTBUTTON name="capitalizeItemsButton" id="bd92522c60a73c65" memberName="capitalizeItemsButton"
-              virtualName="" explicitFocusOrder="0" pos="200 225 200 50" buttonText="Capitilize Files:"
+              virtualName="" explicitFocusOrder="0" pos="200 225 200 50" buttonText="Capitilize Files"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="filesOptionToggle" id="631d75a04a9c0263" memberName="filesOptionToggle"
               virtualName="" explicitFocusOrder="0" pos="0 225 100 50" buttonText="Files"

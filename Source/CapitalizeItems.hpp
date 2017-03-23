@@ -18,7 +18,7 @@ private:
     File mainPathway;
     
 public:
-    void capitalizeItems();
+    void capitalizeItems(const bool &files, const bool &folders);
     void setMainPathway(File holdsFirstPathSelected);
     
 };
