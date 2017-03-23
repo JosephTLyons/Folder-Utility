@@ -27,6 +27,7 @@ void Directory::removeAllEmptyFolders()
     }
     
     // Fix this algorithm
+    // Test Commit
     
     do
     {
