@@ -183,10 +183,20 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     }
     else if (buttonThatWasClicked == removeEmptyFolders)
     {
-        //[UserButtonCode_removeEmptyFolders] -- add your button handler code here..
-        //[/UserButtonCode_removeEmptyFolders]
+        //[UserButtonCode_eradicateEmptyFoldersButton] -- add your button handler code here..
+        
+        // Reset history fields
+        listOfFoldersRemovedEditor->clear();
+        directory.clearNumberOfFilesRemoved();
+        
+        directory.removeAllEmptyFolders();
+        
+        // Set history string to text editor
+        listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
+        
+        //[/
     }
-
+    
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
 }
