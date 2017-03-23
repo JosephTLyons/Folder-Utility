@@ -1,5 +1,8 @@
 # Empty-Folder-Remover
-A simple application that removes all empty files, recursively, in a specified directory.
+A simple application for cleaning up folders / directories.
+
+## Remove all empty folders within a chosen directory.
+## Capitalize folders names, file names, or both.
 
 ![alt tag](https://github.com/JosephTLyons/Folder-Utility/blob/newIterationAlgorithThatFixesBug1/Images/Empty%20Folder%20Remover%20GUI.png)
 

@@ -55,7 +55,7 @@ void CapitalizeItems::makeUpperCase()
 {
     String fileName = fileHolder.getFileNameWithoutExtension();
     
-    fileName = fileName.getFile
+    //fileName = fileName.getFile
     
     fileName = fileName.toUpperCase();
     
