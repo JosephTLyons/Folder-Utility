@@ -123,6 +123,8 @@ Interface::Interface ()
     // These buttons are off until path is set
     removeEmptyFolders->setEnabled(false);
     capitalizeItemsButton->setEnabled(false);
+    filesOptionToggle->setEnabled(false);
+    foldersOptionToggle2->setEnabled(false);
 
     // Set these buttons to be toggle switches
     filesOptionToggle->setClickingTogglesState(true);
@@ -202,6 +204,8 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         // IE Directory Iterator trying to iterate when no path has been set
         removeEmptyFolders->setEnabled(true);
         capitalizeItemsButton->setEnabled(true);
+        filesOptionToggle->setEnabled(true);
+        foldersOptionToggle2->setEnabled(true);
 
         // Launch browser window
         fileChooser.browseForDirectory();
