@@ -41,6 +41,7 @@ void Directory::removeAllEmptyFolders()
                 if(folderIsEmpty())
                 {
                     iterateAgain = true;
+                    filesArray.remove(i);
                     removeSingleEmptyFolder();
                 }
             }
@@ -61,7 +62,7 @@ void Directory::removeSingleEmptyFolder()
 
     // Add filename to list of removed files
     listOfFoldersRemoved += (numberOfFilesRemoved + 1);
-    listOfFoldersRemoved += ": ";
+    listOfFoldersRemoved += ": /";
     listOfFoldersRemoved += fileHolder.getRelativePathFrom(mainPathway.getFullPathName());
     listOfFoldersRemoved += "\n\n";
 
