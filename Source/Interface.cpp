@@ -35,14 +35,14 @@ Interface::Interface ()
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    addAndMakeVisible (titleText = new Label ("titleText",
-                                              TRANS("Eradicate Empty Folders")));
-    titleText->setFont (Font (27.40f, Font::plain));
-    titleText->setJustificationType (Justification::centred);
-    titleText->setEditable (false, false, false);
-    titleText->setColour (Label::textColourId, Colours::white);
-    titleText->setColour (TextEditor::textColourId, Colours::black);
-    titleText->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    addAndMakeVisible (folderUtilityLabel = new Label ("folderUtilityLabel",
+                                                       TRANS("Folder Utility")));
+    folderUtilityLabel->setFont (Font (27.40f, Font::plain));
+    folderUtilityLabel->setJustificationType (Justification::centred);
+    folderUtilityLabel->setEditable (false, false, false);
+    folderUtilityLabel->setColour (Label::textColourId, Colours::white);
+    folderUtilityLabel->setColour (TextEditor::textColourId, Colours::black);
+    folderUtilityLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     addAndMakeVisible (selectDirectoryButton = new TextButton ("selectDirectoryselectDirectoryButton"));
     selectDirectoryButton->setButtonText (TRANS("Select Directory"));
@@ -72,14 +72,14 @@ Interface::Interface ()
     listOfFoldersRemovedEditor->setPopupMenuEnabled (true);
     listOfFoldersRemovedEditor->setText (String());
 
-    addAndMakeVisible (foldersRemovedLabel = new Label ("foldersRemovedLabel",
-                                                        TRANS("Folders Removed:")));
-    foldersRemovedLabel->setFont (Font (15.00f, Font::plain));
-    foldersRemovedLabel->setJustificationType (Justification::centred);
-    foldersRemovedLabel->setEditable (false, false, false);
-    foldersRemovedLabel->setColour (Label::textColourId, Colours::white);
-    foldersRemovedLabel->setColour (TextEditor::textColourId, Colours::black);
-    foldersRemovedLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    addAndMakeVisible (OutputLabel = new Label ("folderUtilityLabel",
+                                                TRANS("Output:")));
+    OutputLabel->setFont (Font (15.00f, Font::plain));
+    OutputLabel->setJustificationType (Justification::centred);
+    OutputLabel->setEditable (false, false, false);
+    OutputLabel->setColour (Label::textColourId, Colours::white);
+    OutputLabel->setColour (TextEditor::textColourId, Colours::black);
+    OutputLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     addAndMakeVisible (directoryPathwayLabel = new Label ("directoryPathwayLabel",
                                                           TRANS("Directory Pathway:")));
@@ -110,12 +110,12 @@ Interface::~Interface()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    titleText = nullptr;
+    folderUtilityLabel = nullptr;
     selectDirectoryButton = nullptr;
     eradicateEmptyFoldersButton = nullptr;
     directoryPathDisplay = nullptr;
     listOfFoldersRemovedEditor = nullptr;
-    foldersRemovedLabel = nullptr;
+    OutputLabel = nullptr;
     directoryPathwayLabel = nullptr;
 
 
@@ -140,12 +140,12 @@ void Interface::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    titleText->setBounds (0, 0, 400, 50);
+    folderUtilityLabel->setBounds (0, 0, 400, 50);
     selectDirectoryButton->setBounds (0, 125, 400, 50);
     eradicateEmptyFoldersButton->setBounds (0, 175, 400, 50);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
     listOfFoldersRemovedEditor->setBounds (0, 250, 400, 150);
-    foldersRemovedLabel->setBounds (0, 225, 400, 25);
+    OutputLabel->setBounds (0, 225, 400, 25);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
@@ -221,9 +221,9 @@ BEGIN_JUCER_METADATA
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="400" initialHeight="400">
   <BACKGROUND backgroundColour="ff323232"/>
-  <LABEL name="titleText" id="b7a12fdcde89fe51" memberName="titleText"
+  <LABEL name="folderUtilityLabel" id="b7a12fdcde89fe51" memberName="folderUtilityLabel"
          virtualName="" explicitFocusOrder="0" pos="0 0 400 50" textCol="ffffffff"
-         edTextCol="ff000000" edBkgCol="0" labelText="Eradicate Empty Folders"
+         edTextCol="ff000000" edBkgCol="0" labelText="Folder Utility"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="27.399999999999998579" bold="0"
          italic="0" justification="36"/>
@@ -242,11 +242,11 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="0 250 400 150" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
-  <LABEL name="foldersRemovedLabel" id="66a66b2dca7d8008" memberName="foldersRemovedLabel"
+  <LABEL name="folderUtilityLabel" id="66a66b2dca7d8008" memberName="OutputLabel"
          virtualName="" explicitFocusOrder="0" pos="0 225 400 25" textCol="ffffffff"
-         edTextCol="ff000000" edBkgCol="0" labelText="Folders Removed:"
-         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15" bold="0" italic="0" justification="36"/>
+         edTextCol="ff000000" edBkgCol="0" labelText="Output:" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="15" bold="0" italic="0" justification="36"/>
   <LABEL name="directoryPathwayLabel" id="1b6b6d72a7200e14" memberName="directoryPathwayLabel"
          virtualName="" explicitFocusOrder="0" pos="0 50 400 25" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="Directory Pathway:"

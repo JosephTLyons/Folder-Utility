@@ -30,7 +30,7 @@ void Directory::removeAllEmptyFolders()
     {
         iterateAgain = false;
         
-        for(int i = 0; (i < filesArray.size()) && (iterateAgain == false); i++)
+        for(int i = 0; i < filesArray.size(); i++)
         {
             fileHolder = filesArray[i];
             

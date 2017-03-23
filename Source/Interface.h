@@ -61,12 +61,12 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    ScopedPointer<Label> titleText;
+    ScopedPointer<Label> folderUtilityLabel;
     ScopedPointer<TextButton> selectDirectoryButton;
     ScopedPointer<TextButton> eradicateEmptyFoldersButton;
     ScopedPointer<TextEditor> directoryPathDisplay;
     ScopedPointer<TextEditor> listOfFoldersRemovedEditor;
-    ScopedPointer<Label> foldersRemovedLabel;
+    ScopedPointer<Label> OutputLabel;
     ScopedPointer<Label> directoryPathwayLabel;
 
 
