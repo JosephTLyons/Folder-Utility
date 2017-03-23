@@ -68,7 +68,7 @@ private:
     ScopedPointer<TextButton> removeEmptyFolders;
     ScopedPointer<TextEditor> directoryPathDisplay;
     ScopedPointer<TextEditor> listOfFoldersRemovedEditor;
-    ScopedPointer<Label> OutputLabel;
+    ScopedPointer<Label> summaryLabel;
     ScopedPointer<Label> directoryPathwayLabel;
     ScopedPointer<TextButton> capitalizeItemsButton;
     ScopedPointer<TextButton> filesOptionToggle;

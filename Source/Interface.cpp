@@ -72,14 +72,14 @@ Interface::Interface ()
     listOfFoldersRemovedEditor->setPopupMenuEnabled (true);
     listOfFoldersRemovedEditor->setText (String());
 
-    addAndMakeVisible (OutputLabel = new Label ("folderUtilityLabel",
-                                                TRANS("Output:")));
-    OutputLabel->setFont (Font (15.00f, Font::plain));
-    OutputLabel->setJustificationType (Justification::centred);
-    OutputLabel->setEditable (false, false, false);
-    OutputLabel->setColour (Label::textColourId, Colours::white);
-    OutputLabel->setColour (TextEditor::textColourId, Colours::black);
-    OutputLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    addAndMakeVisible (summaryLabel = new Label ("summaryLabel",
+                                                 TRANS("Summary:")));
+    summaryLabel->setFont (Font (15.00f, Font::plain));
+    summaryLabel->setJustificationType (Justification::centred);
+    summaryLabel->setEditable (false, false, false);
+    summaryLabel->setColour (Label::textColourId, Colours::white);
+    summaryLabel->setColour (TextEditor::textColourId, Colours::black);
+    summaryLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     addAndMakeVisible (directoryPathwayLabel = new Label ("directoryPathwayLabel",
                                                           TRANS("Directory Pathway:")));
@@ -135,7 +135,7 @@ Interface::~Interface()
     removeEmptyFolders = nullptr;
     directoryPathDisplay = nullptr;
     listOfFoldersRemovedEditor = nullptr;
-    OutputLabel = nullptr;
+    summaryLabel = nullptr;
     directoryPathwayLabel = nullptr;
     capitalizeItemsButton = nullptr;
     filesOptionToggle = nullptr;
@@ -168,7 +168,7 @@ void Interface::resized()
     removeEmptyFolders->setBounds (0, 175, 400, 50);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
     listOfFoldersRemovedEditor->setBounds (0, 300, 400, 150);
-    OutputLabel->setBounds (0, 275, 400, 25);
+    summaryLabel->setBounds (0, 275, 400, 25);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
     capitalizeItemsButton->setBounds (200, 225, 200, 50);
     filesOptionToggle->setBounds (0, 225, 100, 50);
@@ -296,9 +296,9 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="0 300 400 150" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
-  <LABEL name="folderUtilityLabel" id="66a66b2dca7d8008" memberName="OutputLabel"
+  <LABEL name="summaryLabel" id="66a66b2dca7d8008" memberName="summaryLabel"
          virtualName="" explicitFocusOrder="0" pos="0 275 400 25" textCol="ffffffff"
-         edTextCol="ff000000" edBkgCol="0" labelText="Output:" editableSingleClick="0"
+         edTextCol="ff000000" edBkgCol="0" labelText="Summary:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15" bold="0" italic="0" justification="36"/>
   <LABEL name="directoryPathwayLabel" id="1b6b6d72a7200e14" memberName="directoryPathwayLabel"
