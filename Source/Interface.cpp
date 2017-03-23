@@ -109,7 +109,7 @@ Interface::Interface ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (400, 450);
+    setSize (400, 500);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -167,7 +167,7 @@ void Interface::resized()
     selectDirectoryButton->setBounds (0, 125, 400, 50);
     removeEmptyFolders->setBounds (0, 175, 400, 50);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
-    summaryTextEditor->setBounds (0, 300, 400, 150);
+    summaryTextEditor->setBounds (0, 300, 400, 200);
     summaryLabel->setBounds (0, 275, 400, 25);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
     capitalizeItemsButton->setBounds (200, 225, 200, 50);
@@ -273,7 +273,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="Interface" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="400" initialHeight="450">
+                 fixedSize="1" initialWidth="400" initialHeight="500">
   <BACKGROUND backgroundColour="ff323232"/>
   <LABEL name="folderUtilityLabel" id="b7a12fdcde89fe51" memberName="folderUtilityLabel"
          virtualName="" explicitFocusOrder="0" pos="0 0 400 50" textCol="ffffffff"
@@ -293,7 +293,7 @@ BEGIN_JUCER_METADATA
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <TEXTEDITOR name="listOfFoldersRemovedEditor" id="e96280133f57cb22" memberName="summaryTextEditor"
-              virtualName="" explicitFocusOrder="0" pos="0 300 400 150" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="0 300 400 200" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <LABEL name="summaryLabel" id="66a66b2dca7d8008" memberName="summaryLabel"
