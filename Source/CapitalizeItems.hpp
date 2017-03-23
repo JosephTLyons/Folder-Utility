@@ -9,11 +9,17 @@
 #ifndef CapitalizeItems_hpp
 #define CapitalizeItems_hpp
 
+#include "../JuceLibraryCode/JuceHeader.h"
+
 class CapitalizeItems
 {
 private:
+    File fileHolder;
+    File mainPathway;
     
 public:
+    void capitalizeItems();
+    void setMainPathway(File holdsFirstPathSelected);
     
 };
 
