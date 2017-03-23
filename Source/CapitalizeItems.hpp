@@ -17,8 +17,11 @@ private:
     File fileHolder;
     File mainPathway;
     
+    void capitalizeItems(DirectoryIterator &dirIter);
+    void makeUpperCase();
+    
 public:
-    void capitalizeItems(const bool &files, const bool &folders);
+    void capitalizeItemsDriver(const bool &files, const bool &folders);
     void setMainPathway(File holdsFirstPathSelected);
     
 };

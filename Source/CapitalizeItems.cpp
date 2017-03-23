@@ -8,7 +8,7 @@
 
 #include "CapitalizeItems.hpp"
 
-void CapitalizeItems::capitalizeItems(const bool &files, const bool &folders)
+void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folders)
 {
     // Only execute function if either or is selected
     if (files || folders)
@@ -24,7 +24,42 @@ void CapitalizeItems::capitalizeItems(const bool &files, const bool &folders)
                                                   File::ignoreHiddenFiles);
         
         // Call function here and pass correct iter into it
+        if(files && folders)
+        {
+            capitalizeItems(dirIterFilesAndFolders);
+        }
+        
+        else if(files)
+        {
+            capitalizeItems(dirIterFiles);
+        }
+        
+        // Folders
+        else
+        {
+            capitalizeItems(dirIterFolders);
+        }
     }
+}
+
+void CapitalizeItems::capitalizeItems(DirectoryIterator &dirIter)
+{
+    while(dirIter.next())
+    {
+        fileHolder = dirIter.getFile();
+        makeUpperCase();
+    }
+}
+
+void CapitalizeItems::makeUpperCase()
+{
+    String fileName = fileHolder.getFileNameWithoutExtension();
+    
+    fileName = fileName.getFile
+    
+    fileName = fileName.toUpperCase();
+    
+    fileHolder.createLegalFileName(fileName);
 }
 
 void CapitalizeItems::setMainPathway(File holdsFirstPathSelected)

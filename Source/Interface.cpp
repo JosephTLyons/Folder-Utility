@@ -232,8 +232,8 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         //****** listOfFoldersRemovedEditor->clear();
         //****** directory.clearNumberOfFilesRemoved();
 
-        capitalizeItemsObject.capitalizeItems(filesOptionToggle->getToggleState(),
-                                              foldersOptionToggle2->getToggleState());
+        capitalizeItemsObject.capitalizeItemsDriver(filesOptionToggle->getToggleState() ,
+                                                    foldersOptionToggle2->getToggleState());
 
         // Set history string to text editor
         //****** listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
