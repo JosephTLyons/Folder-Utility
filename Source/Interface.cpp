@@ -114,8 +114,13 @@ Interface::Interface ()
 
     //[Constructor] You can add your own custom stuff here..
 
-    // Button is off until path is set
+    // These buttons are off until path is set
     removeEmptyFolders->setEnabled(false);
+    capitalizeItemsButton->setEnabled(false);
+    
+    // Set these buttons to be toggle switches
+    filesOptionToggle->setClickingTogglesState(true);
+    foldersOptionToggle2->setClickingTogglesState(true);
 
     //[/Constructor]
 }
@@ -181,16 +186,17 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
                              "*",
                              true);
 
-    // Enable button (its off until a path is set to keep from bad things from happening
-    // IE Directory Iterator trying to iterate when no path has been set
-    removeEmptyFolders->setEnabled(true);
-
     //[/UserbuttonClicked_Pre]
 
     if (buttonThatWasClicked == selectDirectoryButton)
     {
         //[UserButtonCode_selectDirectoryButton] -- add your button handler code here..
-
+        
+        // Enable buttons (are off until a path is set to keep from bad things from happening
+        // IE Directory Iterator trying to iterate when no path has been set
+        removeEmptyFolders->setEnabled(true);
+        capitalizeItemsButton->setEnabled(true);
+        
         // Launch browser window
         fileChooser.browseForDirectory();
 
@@ -220,6 +226,16 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == capitalizeItemsButton)
     {
         //[UserButtonCode_capitalizeItemsButton] -- add your button handler code here..
+        
+        // Reset history fields
+        //****** listOfFoldersRemovedEditor->clear();
+        //****** directory.clearNumberOfFilesRemoved();
+        
+        capitalizeItems.capitalizeItems();
+        
+        // Set history string to text editor
+        //****** listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
+        
         //[/UserButtonCode_capitalizeItemsButton]
     }
     else if (buttonThatWasClicked == filesOptionToggle)

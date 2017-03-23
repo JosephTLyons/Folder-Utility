@@ -22,6 +22,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "CapitalizeItems.hpp"
 #include "Directory.hpp"
 //[/Headers]
 
@@ -57,6 +58,7 @@ private:
     //[UserVariables]   -- You can add your own custom variables in this section.
 
     Directory directory;
+    CapitalizeItems capitalizeItems;
 
     //[/UserVariables]
 
