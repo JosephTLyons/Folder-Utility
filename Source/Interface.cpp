@@ -63,14 +63,14 @@ Interface::Interface ()
     directoryPathDisplay->setPopupMenuEnabled (true);
     directoryPathDisplay->setText (String());
 
-    addAndMakeVisible (listOfFoldersRemovedEditor = new TextEditor ("listOfFoldersRemovedEditor"));
-    listOfFoldersRemovedEditor->setMultiLine (true);
-    listOfFoldersRemovedEditor->setReturnKeyStartsNewLine (false);
-    listOfFoldersRemovedEditor->setReadOnly (true);
-    listOfFoldersRemovedEditor->setScrollbarsShown (true);
-    listOfFoldersRemovedEditor->setCaretVisible (false);
-    listOfFoldersRemovedEditor->setPopupMenuEnabled (true);
-    listOfFoldersRemovedEditor->setText (String());
+    addAndMakeVisible (summaryTextEditor = new TextEditor ("listOfFoldersRemovedEditor"));
+    summaryTextEditor->setMultiLine (true);
+    summaryTextEditor->setReturnKeyStartsNewLine (false);
+    summaryTextEditor->setReadOnly (true);
+    summaryTextEditor->setScrollbarsShown (true);
+    summaryTextEditor->setCaretVisible (false);
+    summaryTextEditor->setPopupMenuEnabled (true);
+    summaryTextEditor->setText (String());
 
     addAndMakeVisible (summaryLabel = new Label ("summaryLabel",
                                                  TRANS("Summary:")));
@@ -134,7 +134,7 @@ Interface::~Interface()
     selectDirectoryButton = nullptr;
     removeEmptyFolders = nullptr;
     directoryPathDisplay = nullptr;
-    listOfFoldersRemovedEditor = nullptr;
+    summaryTextEditor = nullptr;
     summaryLabel = nullptr;
     directoryPathwayLabel = nullptr;
     capitalizeItemsButton = nullptr;
@@ -167,7 +167,7 @@ void Interface::resized()
     selectDirectoryButton->setBounds (0, 125, 400, 50);
     removeEmptyFolders->setBounds (0, 175, 400, 50);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
-    listOfFoldersRemovedEditor->setBounds (0, 300, 400, 150);
+    summaryTextEditor->setBounds (0, 300, 400, 150);
     summaryLabel->setBounds (0, 275, 400, 25);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
     capitalizeItemsButton->setBounds (200, 225, 200, 50);
@@ -214,13 +214,13 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_removeEmptyFolders] -- add your button handler code here..
 
         // Reset history fields
-        listOfFoldersRemovedEditor->clear();
+        summaryTextEditor->clear();
         removeEmptyDirectoriesObject.clearNumberOfFilesRemoved();
 
         removeEmptyDirectoriesObject.removeAllEmptyFolders();
 
         // Set history string to text editor
-        listOfFoldersRemovedEditor->setText(removeEmptyDirectoriesObject.getListOfFoldersRemoved());
+        summaryTextEditor->setText(removeEmptyDirectoriesObject.getListOfFoldersRemoved());
 
         //[/UserButtonCode_removeEmptyFolders]
     }
@@ -292,7 +292,7 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="0 75 400 50" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
-  <TEXTEDITOR name="listOfFoldersRemovedEditor" id="e96280133f57cb22" memberName="listOfFoldersRemovedEditor"
+  <TEXTEDITOR name="listOfFoldersRemovedEditor" id="e96280133f57cb22" memberName="summaryTextEditor"
               virtualName="" explicitFocusOrder="0" pos="0 300 400 150" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
