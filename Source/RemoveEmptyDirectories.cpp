@@ -1,20 +1,20 @@
 //
-//  Directory.cpp
-//  Empty Folder Remover
+//  RemoveEmptyDirectories.cpp
+//  Folder Utility
 //
 //  Created by Joseph Lyons on 3/20/17.
 //
 //
 
-#include "Directory.hpp"
+#include "RemoveEmptyDirectories.hpp"
 
-Directory::Directory()
+RemoveEmptyDirectories::RemoveEmptyDirectories()
 {
     clearNumberOfFilesRemoved();
     iterateAgain = false;
 }
 
-void Directory::removeAllEmptyFolders()
+void RemoveEmptyDirectories::removeAllEmptyFolders()
 {
     // Scans files and directories recursively, but skips hidden files
     DirectoryIterator dirIter (File (mainPathway.getFullPathName()), true, "*",
@@ -56,7 +56,7 @@ void Directory::removeAllEmptyFolders()
     listOfFoldersRemoved += " empty folder(s) moved to trash.\n\n";
 }
 
-bool Directory::folderIsEmpty()
+bool RemoveEmptyDirectories::folderIsEmpty()
 {
     int numberOfFiles = fileHolder.getNumberOfChildFiles(File::findFilesAndDirectories +
                                                          File::ignoreHiddenFiles);
@@ -69,7 +69,7 @@ bool Directory::folderIsEmpty()
     return true;
 }
 
-void Directory::removeSingleEmptyFolder()
+void RemoveEmptyDirectories::removeSingleEmptyFolder()
 {
     // Move file
     fileHolder.moveToTrash();
@@ -84,32 +84,32 @@ void Directory::removeSingleEmptyFolder()
     numberOfFilesRemoved++;
 }
 
-void Directory::setMainPathway(File holdsFirstPathSelected)
+void RemoveEmptyDirectories::setMainPathway(File holdsFirstPathSelected)
 {
     mainPathway = holdsFirstPathSelected;
 }
 
-File Directory::getMainPathway()
+File RemoveEmptyDirectories::getMainPathway()
 {
     return mainPathway;
 }
 
-String Directory::getListOfFoldersRemoved()
+String RemoveEmptyDirectories::getListOfFoldersRemoved()
 {
     return listOfFoldersRemoved;
 }
 
-int Directory::getNumberOfFilesRemoved()
+int RemoveEmptyDirectories::getNumberOfFilesRemoved()
 {
     return numberOfFilesRemoved;
 }
 
-void Directory::clearListOfFoldersRemoved()
+void RemoveEmptyDirectories::clearListOfFoldersRemoved()
 {
     listOfFoldersRemoved.clear();
 }
 
-void Directory::clearNumberOfFilesRemoved()
+void RemoveEmptyDirectories::clearNumberOfFilesRemoved()
 {
     numberOfFilesRemoved = 0;
 }

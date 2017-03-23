@@ -1,17 +1,17 @@
 //
-//  Directory.hpp
-//  Empty Folder Remover
+//  RemoveEmptyDirectories.hpp
+//  Folder Utility
 //
 //  Created by Joseph Lyons on 3/20/17.
 //
 //
 
-#ifndef Directory_hpp
-#define Directory_hpp
+#ifndef RemoveEmptyDirectories_hpp
+#define RemoveEmptyDirectories_hpp
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class Directory
+class RemoveEmptyDirectories
 {
 private:
     
@@ -27,7 +27,7 @@ private:
     
 public:
     
-    Directory();
+    RemoveEmptyDirectories();
     void removeAllEmptyFolders();
     void setMainPathway(File holdsFirstPathSelected);
     File getMainPathway();
