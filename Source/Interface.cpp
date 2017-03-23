@@ -90,10 +90,10 @@ Interface::Interface ()
     directoryPathwayLabel->setColour (TextEditor::textColourId, Colours::black);
     directoryPathwayLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    addAndMakeVisible (capitalizeFilesButton = new TextButton ("capitalizeFilesButton"));
-    capitalizeFilesButton->setButtonText (TRANS("Capitilize Files:"));
-    capitalizeFilesButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
-    capitalizeFilesButton->addListener (this);
+    addAndMakeVisible (capitalizeItemsButton = new TextButton ("capitalizeItemsButton"));
+    capitalizeItemsButton->setButtonText (TRANS("Capitilize Files:"));
+    capitalizeItemsButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    capitalizeItemsButton->addListener (this);
 
     addAndMakeVisible (filesOptionToggle = new TextButton ("filesOptionToggle"));
     filesOptionToggle->setButtonText (TRANS("Files"));
@@ -132,7 +132,7 @@ Interface::~Interface()
     listOfFoldersRemovedEditor = nullptr;
     OutputLabel = nullptr;
     directoryPathwayLabel = nullptr;
-    capitalizeFilesButton = nullptr;
+    capitalizeItemsButton = nullptr;
     filesOptionToggle = nullptr;
     foldersOptionToggle2 = nullptr;
 
@@ -165,7 +165,7 @@ void Interface::resized()
     listOfFoldersRemovedEditor->setBounds (0, 300, 400, 150);
     OutputLabel->setBounds (0, 275, 400, 25);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
-    capitalizeFilesButton->setBounds (200, 225, 200, 50);
+    capitalizeItemsButton->setBounds (200, 225, 200, 50);
     filesOptionToggle->setBounds (0, 225, 100, 50);
     foldersOptionToggle2->setBounds (100, 225, 100, 50);
     //[UserResized] Add your own custom resize handling here..
@@ -207,10 +207,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_removeEmptyFolders] -- add your button handler code here..
         //[/UserButtonCode_removeEmptyFolders]
     }
-    else if (buttonThatWasClicked == capitalizeFilesButton)
+    else if (buttonThatWasClicked == capitalizeItemsButton)
     {
-        //[UserButtonCode_capitalizeFilesButton] -- add your button handler code here..
-        //[/UserButtonCode_capitalizeFilesButton]
+        //[UserButtonCode_capitalizeItemsButton] -- add your button handler code here..
+        //[/UserButtonCode_capitalizeItemsButton]
     }
     else if (buttonThatWasClicked == filesOptionToggle)
     {
@@ -278,7 +278,7 @@ BEGIN_JUCER_METADATA
          edTextCol="ff000000" edBkgCol="0" labelText="Directory Pathway:"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15" bold="0" italic="0" justification="36"/>
-  <TEXTBUTTON name="capitalizeFilesButton" id="bd92522c60a73c65" memberName="capitalizeFilesButton"
+  <TEXTBUTTON name="capitalizeItemsButton" id="bd92522c60a73c65" memberName="capitalizeItemsButton"
               virtualName="" explicitFocusOrder="0" pos="200 225 200 50" buttonText="Capitilize Files:"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="filesOptionToggle" id="631d75a04a9c0263" memberName="filesOptionToggle"
