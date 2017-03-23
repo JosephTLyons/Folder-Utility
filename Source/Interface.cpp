@@ -90,11 +90,26 @@ Interface::Interface ()
     directoryPathwayLabel->setColour (TextEditor::textColourId, Colours::black);
     directoryPathwayLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
+    addAndMakeVisible (capitalizeFilesButton = new TextButton ("capitalizeFilesButton"));
+    capitalizeFilesButton->setButtonText (TRANS("Capitilize Files:"));
+    capitalizeFilesButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    capitalizeFilesButton->addListener (this);
+
+    addAndMakeVisible (filesOptionToggle = new TextButton ("filesOptionToggle"));
+    filesOptionToggle->setButtonText (TRANS("Files"));
+    filesOptionToggle->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    filesOptionToggle->addListener (this);
+
+    addAndMakeVisible (foldersOptionToggle2 = new TextButton ("foldersOptionToggle2"));
+    foldersOptionToggle2->setButtonText (TRANS("Folders"));
+    foldersOptionToggle2->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    foldersOptionToggle2->addListener (this);
+
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (400, 400);
+    setSize (400, 450);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -117,6 +132,9 @@ Interface::~Interface()
     listOfFoldersRemovedEditor = nullptr;
     OutputLabel = nullptr;
     directoryPathwayLabel = nullptr;
+    capitalizeFilesButton = nullptr;
+    filesOptionToggle = nullptr;
+    foldersOptionToggle2 = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -144,9 +162,12 @@ void Interface::resized()
     selectDirectoryButton->setBounds (0, 125, 400, 50);
     removeEmptyFolders->setBounds (0, 175, 400, 50);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
-    listOfFoldersRemovedEditor->setBounds (0, 250, 400, 150);
-    OutputLabel->setBounds (0, 225, 400, 25);
+    listOfFoldersRemovedEditor->setBounds (0, 300, 400, 150);
+    OutputLabel->setBounds (0, 275, 400, 25);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
+    capitalizeFilesButton->setBounds (200, 225, 200, 50);
+    filesOptionToggle->setBounds (0, 225, 100, 50);
+    foldersOptionToggle2->setBounds (100, 225, 100, 50);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -183,20 +204,25 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     }
     else if (buttonThatWasClicked == removeEmptyFolders)
     {
-        //[UserButtonCode_eradicateEmptyFoldersButton] -- add your button handler code here..
-        
-        // Reset history fields
-        listOfFoldersRemovedEditor->clear();
-        directory.clearNumberOfFilesRemoved();
-        
-        directory.removeAllEmptyFolders();
-        
-        // Set history string to text editor
-        listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
-        
-        //[/
+        //[UserButtonCode_removeEmptyFolders] -- add your button handler code here..
+        //[/UserButtonCode_removeEmptyFolders]
     }
-    
+    else if (buttonThatWasClicked == capitalizeFilesButton)
+    {
+        //[UserButtonCode_capitalizeFilesButton] -- add your button handler code here..
+        //[/UserButtonCode_capitalizeFilesButton]
+    }
+    else if (buttonThatWasClicked == filesOptionToggle)
+    {
+        //[UserButtonCode_filesOptionToggle] -- add your button handler code here..
+        //[/UserButtonCode_filesOptionToggle]
+    }
+    else if (buttonThatWasClicked == foldersOptionToggle2)
+    {
+        //[UserButtonCode_foldersOptionToggle2] -- add your button handler code here..
+        //[/UserButtonCode_foldersOptionToggle2]
+    }
+
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
 }
@@ -219,7 +245,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="Interface" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="400" initialHeight="400">
+                 fixedSize="1" initialWidth="400" initialHeight="450">
   <BACKGROUND backgroundColour="ff323232"/>
   <LABEL name="folderUtilityLabel" id="b7a12fdcde89fe51" memberName="folderUtilityLabel"
          virtualName="" explicitFocusOrder="0" pos="0 0 400 50" textCol="ffffffff"
@@ -239,11 +265,11 @@ BEGIN_JUCER_METADATA
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <TEXTEDITOR name="listOfFoldersRemovedEditor" id="e96280133f57cb22" memberName="listOfFoldersRemovedEditor"
-              virtualName="" explicitFocusOrder="0" pos="0 250 400 150" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="0 300 400 150" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <LABEL name="folderUtilityLabel" id="66a66b2dca7d8008" memberName="OutputLabel"
-         virtualName="" explicitFocusOrder="0" pos="0 225 400 25" textCol="ffffffff"
+         virtualName="" explicitFocusOrder="0" pos="0 275 400 25" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="Output:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15" bold="0" italic="0" justification="36"/>
@@ -252,6 +278,15 @@ BEGIN_JUCER_METADATA
          edTextCol="ff000000" edBkgCol="0" labelText="Directory Pathway:"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15" bold="0" italic="0" justification="36"/>
+  <TEXTBUTTON name="capitalizeFilesButton" id="bd92522c60a73c65" memberName="capitalizeFilesButton"
+              virtualName="" explicitFocusOrder="0" pos="200 225 200 50" buttonText="Capitilize Files:"
+              connectedEdges="3" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="filesOptionToggle" id="631d75a04a9c0263" memberName="filesOptionToggle"
+              virtualName="" explicitFocusOrder="0" pos="0 225 100 50" buttonText="Files"
+              connectedEdges="3" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="foldersOptionToggle2" id="812321b70b3732b6" memberName="foldersOptionToggle2"
+              virtualName="" explicitFocusOrder="0" pos="100 225 100 50" buttonText="Folders"
+              connectedEdges="3" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
