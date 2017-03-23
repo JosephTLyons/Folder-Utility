@@ -75,7 +75,9 @@ bool RemoveEmptyDirectories::folderIsEmpty()
 void RemoveEmptyDirectories::removeSingleEmptyFolder()
 {
     // Move file
-    fileHolder.moveToTrash();
+    while(!fileHolder.moveToTrash());
+    
+    //fileHolder.deleteRecursively();
 
     // Add filename to list of removed files
     listOfFoldersRemoved += (numberOfFilesRemoved + 1);
