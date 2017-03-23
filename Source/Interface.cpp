@@ -49,10 +49,10 @@ Interface::Interface ()
     selectDirectoryButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     selectDirectoryButton->addListener (this);
 
-    addAndMakeVisible (eradicateEmptyFoldersButton = new TextButton ("eradicateEmptyFoldersButton"));
-    eradicateEmptyFoldersButton->setButtonText (TRANS("Eradicate Empty Folders"));
-    eradicateEmptyFoldersButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
-    eradicateEmptyFoldersButton->addListener (this);
+    addAndMakeVisible (removeEmptyFolders = new TextButton ("removeEmptyFolders"));
+    removeEmptyFolders->setButtonText (TRANS("Remove Empty Folders"));
+    removeEmptyFolders->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    removeEmptyFolders->addListener (this);
 
     addAndMakeVisible (directoryPathDisplay = new TextEditor ("directoryPathDisplay"));
     directoryPathDisplay->setMultiLine (true);
@@ -100,7 +100,7 @@ Interface::Interface ()
     //[Constructor] You can add your own custom stuff here..
 
     // Button is off until path is set
-    eradicateEmptyFoldersButton->setEnabled(false);
+    removeEmptyFolders->setEnabled(false);
 
     //[/Constructor]
 }
@@ -112,7 +112,7 @@ Interface::~Interface()
 
     folderUtilityLabel = nullptr;
     selectDirectoryButton = nullptr;
-    eradicateEmptyFoldersButton = nullptr;
+    removeEmptyFolders = nullptr;
     directoryPathDisplay = nullptr;
     listOfFoldersRemovedEditor = nullptr;
     OutputLabel = nullptr;
@@ -142,7 +142,7 @@ void Interface::resized()
 
     folderUtilityLabel->setBounds (0, 0, 400, 50);
     selectDirectoryButton->setBounds (0, 125, 400, 50);
-    eradicateEmptyFoldersButton->setBounds (0, 175, 400, 50);
+    removeEmptyFolders->setBounds (0, 175, 400, 50);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
     listOfFoldersRemovedEditor->setBounds (0, 250, 400, 150);
     OutputLabel->setBounds (0, 225, 400, 25);
@@ -162,7 +162,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
     // Enable button (its off until a path is set to keep from bad things from happening
     // IE Directory Iterator trying to iterate when no path has been set
-    eradicateEmptyFoldersButton->setEnabled(true);
+    removeEmptyFolders->setEnabled(true);
 
     //[/UserbuttonClicked_Pre]
 
@@ -181,20 +181,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         //[/UserButtonCode_selectDirectoryButton]
     }
-    else if (buttonThatWasClicked == eradicateEmptyFoldersButton)
+    else if (buttonThatWasClicked == removeEmptyFolders)
     {
-        //[UserButtonCode_eradicateEmptyFoldersButton] -- add your button handler code here..
-
-        // Reset history fields
-        listOfFoldersRemovedEditor->clear();
-        directory.clearNumberOfFilesRemoved();
-
-        directory.removeAllEmptyFolders();
-
-        // Set history string to text editor
-        listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
-
-        //[/UserButtonCode_eradicateEmptyFoldersButton]
+        //[UserButtonCode_removeEmptyFolders] -- add your button handler code here..
+        //[/UserButtonCode_removeEmptyFolders]
     }
 
     //[UserbuttonClicked_Post]
@@ -231,8 +221,8 @@ BEGIN_JUCER_METADATA
               memberName="selectDirectoryButton" virtualName="" explicitFocusOrder="0"
               pos="0 125 400 50" buttonText="Select Directory" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="eradicateEmptyFoldersButton" id="4ad96e211ef69bb7" memberName="eradicateEmptyFoldersButton"
-              virtualName="" explicitFocusOrder="0" pos="0 175 400 50" buttonText="Eradicate Empty Folders"
+  <TEXTBUTTON name="removeEmptyFolders" id="4ad96e211ef69bb7" memberName="removeEmptyFolders"
+              virtualName="" explicitFocusOrder="0" pos="0 175 400 50" buttonText="Remove Empty Folders"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTEDITOR name="directoryPathDisplay" id="1fdfeaa5b403b983" memberName="directoryPathDisplay"
               virtualName="" explicitFocusOrder="0" pos="0 75 400 50" initialText=""

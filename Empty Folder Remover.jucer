@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="jiFYE7" name="Empty Folder Remover" projectType="guiapp"
-              version="1.0.0" bundleIdentifier="com.yourcompany.EmptyFolderRemover"
-              includeBinaryInAppConfig="1" jucerVersion="4.3.1">
-  <MAINGROUP id="TJo61r" name="Empty Folder Remover">
+<JUCERPROJECT id="jiFYE7" name="Folder Utility" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.yourcompany.EmptyFolderRemover" includeBinaryInAppConfig="1"
+              jucerVersion="4.3.1">
+  <MAINGROUP id="TJo61r" name="Folder Utility">
     <GROUP id="{35B94C3C-C228-AC80-21C5-42CA0627A92E}" name="Images">
       <FILE id="BwgKvM" name="Empty Folder Remover GUI.png" compile="0" resource="1"
             file="Images/Empty Folder Remover GUI.png"/>

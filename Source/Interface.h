@@ -63,7 +63,7 @@ private:
     //==============================================================================
     ScopedPointer<Label> folderUtilityLabel;
     ScopedPointer<TextButton> selectDirectoryButton;
-    ScopedPointer<TextButton> eradicateEmptyFoldersButton;
+    ScopedPointer<TextButton> removeEmptyFolders;
     ScopedPointer<TextEditor> directoryPathDisplay;
     ScopedPointer<TextEditor> listOfFoldersRemovedEditor;
     ScopedPointer<Label> OutputLabel;
