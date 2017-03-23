@@ -26,6 +26,8 @@ void Directory::removeAllEmptyFolders()
         filesArray.add(dirIter.getFile());
     }
     
+    // Fix this algorithm
+    
     do
     {
         iterateAgain = false;
