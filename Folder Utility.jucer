@@ -16,6 +16,10 @@
       <FILE id="CGeIBa" name="Interface.cpp" compile="1" resource="0" file="Source/Interface.cpp"/>
       <FILE id="I4f8zH" name="Directory.hpp" compile="0" resource="0" file="Source/Directory.hpp"/>
       <FILE id="IZBOGg" name="Directory.cpp" compile="1" resource="0" file="Source/Directory.cpp"/>
+      <FILE id="G2b4Ey" name="CapitalizeItems.hpp" compile="0" resource="0"
+            file="Source/CapitalizeItems.hpp"/>
+      <FILE id="tCd2Sl" name="CapitalizeItems.cpp" compile="1" resource="0"
+            file="Source/CapitalizeItems.cpp"/>
     </GROUP>
     <FILE id="lPvxSC" name="README.md" compile="0" resource="1" file="README.md"/>
   </MAINGROUP>
