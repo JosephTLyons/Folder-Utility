@@ -8,21 +8,15 @@
 \f0\fs34 \cf2 Notes for Empty Folder Remover:\
 \
 Bugs:\
-1) Issue - 2 folders nested, the inside one is empty and is removed, but the outer one isn't because it was previously full\
-    - find a way to delete folders on the backtrace of recursion, not going into it\
-    - NEED TO RESET DIRECTORY AT ITERATEAGAIN LOOP\
+1) Nested folders containing empty folders don't get removed in one click\
+    -Buggy output sometimes too\
 2) Deal with errors in terminal display in xcode after clicking the button to select directories\
 \
 Features: \
 \
-1) maybe show folders that have contents\
-2) Make an option to let user choose whether or not to delete folders with hidden items?\
-3) Move number of removed files to a separate textEditor in front of label "Number of empty folders moved to trash"\
-    - make a font object to change the font of this white and make the background of the texteditor same as GUI so the number "floats"\
-4) Button / toggle to turn on full path vs just file name\
 
-\b 5) Maybe add a percent completion window, which would help with larger files (use getEstimate in directory iterator).\
-6) Find a way to display output more intuitive where the scrolling auto advances or reverse reverse the string and have it\
+\b 1) Maybe add a percent completion window, which would help with larger files (use getEstimate in directory iterator).\
+2) Find a way to display output more intuitive where the scrolling auto advances or reverse reverse the string and have it\
     add new items to the front of the sting
 \b0 \
 \
@@ -34,10 +28,8 @@ Other: \
 \b -Rename class to "emptyFolderRemover"
 \b0 \
 3) Maybe put something in text fields when app opens so they aren't blank?\
-4) Add other functionality to app via other classes? Upper case all director names.\
 \pard\pardeftab560\slleading20\pardirnatural\partightenfactor0
-\cf2 -Uppercase file names\
-\
+\cf2 \
 Distant Goals:\
 \
 1) Turn the button that removes the folder into a "gather empty folders" then add checkmarks to output next to files and a "remove" button to confirm removing said folders.  By default, all will be selected, but choices to deselect all or a individual ones will be available.  This will call for a total overhaul of everything.\
