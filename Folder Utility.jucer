@@ -14,8 +14,10 @@
       <FILE id="mOh4fd" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="Qln6F2" name="Interface.h" compile="0" resource="0" file="Source/Interface.h"/>
       <FILE id="CGeIBa" name="Interface.cpp" compile="1" resource="0" file="Source/Interface.cpp"/>
-      <FILE id="I4f8zH" name="Directory.hpp" compile="0" resource="0" file="Source/Directory.hpp"/>
-      <FILE id="IZBOGg" name="Directory.cpp" compile="1" resource="0" file="Source/Directory.cpp"/>
+      <FILE id="a50Gfv" name="RemoveEmptyDirectories.hpp" compile="0" resource="0"
+            file="Source/RemoveEmptyDirectories.hpp"/>
+      <FILE id="gKJwqg" name="RemoveEmptyDirectories.cpp" compile="1" resource="0"
+            file="Source/RemoveEmptyDirectories.cpp"/>
       <FILE id="G2b4Ey" name="CapitalizeItems.hpp" compile="0" resource="0"
             file="Source/CapitalizeItems.hpp"/>
       <FILE id="tCd2Sl" name="CapitalizeItems.cpp" compile="1" resource="0"
