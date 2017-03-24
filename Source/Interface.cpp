@@ -137,6 +137,8 @@ Interface::Interface ()
     capitalizeItemsButton->setEnabled(false);
     filesOptionToggle->setEnabled(false);
     foldersOptionToggle2->setEnabled(false);
+    listExtensionCount->setEnabled(false);
+    listAllFiles->setEnabled(false);
 
     // Set these buttons to be toggle switches
     filesOptionToggle->setClickingTogglesState(true);
@@ -222,6 +224,8 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         capitalizeItemsButton->setEnabled(true);
         filesOptionToggle->setEnabled(true);
         foldersOptionToggle2->setEnabled(true);
+        listExtensionCount->setEnabled(true);
+        listAllFiles->setEnabled(true);
 
         // Launch browser window
         fileChooser.browseForDirectory();
