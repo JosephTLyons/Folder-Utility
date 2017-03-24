@@ -79,11 +79,6 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
         Base::getFileHolder().moveToTrash();
         Thread::sleep(15);
     }
-    
-    // Remove when done testing
-    #include <iostream>
-    using namespace std;
-    cout << endl << loopCounter;
 
     // Add filename to list of removed files
     Base::addToOutputString((String) (numberOfFilesRemoved + 1));
