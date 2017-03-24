@@ -8,24 +8,24 @@
 
 #include "Base.hpp"
 
-File Base::getFileHolder()
-{
-    return fileHolder;
-}
-
 File Base::getMainPathway()
 {
     return mainPathway;
 }
 
-void Base::setFileHolder(const File &inputFileHolder)
+File Base::getFileHolder()
 {
-    fileHolder = inputFileHolder;
+    return fileHolder;
 }
 
 void Base::setMainPathway(File holdsFirstPathSelected)
 {
     mainPathway = holdsFirstPathSelected;
+}
+
+void Base::setFileHolder(const File &inputFileHolder)
+{
+    fileHolder = inputFileHolder;
 }
 
 Array<File> Base::returnDirIterItemsArray(DirectoryIterator &dirIter)

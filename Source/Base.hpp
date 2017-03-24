@@ -14,16 +14,16 @@
 class Base
 {
 private:
-    File fileHolder;
     File mainPathway;
+    File fileHolder;
     Array<File> allFilesAndFoldersArray;
     
 public:
-    File getFileHolder();
     File getMainPathway();
+    File getFileHolder();
     
-    void setFileHolder(const File &inputFileHolder);
     void setMainPathway(File holdsFirstPathSelected);
+    void setFileHolder(const File &inputFileHolder);
     Array<File> returnDirIterItemsArray(DirectoryIterator &dirIter);
 };
 

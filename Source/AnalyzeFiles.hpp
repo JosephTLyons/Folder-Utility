@@ -14,9 +14,6 @@
 class AnalyzeFiles : private Base
 {
 private:
-    File fileHolder;
-    File mainPathway;
-    
 public:
     
     void setMainPathway(File holdsFirstPathSelected);

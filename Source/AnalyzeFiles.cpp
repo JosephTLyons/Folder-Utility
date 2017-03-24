@@ -10,5 +10,5 @@
 
 void AnalyzeFiles::setMainPathway(File holdsFirstPathSelected)
 {
-    mainPathway = holdsFirstPathSelected;
+    Base::setMainPathway(holdsFirstPathSelected);
 }
