@@ -218,17 +218,18 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_selectDirectoryButton] -- add your button handler code here..
 
-        // Enable buttons (are off until a path is set to keep from bad things from happening
-        // IE Directory Iterator trying to iterate when no path has been set
-        removeEmptyFolders->setEnabled(true);
-        capitalizeItemsButton->setEnabled(true);
-        filesOptionToggle->setEnabled(true);
-        foldersOptionToggle2->setEnabled(true);
-        listExtensionCount->setEnabled(true);
-        listAllFiles->setEnabled(true);
-
-        // Launch browser window
-        fileChooser.browseForDirectory();
+        // Launch browser window and only if they pick a directory, do we enable other buttons
+        if(fileChooser.browseForDirectory())
+        {
+            // Enable buttons (are off until a path is set to keep from bad things from happening
+            // IE Directory Iterator trying to iterate when no path has been set
+            removeEmptyFolders->setEnabled(true);
+            capitalizeItemsButton->setEnabled(true);
+            filesOptionToggle->setEnabled(true);
+            foldersOptionToggle2->setEnabled(true);
+            listExtensionCount->setEnabled(true);
+            listAllFiles->setEnabled(true);
+        }
         
         // set directoryPath
         directoryPath = fileChooser.getResult();
