@@ -74,16 +74,10 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
     
     // This code is to fix the broken Apple code that doesn't always move items to trash
     // Continually try until the file doesn't exist
-    while(Base::getFileHolder().exists())
+    for(; (loopCounter < endLoopAfterXTries) && (Base::getFileHolder().exists()); loopCounter++)
     {
         Base::getFileHolder().moveToTrash();
-        loopCounter++;
         Thread::sleep(15);
-        
-        if(loopCounter == endLoopAfterXTries)
-        {
-            break;
-        }
     }
     
     // Remove when done testing
