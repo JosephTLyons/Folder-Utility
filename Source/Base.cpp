@@ -18,6 +18,11 @@ File Base::getFileHolder()
     return fileHolder;
 }
 
+String Base::getOutputString()
+{
+    return outputString;
+}
+
 void Base::setMainPathway(File holdsFirstPathSelected)
 {
     mainPathway = holdsFirstPathSelected;
@@ -26,6 +31,21 @@ void Base::setMainPathway(File holdsFirstPathSelected)
 void Base::setFileHolder(const File &inputFileHolder)
 {
     fileHolder = inputFileHolder;
+}
+
+void Base::addToOutputString(const char *inputText)
+{
+    outputString += inputText;
+}
+
+void Base::addToOutputString(const String &inputString)
+{
+    outputString += inputString;
+}
+
+void Base::clearOutputString()
+{
+    outputString.clear();
 }
 
 Array<File> Base::returnDirIterItemsArray(DirectoryIterator &dirIter)
@@ -37,9 +57,4 @@ Array<File> Base::returnDirIterItemsArray(DirectoryIterator &dirIter)
     }
     
     return allItemsArray;
-}
-
-String& Base::getOutputString()
-{
-    return outputString;
 }

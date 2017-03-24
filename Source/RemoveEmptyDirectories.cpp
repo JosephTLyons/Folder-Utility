@@ -44,9 +44,9 @@ void RemoveEmptyDirectories::removeAllEmptyFolders()
     while(iterateAgain);
     
     // Add remaining infomrmation to text string for textEditor
-    Base::getOutputString() += "Completed: ";
-    Base::getOutputString() += (String) numberOfFilesRemoved;
-    Base::getOutputString() += " empty folder(s) moved to trash.\n\n";
+    Base::addToOutputString("Completed: ");
+    Base::addToOutputString((String) numberOfFilesRemoved);
+    Base::addToOutputString(" empty folder(s) moved to trash.\n\n");
 }
 
 bool RemoveEmptyDirectories::folderIsEmpty()
@@ -87,10 +87,10 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
     }
 
     // Add filename to list of removed files
-    Base::getOutputString() += (numberOfFilesRemoved + 1);
-    Base::getOutputString() += ": /";
-    Base::getOutputString() += Base::getFileHolder().getRelativePathFrom(Base::getMainPathway().getFullPathName());
-    Base::getOutputString() += "\n\n";
+    Base::addToOutputString((String) (numberOfFilesRemoved + 1));
+    Base::addToOutputString(": /");
+    Base::addToOutputString(Base::getFileHolder().getRelativePathFrom(Base::getMainPathway().getFullPathName()));
+    Base::addToOutputString("\n\n");
 
     // Increment number of files removed
     numberOfFilesRemoved++;
@@ -118,7 +118,7 @@ int RemoveEmptyDirectories::getNumberOfFilesRemoved()
 
 void RemoveEmptyDirectories::clearListOfFoldersRemoved()
 {
-    Base::getOutputString().clear();
+    Base::clearOutputString();
 }
 
 void RemoveEmptyDirectories::clearNumberOfFilesRemoved()
