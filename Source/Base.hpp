@@ -16,7 +16,7 @@ class Base
 private:
     File mainPathway;
     File fileHolder;
-    Array<File> allFilesAndFoldersArray;
+    Array<File> allItemsArray;
     
 public:
     File getMainPathway();

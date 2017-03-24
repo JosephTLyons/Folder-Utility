@@ -33,8 +33,8 @@ Array<File> Base::returnDirIterItemsArray(DirectoryIterator &dirIter)
     // Iterate and collect all files and store in filesArray
     while(dirIter.next())
     {
-        allFilesAndFoldersArray.add(dirIter.getFile());
+        allItemsArray.add(dirIter.getFile());
     }
     
-    return allFilesAndFoldersArray;
+    return allItemsArray;
 }
