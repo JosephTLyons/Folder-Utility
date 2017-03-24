@@ -16,30 +16,22 @@ RemoveEmptyDirectories::RemoveEmptyDirectories()
 
 void RemoveEmptyDirectories::removeAllEmptyFolders()
 {
-    // Scans files and directories recursively, but skips hidden files
-    DirectoryIterator dirIter (File (mainPathway.getFullPathName()), true, "*",
-                               File::findFilesAndDirectories + File::ignoreHiddenFiles);
-    
-    // Iterate and collect all files and store in filesArray
-    while(dirIter.next())
-    {
-        filesArray.add(dirIter.getFile());
-    }
+    Array<File> allFilesAndFoldersArray = Base::returnAllFilesAndFoldersArray();
     
     do
     {
         iterateAgain = false;
         
-        for(int i = 0; (i < filesArray.size()) && (iterateAgain == false); i++)
+        for(int i = 0; (i < allFilesAndFoldersArray.size()) && (iterateAgain == false); i++)
         {
-            fileHolder = filesArray[i];
+            Base::setFileHolder(allFilesAndFoldersArray[i]);
             
-            if(fileHolder.isDirectory())
+            if(Base::getFileHolder().isDirectory())
             {
                 if(folderIsEmpty())
                 {
                     iterateAgain = true;
-                    filesArray.remove(i);
+                    allFilesAndFoldersArray.remove(i);
                     removeSingleEmptyFolder();
                 }
             }
@@ -56,7 +48,7 @@ void RemoveEmptyDirectories::removeAllEmptyFolders()
 bool RemoveEmptyDirectories::folderIsEmpty()
 {
     // Scans files and directories non-recursively, but skips hidden files
-    DirectoryIterator dirIter (File (fileHolder.getFullPathName()), false, "*",
+    DirectoryIterator dirIter (File (Base::getFileHolder().getFullPathName()), false, "*",
                                File::findFilesAndDirectories + File::ignoreHiddenFiles);
     
     // This will return true if the directory iterator can advance to a file or folder
@@ -74,12 +66,12 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
     // Move file
     //while(! fileHolder.moveToTrash());
     
-    fileHolder.deleteRecursively();
+    Base::getFileHolder().deleteRecursively();
 
     // Add filename to list of removed files
     listOfFoldersRemoved += (numberOfFilesRemoved + 1);
     listOfFoldersRemoved += ": /";
-    listOfFoldersRemoved += fileHolder.getRelativePathFrom(mainPathway.getFullPathName());
+    listOfFoldersRemoved += Base::getFileHolder().getRelativePathFrom(Base::getMainPathway().getFullPathName());
     listOfFoldersRemoved += "\n\n";
 
     // Increment number of files removed
@@ -88,12 +80,12 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
 
 void RemoveEmptyDirectories::setMainPathway(File holdsFirstPathSelected)
 {
-    mainPathway = holdsFirstPathSelected;
+    Base::setMainPathway(holdsFirstPathSelected);
 }
 
 File RemoveEmptyDirectories::getMainPathway()
 {
-    return mainPathway;
+    return Base::getMainPathway();
 }
 
 String RemoveEmptyDirectories::getListOfFoldersRemoved()

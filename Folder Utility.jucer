@@ -14,6 +14,8 @@
       <FILE id="mOh4fd" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="Qln6F2" name="Interface.h" compile="0" resource="0" file="Source/Interface.h"/>
       <FILE id="CGeIBa" name="Interface.cpp" compile="1" resource="0" file="Source/Interface.cpp"/>
+      <FILE id="SvUShv" name="Base.hpp" compile="0" resource="0" file="Source/Base.hpp"/>
+      <FILE id="vS5nbL" name="Base.cpp" compile="1" resource="0" file="Source/Base.cpp"/>
       <FILE id="a50Gfv" name="RemoveEmptyDirectories.hpp" compile="0" resource="0"
             file="Source/RemoveEmptyDirectories.hpp"/>
       <FILE id="gKJwqg" name="RemoveEmptyDirectories.cpp" compile="1" resource="0"

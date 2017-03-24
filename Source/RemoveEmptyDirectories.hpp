@@ -9,18 +9,15 @@
 #ifndef RemoveEmptyDirectories_hpp
 #define RemoveEmptyDirectories_hpp
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "Base.hpp"
 
-class RemoveEmptyDirectories
+class RemoveEmptyDirectories : private Base
 {
 private:
     
-    File fileHolder;
-    File mainPathway;
     String listOfFoldersRemoved;
     int numberOfFilesRemoved;
     bool iterateAgain;
-    Array<File> filesArray;
     
     bool folderIsEmpty();
     void removeSingleEmptyFolder();
