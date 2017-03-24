@@ -18,9 +18,6 @@
 */
 
 //[Headers] You can add your own extra header files here...
-
-#include "RemoveEmptyDirectories.hpp"
-
 //[/Headers]
 
 #include "Interface.h"
