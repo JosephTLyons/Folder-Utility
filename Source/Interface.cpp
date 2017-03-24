@@ -229,13 +229,17 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         // Launch browser window
         fileChooser.browseForDirectory();
+        
+        // set directoryPath
+        directoryPath = fileChooser.getResult();
+        
+        // Display path in text editor (Consider refactoring names in this code)
+        directoryPathDisplay->setText(directoryPath.getFullPathName());
 
         // Assign path chosen to my class' path holder
-        removeEmptyDirectoriesObject.setMainPathway(fileChooser.getResult());
-        capitalizeItemsObject.setMainPathway(fileChooser.getResult());
-
-        // Display path in text editor (Consider refactoring names in this code)
-        directoryPathDisplay->setText(removeEmptyDirectoriesObject.getMainPathway().getFullPathName());
+        removeEmptyDirectoriesObject.setMainPathway(directoryPath);
+        capitalizeItemsObject.setMainPathway(directoryPath);
+        // set path to all other function classes as well
 
         //[/UserButtonCode_selectDirectoryButton]
     }

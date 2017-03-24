@@ -59,6 +59,7 @@ private:
 
     RemoveEmptyDirectories removeEmptyDirectoriesObject;
     CapitalizeItems capitalizeItemsObject;
+    File directoryPath;
 
     //[/UserVariables]
 
