@@ -67,12 +67,29 @@ bool RemoveEmptyDirectories::folderIsEmpty()
 
 void RemoveEmptyDirectories::removeSingleEmptyFolder()
 {
+    // If the folder is a read-only folder, it will never get moved and this
+    // loop will infinitely loop, so this forces a breakout in that situation
+    int loopCounter = 0;
+    const int endLoopAfterXTries = 100;
+    
     // This code is to fix the broken Apple code that doesn't always move items to trash
     // Continually try until the file doesn't exist
     while(Base::getFileHolder().exists())
     {
         Base::getFileHolder().moveToTrash();
+        
+        loopCounter++;
+        
+        if(loopCounter == endLoopAfterXTries)
+        {
+            break;
+        }
     }
+    
+    using namespace std;
+#include <iostream>
+    
+    cout << endl << loopCounter << endl;
 
     // Add filename to list of removed files
     listOfFoldersRemoved += (numberOfFilesRemoved + 1);
