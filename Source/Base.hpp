@@ -17,10 +17,12 @@ private:
     File mainPathway;
     File fileHolder;
     Array<File> allItemsArray;
+    String outputString;
     
 public:
     File getMainPathway();
     File getFileHolder();
+    String& getOutputString();
     
     void setMainPathway(File holdsFirstPathSelected);
     void setFileHolder(const File &inputFileHolder);

@@ -38,3 +38,8 @@ Array<File> Base::returnDirIterItemsArray(DirectoryIterator &dirIter)
     
     return allItemsArray;
 }
+
+String& Base::getOutputString()
+{
+    return outputString;
+}

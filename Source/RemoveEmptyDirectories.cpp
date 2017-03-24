@@ -44,9 +44,9 @@ void RemoveEmptyDirectories::removeAllEmptyFolders()
     while(iterateAgain);
     
     // Add remaining infomrmation to text string for textEditor
-    listOfFoldersRemoved += "Completed: ";
-    listOfFoldersRemoved += (String) numberOfFilesRemoved;
-    listOfFoldersRemoved += " empty folder(s) moved to trash.\n\n";
+    Base::getOutputString() += "Completed: ";
+    Base::getOutputString() += (String) numberOfFilesRemoved;
+    Base::getOutputString() += " empty folder(s) moved to trash.\n\n";
 }
 
 bool RemoveEmptyDirectories::folderIsEmpty()
@@ -85,17 +85,12 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
             break;
         }
     }
-    
-    using namespace std;
-#include <iostream>
-    
-    cout << endl << loopCounter << endl;
 
     // Add filename to list of removed files
-    listOfFoldersRemoved += (numberOfFilesRemoved + 1);
-    listOfFoldersRemoved += ": /";
-    listOfFoldersRemoved += Base::getFileHolder().getRelativePathFrom(Base::getMainPathway().getFullPathName());
-    listOfFoldersRemoved += "\n\n";
+    Base::getOutputString() += (numberOfFilesRemoved + 1);
+    Base::getOutputString() += ": /";
+    Base::getOutputString() += Base::getFileHolder().getRelativePathFrom(Base::getMainPathway().getFullPathName());
+    Base::getOutputString() += "\n\n";
 
     // Increment number of files removed
     numberOfFilesRemoved++;
@@ -113,7 +108,7 @@ File RemoveEmptyDirectories::getMainPathway()
 
 String RemoveEmptyDirectories::getListOfFoldersRemoved()
 {
-    return listOfFoldersRemoved;
+    return Base::getOutputString();
 }
 
 int RemoveEmptyDirectories::getNumberOfFilesRemoved()
@@ -123,7 +118,7 @@ int RemoveEmptyDirectories::getNumberOfFilesRemoved()
 
 void RemoveEmptyDirectories::clearListOfFoldersRemoved()
 {
-    listOfFoldersRemoved.clear();
+    Base::getOutputString().clear();
 }
 
 void RemoveEmptyDirectories::clearNumberOfFilesRemoved()

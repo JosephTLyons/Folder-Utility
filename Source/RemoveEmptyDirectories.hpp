@@ -15,7 +15,6 @@ class RemoveEmptyDirectories : private Base
 {
 private:
     
-    String listOfFoldersRemoved;
     int numberOfFilesRemoved;
     bool iterateAgain;
     
