@@ -26,9 +26,6 @@ void RemoveEmptyDirectories::removeAllEmptyFolders()
         filesArray.add(dirIter.getFile());
     }
     
-    // Fix this algorithm
-    // Test Commit
-    
     do
     {
         iterateAgain = false;
@@ -75,9 +72,9 @@ bool RemoveEmptyDirectories::folderIsEmpty()
 void RemoveEmptyDirectories::removeSingleEmptyFolder()
 {
     // Move file
-    while(!fileHolder.moveToTrash());
+    //while(! fileHolder.moveToTrash());
     
-    //fileHolder.deleteRecursively();
+    fileHolder.deleteRecursively();
 
     // Add filename to list of removed files
     listOfFoldersRemoved += (numberOfFilesRemoved + 1);
