@@ -78,7 +78,7 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
     {
         Base::getFileHolder().moveToTrash();
         loopCounter++;
-        Thread::sleep(10);
+        Thread::sleep(15);
         
         if(loopCounter == endLoopAfterXTries)
         {
@@ -86,6 +86,7 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
         }
     }
     
+    // Remove when done testing
 #include <iostream>
     using namespace std;
     cout << endl << loopCounter;
