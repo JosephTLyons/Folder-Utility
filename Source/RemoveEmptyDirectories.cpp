@@ -67,10 +67,12 @@ bool RemoveEmptyDirectories::folderIsEmpty()
 
 void RemoveEmptyDirectories::removeSingleEmptyFolder()
 {
-    // Move file
-    //while(! fileHolder.moveToTrash());
-    
-    Base::getFileHolder().deleteRecursively();
+    // This code is to fix the broken Apple code that doesn't always move items to trash
+    // Continually try until the file doesn't exist
+    while(Base::getFileHolder().exists())
+    {
+        Base::getFileHolder().moveToTrash();
+    }
 
     // Add filename to list of removed files
     listOfFoldersRemoved += (numberOfFilesRemoved + 1);
