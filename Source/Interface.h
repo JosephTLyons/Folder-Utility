@@ -46,6 +46,9 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    
+    void enableDisableAllButtons(const bool &enable);
+    
     //[/UserMethods]
 
     void paint (Graphics& g) override;
