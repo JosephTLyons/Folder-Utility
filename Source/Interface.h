@@ -47,7 +47,7 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     
-    void enableDisableAllButtons(const bool &enable);
+    void enableAllButtons(const bool &enable);
     
     //[/UserMethods]
 

@@ -133,7 +133,7 @@ Interface::Interface ()
     //[Constructor] You can add your own custom stuff here..
 
     // These buttons are off until path is set
-    enableDisableAllButtons(false);
+    enableAllButtons(false);
 
     // Set these buttons to be toggle switches
     filesOptionToggle->setClickingTogglesState(true);
@@ -218,7 +218,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         {
             // Enable buttons (are off until a path is set to keep from bad things from happening
             // IE Directory Iterator trying to iterate when no path has been set
-            enableDisableAllButtons(true);
+            enableAllButtons(true);
         }
         
         // set directoryPath
@@ -294,7 +294,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
-void Interface::enableDisableAllButtons(const bool &enable)
+void Interface::enableAllButtons(const bool &enable)
 {
     removeEmptyFolders->setEnabled(enable);
     capitalizeItemsButton->setEnabled(enable);
