@@ -111,11 +111,23 @@ Interface::Interface ()
     foldersOptionToggle2->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     foldersOptionToggle2->addListener (this);
 
+    addAndMakeVisible (listExtensionCount = new TextButton ("listExtensionCount"));
+    listExtensionCount->setButtonText (TRANS("List Extension Count"));
+    listExtensionCount->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    listExtensionCount->addListener (this);
+    listExtensionCount->setColour (TextButton::buttonColourId, Colours::cornflowerblue);
+
+    addAndMakeVisible (listAllFiles = new TextButton ("listAllFiles"));
+    listAllFiles->setButtonText (TRANS("List All Files"));
+    listAllFiles->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    listAllFiles->addListener (this);
+    listAllFiles->setColour (TextButton::buttonColourId, Colours::cornflowerblue);
+
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (400, 500);
+    setSize (400, 550);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -148,6 +160,8 @@ Interface::~Interface()
     capitalizeItemsButton = nullptr;
     filesOptionToggle = nullptr;
     foldersOptionToggle2 = nullptr;
+    listExtensionCount = nullptr;
+    listAllFiles = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -175,12 +189,14 @@ void Interface::resized()
     selectDirectoryButton->setBounds (0, 125, 400, 50);
     removeEmptyFolders->setBounds (0, 175, 400, 50);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
-    summaryTextEditor->setBounds (0, 300, 400, 200);
-    summaryLabel->setBounds (0, 275, 400, 25);
+    summaryTextEditor->setBounds (0, 350, 400, 200);
+    summaryLabel->setBounds (0, 325, 400, 25);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
     capitalizeItemsButton->setBounds (200, 225, 200, 50);
     filesOptionToggle->setBounds (0, 225, 100, 50);
     foldersOptionToggle2->setBounds (100, 225, 100, 50);
+    listExtensionCount->setBounds (0, 275, 200, 50);
+    listAllFiles->setBounds (200, 275, 200, 50);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -260,6 +276,16 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_foldersOptionToggle2] -- add your button handler code here..
         //[/UserButtonCode_foldersOptionToggle2]
     }
+    else if (buttonThatWasClicked == listExtensionCount)
+    {
+        //[UserButtonCode_listExtensionCount] -- add your button handler code here..
+        //[/UserButtonCode_listExtensionCount]
+    }
+    else if (buttonThatWasClicked == listAllFiles)
+    {
+        //[UserButtonCode_listAllFiles] -- add your button handler code here..
+        //[/UserButtonCode_listAllFiles]
+    }
 
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
@@ -283,7 +309,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="Interface" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="400" initialHeight="500">
+                 fixedSize="1" initialWidth="400" initialHeight="550">
   <BACKGROUND backgroundColour="ff3e3e3e"/>
   <LABEL name="folderUtilityLabel" id="b7a12fdcde89fe51" memberName="folderUtilityLabel"
          virtualName="" explicitFocusOrder="0" pos="0 0 400 50" textCol="ffffffff"
@@ -304,11 +330,11 @@ BEGIN_JUCER_METADATA
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <TEXTEDITOR name="listOfFoldersRemovedEditor" id="e96280133f57cb22" memberName="summaryTextEditor"
-              virtualName="" explicitFocusOrder="0" pos="0 300 400 200" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="0 350 400 200" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <LABEL name="summaryLabel" id="66a66b2dca7d8008" memberName="summaryLabel"
-         virtualName="" explicitFocusOrder="0" pos="0 275 400 25" textCol="ffc6c6c6"
+         virtualName="" explicitFocusOrder="0" pos="0 325 400 25" textCol="ffc6c6c6"
          edTextCol="ff000000" edBkgCol="0" labelText="Summary:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15" bold="0" italic="0" justification="36"/>
@@ -327,6 +353,14 @@ BEGIN_JUCER_METADATA
   <TEXTBUTTON name="foldersOptionToggle2" id="812321b70b3732b6" memberName="foldersOptionToggle2"
               virtualName="" explicitFocusOrder="0" pos="100 225 100 50" buttonText="Folders"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="listExtensionCount" id="67eba16b5a48409" memberName="listExtensionCount"
+              virtualName="" explicitFocusOrder="0" pos="0 275 200 50" bgColOff="ff6495ed"
+              buttonText="List Extension Count" connectedEdges="3" needsCallback="1"
+              radioGroupId="0"/>
+  <TEXTBUTTON name="listAllFiles" id="97829cf1ebb3f6d2" memberName="listAllFiles"
+              virtualName="" explicitFocusOrder="0" pos="200 275 200 50" bgColOff="ff6495ed"
+              buttonText="List All Files" connectedEdges="3" needsCallback="1"
+              radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
