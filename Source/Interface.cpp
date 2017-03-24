@@ -32,6 +32,15 @@ Interface::Interface ()
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
+    addAndMakeVisible (summaryLabel = new Label ("summaryLabel",
+                                                 TRANS("Summary:")));
+    summaryLabel->setFont (Font (15.00f, Font::plain));
+    summaryLabel->setJustificationType (Justification::centred);
+    summaryLabel->setEditable (false, false, false);
+    summaryLabel->setColour (Label::textColourId, Colour (0xffc6c6c6));
+    summaryLabel->setColour (TextEditor::textColourId, Colours::black);
+    summaryLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
     addAndMakeVisible (folderUtilityLabel = new Label ("folderUtilityLabel",
                                                        TRANS("Folder Utility")));
     folderUtilityLabel->setFont (Font (45.60f, Font::plain));
@@ -73,15 +82,6 @@ Interface::Interface ()
     summaryTextEditor->setPopupMenuEnabled (true);
     summaryTextEditor->setText (String());
 
-    addAndMakeVisible (summaryLabel = new Label ("summaryLabel",
-                                                 TRANS("Summary:")));
-    summaryLabel->setFont (Font (15.00f, Font::plain));
-    summaryLabel->setJustificationType (Justification::centred);
-    summaryLabel->setEditable (false, false, false);
-    summaryLabel->setColour (Label::textColourId, Colour (0xffc6c6c6));
-    summaryLabel->setColour (TextEditor::textColourId, Colours::black);
-    summaryLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
-
     addAndMakeVisible (directoryPathwayLabel = new Label ("directoryPathwayLabel",
                                                           TRANS("Directory Pathway:")));
     directoryPathwayLabel->setFont (Font (15.00f, Font::plain));
@@ -120,6 +120,12 @@ Interface::Interface ()
     listAllFiles->addListener (this);
     listAllFiles->setColour (TextButton::buttonColourId, Colours::cornflowerblue);
 
+    addAndMakeVisible (clearSummary = new TextButton ("clearSummary"));
+    clearSummary->setButtonText (TRANS("Clear"));
+    clearSummary->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    clearSummary->addListener (this);
+    clearSummary->setColour (TextButton::buttonColourId, Colours::coral);
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -144,18 +150,19 @@ Interface::~Interface()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
+    summaryLabel = nullptr;
     folderUtilityLabel = nullptr;
     selectDirectoryButton = nullptr;
     removeEmptyFolders = nullptr;
     directoryPathDisplay = nullptr;
     summaryTextEditor = nullptr;
-    summaryLabel = nullptr;
     directoryPathwayLabel = nullptr;
     capitalizeItemsButton = nullptr;
     filesOptionToggle = nullptr;
     foldersOptionToggle2 = nullptr;
     listExtensionCount = nullptr;
     listAllFiles = nullptr;
+    clearSummary = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -179,18 +186,19 @@ void Interface::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
+    summaryLabel->setBounds (0, 325, 400, 25);
     folderUtilityLabel->setBounds (0, 0, 400, 50);
     selectDirectoryButton->setBounds (0, 125, 400, 50);
     removeEmptyFolders->setBounds (0, 175, 400, 50);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
     summaryTextEditor->setBounds (0, 350, 400, 200);
-    summaryLabel->setBounds (0, 325, 400, 25);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
     capitalizeItemsButton->setBounds (200, 225, 200, 50);
     filesOptionToggle->setBounds (0, 225, 100, 50);
     foldersOptionToggle2->setBounds (100, 225, 100, 50);
     listExtensionCount->setBounds (0, 275, 200, 50);
     listAllFiles->setBounds (200, 275, 200, 50);
+    clearSummary->setBounds (300, 325, 100, 25);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -217,10 +225,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
             // IE Directory Iterator trying to iterate when no path has been set
             enableAllButtons(true);
         }
-        
+
         // set directoryPath
         directoryPath = fileChooser.getResult();
-        
+
         // Display path in text editor (Consider refactoring names in this code)
         directoryPathDisplay->setText(directoryPath.getFullPathName());
 
@@ -282,8 +290,16 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_listAllFiles] -- add your button handler code here..
         //[/UserButtonCode_listAllFiles]
     }
+    else if (buttonThatWasClicked == clearSummary)
+    {
+        //[UserButtonCode_clearSummary] -- add your button handler code here..
+        //[/UserButtonCode_clearSummary]
+    }
 
     //[UserbuttonClicked_Post]
+    
+    summaryTextEditor->clear();
+    
     //[/UserbuttonClicked_Post]
 }
 
@@ -318,6 +334,11 @@ BEGIN_JUCER_METADATA
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="400" initialHeight="550">
   <BACKGROUND backgroundColour="ff3e3e3e"/>
+  <LABEL name="summaryLabel" id="66a66b2dca7d8008" memberName="summaryLabel"
+         virtualName="" explicitFocusOrder="0" pos="0 325 400 25" textCol="ffc6c6c6"
+         edTextCol="ff000000" edBkgCol="0" labelText="Summary:" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="15" bold="0" italic="0" justification="36"/>
   <LABEL name="folderUtilityLabel" id="b7a12fdcde89fe51" memberName="folderUtilityLabel"
          virtualName="" explicitFocusOrder="0" pos="0 0 400 50" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="Folder Utility"
@@ -340,11 +361,6 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="0 350 400 200" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
-  <LABEL name="summaryLabel" id="66a66b2dca7d8008" memberName="summaryLabel"
-         virtualName="" explicitFocusOrder="0" pos="0 325 400 25" textCol="ffc6c6c6"
-         edTextCol="ff000000" edBkgCol="0" labelText="Summary:" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" bold="0" italic="0" justification="36"/>
   <LABEL name="directoryPathwayLabel" id="1b6b6d72a7200e14" memberName="directoryPathwayLabel"
          virtualName="" explicitFocusOrder="0" pos="0 50 400 25" textCol="ffc6c6c6"
          edTextCol="ff000000" edBkgCol="0" labelText="Directory Pathway:"
@@ -368,6 +384,9 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="200 275 200 50" bgColOff="ff6495ed"
               buttonText="List All Files" connectedEdges="3" needsCallback="1"
               radioGroupId="0"/>
+  <TEXTBUTTON name="clearSummary" id="2f2ae58a1ad60d2b" memberName="clearSummary"
+              virtualName="" explicitFocusOrder="0" pos="300 325 100 25" bgColOff="ffff7f50"
+              buttonText="Clear" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

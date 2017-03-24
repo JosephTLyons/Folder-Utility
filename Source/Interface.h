@@ -46,9 +46,9 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    
+
     void enableAllButtons(const bool &enable);
-    
+
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -67,18 +67,19 @@ private:
     //[/UserVariables]
 
     //==============================================================================
+    ScopedPointer<Label> summaryLabel;
     ScopedPointer<Label> folderUtilityLabel;
     ScopedPointer<TextButton> selectDirectoryButton;
     ScopedPointer<TextButton> removeEmptyFolders;
     ScopedPointer<TextEditor> directoryPathDisplay;
     ScopedPointer<TextEditor> summaryTextEditor;
-    ScopedPointer<Label> summaryLabel;
     ScopedPointer<Label> directoryPathwayLabel;
     ScopedPointer<TextButton> capitalizeItemsButton;
     ScopedPointer<TextButton> filesOptionToggle;
     ScopedPointer<TextButton> foldersOptionToggle2;
     ScopedPointer<TextButton> listExtensionCount;
     ScopedPointer<TextButton> listAllFiles;
+    ScopedPointer<TextButton> clearSummary;
 
 
     //==============================================================================
