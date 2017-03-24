@@ -72,6 +72,8 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
     int loopCounter = 0;
     const int endLoopAfterXTries = 100;
     
+    Base::getFileHolder().moveToTrash();
+    
     // This code is to fix the broken Apple code that doesn't always move items to trash
     // Continually try until the file doesn't exist
     while(Base::getFileHolder().exists())
@@ -87,7 +89,6 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
     }
     
     // Remove when done testing
-#include <iostream>
     using namespace std;
     cout << endl << loopCounter;
 

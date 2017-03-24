@@ -293,13 +293,14 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == clearSummary)
     {
         //[UserButtonCode_clearSummary] -- add your button handler code here..
+        
+        summaryTextEditor->clear();
+        removeEmptyDirectoriesObject.clearListOfFoldersRemoved();
+        
         //[/UserButtonCode_clearSummary]
     }
 
     //[UserbuttonClicked_Post]
-    
-    summaryTextEditor->clear();
-    
     //[/UserbuttonClicked_Post]
 }
 
