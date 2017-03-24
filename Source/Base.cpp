@@ -28,12 +28,8 @@ void Base::setMainPathway(File holdsFirstPathSelected)
     mainPathway = holdsFirstPathSelected;
 }
 
-Array<File> Base::returnAllFilesAndFoldersArray()
+Array<File> Base::returnDirIterItemsArray(DirectoryIterator &dirIter)
 {
-    // Scans files and directories recursively, but skips hidden files
-    DirectoryIterator dirIter (File (mainPathway.getFullPathName()), true, "*",
-                               File::findFilesAndDirectories + File::ignoreHiddenFiles);
-    
     // Iterate and collect all files and store in filesArray
     while(dirIter.next())
     {

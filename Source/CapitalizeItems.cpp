@@ -13,56 +13,65 @@ void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folde
     // Only execute function if either or is selected
     if (files || folders)
     {
-        DirectoryIterator dirIterFiles (File (mainPathway.getFullPathName()), true, "*",
-                                        File::findFiles + File::ignoreHiddenFiles);
-        
-        DirectoryIterator dirIterFolders (File (mainPathway.getFullPathName()), true, "*",
-                                          File::findDirectories + File::ignoreHiddenFiles);
-        
-        DirectoryIterator dirIterFilesAndFolders (File (mainPathway.getFullPathName()), true, "*",
-                                                  File::findFilesAndDirectories +
-                                                  File::ignoreHiddenFiles);
         
         // Call function here and pass correct iter into it
         if(files && folders)
         {
-            capitalizeItems(dirIterFilesAndFolders);
+            DirectoryIterator dirIterFilesAndFolders (File (getMainPathway().getFullPathName()),
+                                                      true, "*",
+                                                      File::findFilesAndDirectories +
+                                                      File::ignoreHiddenFiles);
+            
+            Array<File> allFilesAndFoldersArray = Base::returnDirIterItemsArray(dirIterFilesAndFolders);
+            
+            capitalizeItems(allFilesAndFoldersArray);
         }
         
         else if(files)
         {
-            capitalizeItems(dirIterFiles);
+            DirectoryIterator dirIterFiles (File (getMainPathway().getFullPathName()), true, "*",
+                                            File::findFiles + File::ignoreHiddenFiles);
+            
+            Array<File> allFilesArray = Base::returnDirIterItemsArray(dirIterFiles);
+            
+            capitalizeItems(allFilesArray);
         }
         
         // Folders
         else
         {
-            capitalizeItems(dirIterFolders);
+            DirectoryIterator dirIterFolders (File (getMainPathway().getFullPathName()), true, "*",
+                                              File::findDirectories + File::ignoreHiddenFiles);
+            
+            Array<File> allFoldersArray = Base::returnDirIterItemsArray(dirIterFolders);
+            
+            capitalizeItems(allFoldersArray);
         }
     }
 }
 
-void CapitalizeItems::capitalizeItems(DirectoryIterator &dirIter)
+void CapitalizeItems::capitalizeItems(Array<File> &items)
 {
-    while(dirIter.next())
+    for(int i = 0; i < items.size(); i++)
     {
-        fileHolder = dirIter.getFile();
+        Base::setFileHolder(items[i]);
         makeUpperCase();
     }
 }
 
 void CapitalizeItems::makeUpperCase()
 {
-    String fileName = fileHolder.getFileNameWithoutExtension();
+    String fileName = Base::getFileHolder().getFileNameWithoutExtension();
     
     //fileName = fileName.getFile
+    // NOT DONE HERE
     
     fileName = fileName.toUpperCase();
     
-    fileHolder.createLegalFileName(fileName);
+    Base::getFileHolder().createLegalFileName(fileName);
 }
 
 void CapitalizeItems::setMainPathway(File holdsFirstPathSelected)
 {
-    mainPathway = holdsFirstPathSelected;
+    Base::setMainPathway(holdsFirstPathSelected);
 }

@@ -9,15 +9,13 @@
 #ifndef CapitalizeItems_hpp
 #define CapitalizeItems_hpp
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "Base.hpp"
 
-class CapitalizeItems
+class CapitalizeItems : private Base
 {
 private:
-    File fileHolder;
-    File mainPathway;
     
-    void capitalizeItems(DirectoryIterator &dirIter);
+    void capitalizeItems(Array<File> &items);
     void makeUpperCase();
     
 public:

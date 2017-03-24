@@ -16,7 +16,11 @@ RemoveEmptyDirectories::RemoveEmptyDirectories()
 
 void RemoveEmptyDirectories::removeAllEmptyFolders()
 {
-    Array<File> allFilesAndFoldersArray = Base::returnAllFilesAndFoldersArray();
+    // Scans files and directories recursively, but skips hidden files
+    DirectoryIterator dirIter (File (Base::getMainPathway().getFullPathName()), true, "*",
+                               File::findFilesAndDirectories + File::ignoreHiddenFiles);
+    
+    Array<File> allFilesAndFoldersArray = Base::returnDirIterItemsArray(dirIter);
     
     do
     {

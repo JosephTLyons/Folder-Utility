@@ -24,7 +24,7 @@ public:
     
     void setFileHolder(const File &inputFileHolder);
     void setMainPathway(File holdsFirstPathSelected);
-    Array<File> returnAllFilesAndFoldersArray();
+    Array<File> returnDirIterItemsArray(DirectoryIterator &dirIter);
 };
 
 #endif /* Base_hpp */

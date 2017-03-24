@@ -9,9 +9,9 @@
 #ifndef AnalyzeFiles_hpp
 #define AnalyzeFiles_hpp
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "Base.hpp"
 
-class AnalyzeFiles
+class AnalyzeFiles : private Base
 {
 private:
     File fileHolder;
