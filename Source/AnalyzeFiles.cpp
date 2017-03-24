@@ -7,3 +7,8 @@
 //
 
 #include "AnalyzeFiles.hpp"
+
+void AnalyzeFiles::setMainPathway(File holdsFirstPathSelected)
+{
+    mainPathway = holdsFirstPathSelected;
+}
