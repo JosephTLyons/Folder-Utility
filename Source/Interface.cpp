@@ -247,9 +247,9 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_removeEmptyFolders] -- add your button handler code here..
 
         // Reset history fields
-        summaryTextEditor->clear();
-        removeEmptyDirectoriesObject.clearNumberOfFilesRemoved();
+        clearSummaryItems();
 
+        // Commence Action
         removeEmptyDirectoriesObject.removeAllEmptyFolders();
 
         // Set history string to text editor
@@ -262,11 +262,14 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_capitalizeItemsButton] -- add your button handler code here..
 
         // Reset history fields
-        //****** listOfFoldersRemovedEditor->clear();
-        //****** directory.clearNumberOfFilesRemoved();
+        clearSummaryItems();
 
+        // Commence Action
         capitalizeItemsObject.capitalizeItemsDriver(filesOptionToggle->getToggleState() ,
                                                     foldersOptionToggle2->getToggleState());
+        
+        // Set history string to text editor
+        // STUFF
 
         // Set history string to text editor
         //****** listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
@@ -287,7 +290,13 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_listExtensionCount] -- add your button handler code here..
 
+        // Reset history fields
+        clearSummaryItems();
+        
+        // Commence Action
         analyzeFilesObject.collectFileExtensions();
+        
+        // Set history string to text editor
         summaryTextEditor->setText(analyzeFilesObject.getListOfExtensions());
 
         //[/UserButtonCode_listExtensionCount]
@@ -300,10 +309,8 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == clearSummary)
     {
         //[UserButtonCode_clearSummary] -- add your button handler code here..
-
-        summaryTextEditor->clear();
-        removeEmptyDirectoriesObject.clearListOfFoldersRemoved();
         
+        clearSummaryItems();
 
         //[/UserButtonCode_clearSummary]
     }
@@ -324,6 +331,22 @@ void Interface::enableAllButtons(const bool &enable)
     foldersOptionToggle2->setEnabled(enable);
     listExtensionCount->setEnabled(enable);
     listAllFiles->setEnabled(enable);
+}
+
+void Interface::clearSummaryItems()
+{
+    // Clear textEditor
+    summaryTextEditor->clear();
+    
+    // Items for removing empty directories
+    removeEmptyDirectoriesObject.clearListOfFoldersRemoved();
+    removeEmptyDirectoriesObject.clearNumberOfFilesRemoved();
+
+    // Items for capitalize items
+    //capitalizeItemsObject.
+    
+    // Items for analyze files
+    analyzeFilesObject.clearListOfFiles();
 }
 
 //[/MiscUserCode]

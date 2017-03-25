@@ -49,6 +49,7 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
 
     void enableAllButtons(const bool &enable);
+    void clearSummaryItems();
 
     //[/UserMethods]
 
