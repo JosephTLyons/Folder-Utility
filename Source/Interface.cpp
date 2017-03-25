@@ -71,6 +71,8 @@ Interface::Interface ()
     directoryPathDisplay->setScrollbarsShown (true);
     directoryPathDisplay->setCaretVisible (false);
     directoryPathDisplay->setPopupMenuEnabled (true);
+    directoryPathDisplay->setColour (TextEditor::textColourId, Colours::white);
+    directoryPathDisplay->setColour (TextEditor::backgroundColourId, Colour (0xff3e3e3e));
     directoryPathDisplay->setText (String());
 
     addAndMakeVisible (summaryTextEditor = new TextEditor ("listOfFoldersRemovedEditor"));
@@ -80,6 +82,8 @@ Interface::Interface ()
     summaryTextEditor->setScrollbarsShown (true);
     summaryTextEditor->setCaretVisible (false);
     summaryTextEditor->setPopupMenuEnabled (true);
+    summaryTextEditor->setColour (TextEditor::textColourId, Colours::white);
+    summaryTextEditor->setColour (TextEditor::backgroundColourId, Colour (0xff3e3e3e));
     summaryTextEditor->setText (String());
 
     addAndMakeVisible (directoryPathwayLabel = new Label ("directoryPathwayLabel",
@@ -380,13 +384,13 @@ BEGIN_JUCER_METADATA
               textCol="ffffffff" buttonText="Remove Empty Folders" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTEDITOR name="directoryPathDisplay" id="1fdfeaa5b403b983" memberName="directoryPathDisplay"
-              virtualName="" explicitFocusOrder="0" pos="0 75 400 50" initialText=""
-              multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
-              caret="0" popupmenu="1"/>
+              virtualName="" explicitFocusOrder="0" pos="0 75 400 50" textcol="ffffffff"
+              bkgcol="ff3e3e3e" initialText="" multiline="1" retKeyStartsLine="0"
+              readonly="1" scrollbars="1" caret="0" popupmenu="1"/>
   <TEXTEDITOR name="listOfFoldersRemovedEditor" id="e96280133f57cb22" memberName="summaryTextEditor"
-              virtualName="" explicitFocusOrder="0" pos="0 375 400 200" initialText=""
-              multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
-              caret="0" popupmenu="1"/>
+              virtualName="" explicitFocusOrder="0" pos="0 375 400 200" textcol="ffffffff"
+              bkgcol="ff3e3e3e" initialText="" multiline="1" retKeyStartsLine="0"
+              readonly="1" scrollbars="1" caret="0" popupmenu="1"/>
   <LABEL name="directoryPathwayLabel" id="1b6b6d72a7200e14" memberName="directoryPathwayLabel"
          virtualName="" explicitFocusOrder="0" pos="0 50 400 25" textCol="ffc6c6c6"
          edTextCol="ff000000" edBkgCol="0" labelText="Directory Pathway:"
