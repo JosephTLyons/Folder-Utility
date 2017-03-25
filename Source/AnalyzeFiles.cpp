@@ -13,7 +13,7 @@ void AnalyzeFiles::setMainPathway(File holdsFirstPathSelected)
     Base::setMainPathway(holdsFirstPathSelected);
 }
 
-void AnalyzeFiles::collectFileExtensions()
+void AnalyzeFiles::collectFilenames()
 {
     DirectoryIterator dirIter (File (getMainPathway().getFullPathName()), true, "*",
                                      File::findFiles + File::ignoreHiddenFiles);
@@ -41,7 +41,7 @@ void AnalyzeFiles::collectFileExtensions()
     cout << Base::getOutputString();
 }
 
-String AnalyzeFiles::getListOfExtensions()
+String AnalyzeFiles::getListOfItems()
 {
     return Base::getOutputString();
 }

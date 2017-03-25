@@ -17,8 +17,8 @@ private:
 public:
     
     void setMainPathway(File holdsFirstPathSelected);
-    void collectFileExtensions();
-    String getListOfExtensions();
+    void collectFilenames();
+    String getListOfItems();
     void clearListOfFiles();
 };
 

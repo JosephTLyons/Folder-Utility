@@ -286,21 +286,22 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == listExtensionCount)
     {
         //[UserButtonCode_listExtensionCount] -- add your button handler code here..
-        
-        // Commence Action
-        analyzeFilesObject.collectFileExtensions();
-        
-        // Set history string to text editor
-        summaryTextEditor->setText(analyzeFilesObject.getListOfExtensions());
-        
-        // Reset history fields
-        clearSummaryItems();
 
         //[/UserButtonCode_listExtensionCount]
     }
     else if (buttonThatWasClicked == listAllFiles)
     {
         //[UserButtonCode_listAllFiles] -- add your button handler code here..
+        
+        // Commence Action
+        analyzeFilesObject.collectFilenames();
+        
+        // Set history string to text editor
+        summaryTextEditor->setText(analyzeFilesObject.getListOfItems());
+        
+        // Reset history fields
+        clearSummaryItems();
+        
         //[/UserButtonCode_listAllFiles]
     }
     else if (buttonThatWasClicked == clearSummary)
