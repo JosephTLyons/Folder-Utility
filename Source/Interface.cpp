@@ -117,17 +117,23 @@ Interface::Interface ()
     listAllFiles->setColour (TextButton::buttonColourId, Colours::cornflowerblue);
     listAllFiles->setColour (TextButton::textColourOffId, Colours::white);
 
+    addAndMakeVisible (unlockButton = new TextButton ("unlockButton"));
+    unlockButton->setButtonText (TRANS("Unlock"));
+    unlockButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    unlockButton->addListener (this);
+    unlockButton->setColour (TextButton::buttonColourId, Colours::red);
+
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (400, 550);
+    setSize (400, 575);
 
 
     //[Constructor] You can add your own custom stuff here..
 
     // These buttons are off until path is set
-    enableAllButtons(false);
+    enableAllButtons(false, false);
 
     // Set these buttons to be toggle switches
     filesOptionToggle->setClickingTogglesState(true);
@@ -152,6 +158,7 @@ Interface::~Interface()
     filesOptionToggle = nullptr;
     foldersOptionToggle2 = nullptr;
     listAllFiles = nullptr;
+    unlockButton = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -175,17 +182,18 @@ void Interface::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    summaryLabel->setBounds (0, 325, 400, 25);
+    summaryLabel->setBounds (0, 350, 400, 25);
     folderUtilityLabel->setBounds (0, 0, 400, 50);
     selectDirectoryButton->setBounds (0, 125, 400, 50);
-    removeEmptyFolders->setBounds (0, 175, 400, 50);
+    removeEmptyFolders->setBounds (0, 250, 400, 50);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
-    summaryTextEditor->setBounds (0, 350, 400, 200);
+    summaryTextEditor->setBounds (0, 375, 400, 200);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
-    capitalizeItemsButton->setBounds (200, 225, 200, 50);
-    filesOptionToggle->setBounds (0, 225, 100, 50);
-    foldersOptionToggle2->setBounds (100, 225, 100, 50);
-    listAllFiles->setBounds (0, 275, 400, 50);
+    capitalizeItemsButton->setBounds (200, 300, 200, 50);
+    filesOptionToggle->setBounds (0, 300, 100, 50);
+    foldersOptionToggle2->setBounds (100, 300, 100, 50);
+    listAllFiles->setBounds (0, 175, 400, 50);
+    unlockButton->setBounds (0, 225, 400, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -210,7 +218,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         {
             // Enable buttons (are off until a path is set to keep from bad things from happening
             // IE Directory Iterator trying to iterate when no path has been set
-            enableAllButtons(true);
+            enableAllButtons(true, false);
         }
 
         // set directoryPath
@@ -239,6 +247,9 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         // Reset history fields
         clearSummaryItems();
+        
+        // Disengage buttons again
+        enableAllButtons(true, false);
 
         //[/UserButtonCode_removeEmptyFolders]
     }
@@ -255,6 +266,9 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         // Reset history fields
         clearSummaryItems();
+        
+        // Disengage buttons again
+        enableAllButtons(true, false);
 
         //[/UserButtonCode_capitalizeItemsButton]
     }
@@ -280,8 +294,19 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         // Reset history fields
         clearSummaryItems();
+        
+        // Disengage buttons again
+        enableAllButtons(true, false);
 
         //[/UserButtonCode_listAllFiles]
+    }
+    else if (buttonThatWasClicked == unlockButton)
+    {
+        //[UserButtonCode_unlockButton] -- add your button handler code here..
+        
+        enableAllButtons(true, true);
+        
+        //[/UserButtonCode_unlockButton]
     }
 
     //[UserbuttonClicked_Post]
@@ -292,13 +317,17 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
-void Interface::enableAllButtons(const bool &enable)
+void Interface::enableAllButtons(const bool &enableSafeItems, const bool&enableDangerousItems)
 {
-    removeEmptyFolders->setEnabled(enable);
-    capitalizeItemsButton->setEnabled(enable);
-    filesOptionToggle->setEnabled(enable);
-    foldersOptionToggle2->setEnabled(enable);
-    listAllFiles->setEnabled(enable);
+    //Safe items
+    listAllFiles->setEnabled(enableSafeItems);
+    unlockButton->setEnabled(enableSafeItems);
+
+    // Dangerous items
+    removeEmptyFolders->setEnabled(enableDangerousItems);
+    filesOptionToggle->setEnabled(enableDangerousItems);
+    foldersOptionToggle2->setEnabled(enableDangerousItems);
+    capitalizeItemsButton->setEnabled(enableDangerousItems);
 }
 
 void Interface::clearSummaryItems()
@@ -329,10 +358,10 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="Interface" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="400" initialHeight="550">
+                 fixedSize="1" initialWidth="400" initialHeight="575">
   <BACKGROUND backgroundColour="ff3e3e3e"/>
   <LABEL name="summaryLabel" id="66a66b2dca7d8008" memberName="summaryLabel"
-         virtualName="" explicitFocusOrder="0" pos="0 325 400 25" textCol="ffc6c6c6"
+         virtualName="" explicitFocusOrder="0" pos="0 350 400 25" textCol="ffc6c6c6"
          edTextCol="ff000000" edBkgCol="0" labelText="Summary:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15" bold="0" italic="0" justification="36"/>
@@ -347,7 +376,7 @@ BEGIN_JUCER_METADATA
               pos="0 125 400 50" bgColOff="ff48b96d" textCol="ffffffff" buttonText="Select Directory"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="removeEmptyFolders" id="4ad96e211ef69bb7" memberName="removeEmptyFolders"
-              virtualName="" explicitFocusOrder="0" pos="0 175 400 50" bgColOff="ff6495ed"
+              virtualName="" explicitFocusOrder="0" pos="0 250 400 50" bgColOff="ff6495ed"
               textCol="ffffffff" buttonText="Remove Empty Folders" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTEDITOR name="directoryPathDisplay" id="1fdfeaa5b403b983" memberName="directoryPathDisplay"
@@ -355,7 +384,7 @@ BEGIN_JUCER_METADATA
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <TEXTEDITOR name="listOfFoldersRemovedEditor" id="e96280133f57cb22" memberName="summaryTextEditor"
-              virtualName="" explicitFocusOrder="0" pos="0 350 400 200" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="0 375 400 200" initialText=""
               multiline="1" retKeyStartsLine="0" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <LABEL name="directoryPathwayLabel" id="1b6b6d72a7200e14" memberName="directoryPathwayLabel"
@@ -364,19 +393,22 @@ BEGIN_JUCER_METADATA
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15" bold="0" italic="0" justification="36"/>
   <TEXTBUTTON name="capitalizeItemsButton" id="bd92522c60a73c65" memberName="capitalizeItemsButton"
-              virtualName="" explicitFocusOrder="0" pos="200 225 200 50" bgColOff="ff6495ed"
+              virtualName="" explicitFocusOrder="0" pos="200 300 200 50" bgColOff="ff6495ed"
               textCol="ffffffff" buttonText="Capitilize Files" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="filesOptionToggle" id="631d75a04a9c0263" memberName="filesOptionToggle"
-              virtualName="" explicitFocusOrder="0" pos="0 225 100 50" textColOn="ff808080"
+              virtualName="" explicitFocusOrder="0" pos="0 300 100 50" textColOn="ff808080"
               buttonText="Files" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="foldersOptionToggle2" id="812321b70b3732b6" memberName="foldersOptionToggle2"
-              virtualName="" explicitFocusOrder="0" pos="100 225 100 50" textColOn="ff808080"
+              virtualName="" explicitFocusOrder="0" pos="100 300 100 50" textColOn="ff808080"
               buttonText="Folders" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="listAllFiles" id="97829cf1ebb3f6d2" memberName="listAllFiles"
-              virtualName="" explicitFocusOrder="0" pos="0 275 400 50" bgColOff="ff6495ed"
+              virtualName="" explicitFocusOrder="0" pos="0 175 400 50" bgColOff="ff6495ed"
               textCol="ffffffff" buttonText="List All Files" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="unlockButton" id="915f32148b22746d" memberName="unlockButton"
+              virtualName="" explicitFocusOrder="0" pos="0 225 400 24" bgColOff="ffff0000"
+              buttonText="Unlock" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

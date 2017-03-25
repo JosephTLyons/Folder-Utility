@@ -48,7 +48,7 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
 
-    void enableAllButtons(const bool &enable);
+    void enableAllButtons(const bool &enableSafeItems, const bool&enableDangerousItems);
     void clearSummaryItems();
 
     //[/UserMethods]
@@ -82,6 +82,7 @@ private:
     ScopedPointer<TextButton> filesOptionToggle;
     ScopedPointer<TextButton> foldersOptionToggle2;
     ScopedPointer<TextButton> listAllFiles;
+    ScopedPointer<TextButton> unlockButton;
 
 
     //==============================================================================
