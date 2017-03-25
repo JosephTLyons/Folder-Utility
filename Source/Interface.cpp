@@ -125,7 +125,7 @@ Interface::Interface ()
     unlockButton->setButtonText (TRANS("Unlock"));
     unlockButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     unlockButton->addListener (this);
-    unlockButton->setColour (TextButton::buttonColourId, Colours::red);
+    unlockButton->setColour (TextButton::buttonColourId, Colour (0xffe86565));
 
 
     //[UserPreSize]
@@ -412,7 +412,7 @@ BEGIN_JUCER_METADATA
               textCol="ffffffff" buttonText="List All Files" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="unlockButton" id="915f32148b22746d" memberName="unlockButton"
-              virtualName="" explicitFocusOrder="0" pos="0 225 400 24" bgColOff="ffff0000"
+              virtualName="" explicitFocusOrder="0" pos="0 225 400 24" bgColOff="ffe86565"
               buttonText="Unlock" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
