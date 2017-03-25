@@ -298,7 +298,6 @@ void Interface::enableAllButtons(const bool &enable)
     capitalizeItemsButton->setEnabled(enable);
     filesOptionToggle->setEnabled(enable);
     foldersOptionToggle2->setEnabled(enable);
-    listExtensionCount->setEnabled(enable);
     listAllFiles->setEnabled(enable);
 }
 
