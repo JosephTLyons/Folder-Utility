@@ -34,7 +34,7 @@ Interface::Interface ()
 
     addAndMakeVisible (summaryLabel = new Label ("summaryLabel",
                                                  TRANS("Summary:")));
-    summaryLabel->setFont (Font (15.00f, Font::plain));
+    summaryLabel->setFont (Font ("American Typewriter", 15.00f, Font::plain));
     summaryLabel->setJustificationType (Justification::centred);
     summaryLabel->setEditable (false, false, false);
     summaryLabel->setColour (Label::textColourId, Colour (0xffc6c6c6));
@@ -43,7 +43,7 @@ Interface::Interface ()
 
     addAndMakeVisible (folderUtilityLabel = new Label ("folderUtilityLabel",
                                                        TRANS("Folder Utility")));
-    folderUtilityLabel->setFont (Font (45.60f, Font::plain));
+    folderUtilityLabel->setFont (Font ("American Typewriter", 45.60f, Font::plain));
     folderUtilityLabel->setJustificationType (Justification::centred);
     folderUtilityLabel->setEditable (false, false, false);
     folderUtilityLabel->setColour (Label::textColourId, Colours::white);
@@ -84,7 +84,7 @@ Interface::Interface ()
 
     addAndMakeVisible (directoryPathwayLabel = new Label ("directoryPathwayLabel",
                                                           TRANS("Directory Pathway:")));
-    directoryPathwayLabel->setFont (Font (15.00f, Font::plain));
+    directoryPathwayLabel->setFont (Font ("American Typewriter", 15.00f, Font::plain));
     directoryPathwayLabel->setJustificationType (Justification::centred);
     directoryPathwayLabel->setEditable (false, false, false);
     directoryPathwayLabel->setColour (Label::textColourId, Colour (0xffc6c6c6));
@@ -247,7 +247,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         // Reset history fields
         clearSummaryItems();
-        
+
         // Disengage buttons again
         enableAllButtons(true, false);
 
@@ -266,7 +266,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         // Reset history fields
         clearSummaryItems();
-        
+
         // Disengage buttons again
         enableAllButtons(true, false);
 
@@ -294,7 +294,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         // Reset history fields
         clearSummaryItems();
-        
+
         // Disengage buttons again
         enableAllButtons(true, false);
 
@@ -303,9 +303,9 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == unlockButton)
     {
         //[UserButtonCode_unlockButton] -- add your button handler code here..
-        
+
         enableAllButtons(true, true);
-        
+
         //[/UserButtonCode_unlockButton]
     }
 
@@ -363,14 +363,14 @@ BEGIN_JUCER_METADATA
   <LABEL name="summaryLabel" id="66a66b2dca7d8008" memberName="summaryLabel"
          virtualName="" explicitFocusOrder="0" pos="0 350 400 25" textCol="ffc6c6c6"
          edTextCol="ff000000" edBkgCol="0" labelText="Summary:" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="American Typewriter"
          fontsize="15" bold="0" italic="0" justification="36"/>
   <LABEL name="folderUtilityLabel" id="b7a12fdcde89fe51" memberName="folderUtilityLabel"
          virtualName="" explicitFocusOrder="0" pos="0 0 400 50" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="Folder Utility"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="45.600000000000001421" bold="0"
-         italic="0" justification="36"/>
+         fontname="American Typewriter" fontsize="45.600000000000001421"
+         bold="0" italic="0" justification="36"/>
   <TEXTBUTTON name="selectDirectoryselectDirectoryButton" id="48724a493ca7e66e"
               memberName="selectDirectoryButton" virtualName="" explicitFocusOrder="0"
               pos="0 125 400 50" bgColOff="ff48b96d" textCol="ffffffff" buttonText="Select Directory"
@@ -391,7 +391,8 @@ BEGIN_JUCER_METADATA
          virtualName="" explicitFocusOrder="0" pos="0 50 400 25" textCol="ffc6c6c6"
          edTextCol="ff000000" edBkgCol="0" labelText="Directory Pathway:"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15" bold="0" italic="0" justification="36"/>
+         fontname="American Typewriter" fontsize="15" bold="0" italic="0"
+         justification="36"/>
   <TEXTBUTTON name="capitalizeItemsButton" id="bd92522c60a73c65" memberName="capitalizeItemsButton"
               virtualName="" explicitFocusOrder="0" pos="200 300 200 50" bgColOff="ff6495ed"
               textCol="ffffffff" buttonText="Capitilize Files" connectedEdges="3"
