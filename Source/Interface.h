@@ -81,9 +81,7 @@ private:
     ScopedPointer<TextButton> capitalizeItemsButton;
     ScopedPointer<TextButton> filesOptionToggle;
     ScopedPointer<TextButton> foldersOptionToggle2;
-    ScopedPointer<TextButton> listExtensionCount;
     ScopedPointer<TextButton> listAllFiles;
-    ScopedPointer<TextButton> clearSummary;
 
 
     //==============================================================================

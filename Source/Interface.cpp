@@ -110,23 +110,11 @@ Interface::Interface ()
     foldersOptionToggle2->addListener (this);
     foldersOptionToggle2->setColour (TextButton::textColourOnId, Colours::grey);
 
-    addAndMakeVisible (listExtensionCount = new TextButton ("listExtensionCount"));
-    listExtensionCount->setButtonText (TRANS("List Extension Count"));
-    listExtensionCount->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
-    listExtensionCount->addListener (this);
-    listExtensionCount->setColour (TextButton::buttonColourId, Colours::cornflowerblue);
-
     addAndMakeVisible (listAllFiles = new TextButton ("listAllFiles"));
     listAllFiles->setButtonText (TRANS("List All Files"));
     listAllFiles->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     listAllFiles->addListener (this);
     listAllFiles->setColour (TextButton::buttonColourId, Colours::cornflowerblue);
-
-    addAndMakeVisible (clearSummary = new TextButton ("clearSummary"));
-    clearSummary->setButtonText (TRANS("Clear"));
-    clearSummary->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
-    clearSummary->addListener (this);
-    clearSummary->setColour (TextButton::buttonColourId, Colours::coral);
 
 
     //[UserPreSize]
@@ -162,9 +150,7 @@ Interface::~Interface()
     capitalizeItemsButton = nullptr;
     filesOptionToggle = nullptr;
     foldersOptionToggle2 = nullptr;
-    listExtensionCount = nullptr;
     listAllFiles = nullptr;
-    clearSummary = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -198,9 +184,7 @@ void Interface::resized()
     capitalizeItemsButton->setBounds (200, 225, 200, 50);
     filesOptionToggle->setBounds (0, 225, 100, 50);
     foldersOptionToggle2->setBounds (100, 225, 100, 50);
-    listExtensionCount->setBounds (0, 275, 200, 50);
-    listAllFiles->setBounds (200, 275, 200, 50);
-    clearSummary->setBounds (300, 325, 100, 25);
+    listAllFiles->setBounds (0, 275, 400, 50);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -251,7 +235,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         // Set history string to text editor
         summaryTextEditor->setText(removeEmptyDirectoriesObject.getListOfFoldersRemoved());
-        
+
         // Reset history fields
         clearSummaryItems();
 
@@ -264,10 +248,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         // Commence Action
         capitalizeItemsObject.capitalizeItemsDriver(filesOptionToggle->getToggleState() ,
                                                     foldersOptionToggle2->getToggleState());
-        
+
         // Set history string to text editor
         // STUFF
-        
+
         // Reset history fields
         clearSummaryItems();
 
@@ -283,36 +267,20 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_foldersOptionToggle2] -- add your button handler code here..
         //[/UserButtonCode_foldersOptionToggle2]
     }
-    else if (buttonThatWasClicked == listExtensionCount)
-    {
-        //[UserButtonCode_listExtensionCount] -- add your button handler code here..
-
-        //[/UserButtonCode_listExtensionCount]
-    }
     else if (buttonThatWasClicked == listAllFiles)
     {
         //[UserButtonCode_listAllFiles] -- add your button handler code here..
-        
+
         // Commence Action
         analyzeFilesObject.collectFilenames();
-        
+
         // Set history string to text editor
         summaryTextEditor->setText(analyzeFilesObject.getListOfItems());
-        
+
         // Reset history fields
         clearSummaryItems();
-        
-        //[/UserButtonCode_listAllFiles]
-    }
-    else if (buttonThatWasClicked == clearSummary)
-    {
-        //[UserButtonCode_clearSummary] -- add your button handler code here..
-        
-        // Clear textEditor
-        summaryTextEditor->clear();
-        clearSummaryItems();
 
-        //[/UserButtonCode_clearSummary]
+        //[/UserButtonCode_listAllFiles]
     }
 
     //[UserbuttonClicked_Post]
@@ -341,7 +309,7 @@ void Interface::clearSummaryItems()
 
     // Items for capitalize items
     //capitalizeItemsObject.
-    
+
     // Items for analyze files
     analyzeFilesObject.clearListOfFiles();
 }
@@ -405,17 +373,10 @@ BEGIN_JUCER_METADATA
   <TEXTBUTTON name="foldersOptionToggle2" id="812321b70b3732b6" memberName="foldersOptionToggle2"
               virtualName="" explicitFocusOrder="0" pos="100 225 100 50" textColOn="ff808080"
               buttonText="Folders" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="listExtensionCount" id="67eba16b5a48409" memberName="listExtensionCount"
-              virtualName="" explicitFocusOrder="0" pos="0 275 200 50" bgColOff="ff6495ed"
-              buttonText="List Extension Count" connectedEdges="3" needsCallback="1"
-              radioGroupId="0"/>
   <TEXTBUTTON name="listAllFiles" id="97829cf1ebb3f6d2" memberName="listAllFiles"
-              virtualName="" explicitFocusOrder="0" pos="200 275 200 50" bgColOff="ff6495ed"
+              virtualName="" explicitFocusOrder="0" pos="0 275 400 50" bgColOff="ff6495ed"
               buttonText="List All Files" connectedEdges="3" needsCallback="1"
               radioGroupId="0"/>
-  <TEXTBUTTON name="clearSummary" id="2f2ae58a1ad60d2b" memberName="clearSummary"
-              virtualName="" explicitFocusOrder="0" pos="300 325 100 25" bgColOff="ffff7f50"
-              buttonText="Clear" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
