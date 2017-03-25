@@ -234,7 +234,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         // Display path in text editor (Consider refactoring names in this code)
         directoryPathDisplay->setText(directoryPath.getFullPathName());
 
-        // Assign path chosen to my class' path holder
+        // Assign path chosen to my class' path holders
         removeEmptyDirectoriesObject.setMainPathway(directoryPath);
         capitalizeItemsObject.setMainPathway(directoryPath);
         analyzeFilesObject.setMainPathway(directoryPath);
@@ -246,14 +246,14 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_removeEmptyFolders] -- add your button handler code here..
 
-        // Reset history fields
-        clearSummaryItems();
-
         // Commence Action
         removeEmptyDirectoriesObject.removeAllEmptyFolders();
 
         // Set history string to text editor
         summaryTextEditor->setText(removeEmptyDirectoriesObject.getListOfFoldersRemoved());
+        
+        // Reset history fields
+        clearSummaryItems();
 
         //[/UserButtonCode_removeEmptyFolders]
     }
@@ -261,18 +261,15 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_capitalizeItemsButton] -- add your button handler code here..
 
-        // Reset history fields
-        clearSummaryItems();
-
         // Commence Action
         capitalizeItemsObject.capitalizeItemsDriver(filesOptionToggle->getToggleState() ,
                                                     foldersOptionToggle2->getToggleState());
         
         // Set history string to text editor
         // STUFF
-
-        // Set history string to text editor
-        //****** listOfFoldersRemovedEditor->setText(directory.getListOfFoldersRemoved());
+        
+        // Reset history fields
+        clearSummaryItems();
 
         //[/UserButtonCode_capitalizeItemsButton]
     }
@@ -289,15 +286,15 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == listExtensionCount)
     {
         //[UserButtonCode_listExtensionCount] -- add your button handler code here..
-
-        // Reset history fields
-        clearSummaryItems();
         
         // Commence Action
         analyzeFilesObject.collectFileExtensions();
         
         // Set history string to text editor
         summaryTextEditor->setText(analyzeFilesObject.getListOfExtensions());
+        
+        // Reset history fields
+        clearSummaryItems();
 
         //[/UserButtonCode_listExtensionCount]
     }
@@ -310,6 +307,8 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_clearSummary] -- add your button handler code here..
         
+        // Clear textEditor
+        summaryTextEditor->clear();
         clearSummaryItems();
 
         //[/UserButtonCode_clearSummary]
@@ -335,9 +334,6 @@ void Interface::enableAllButtons(const bool &enable)
 
 void Interface::clearSummaryItems()
 {
-    // Clear textEditor
-    summaryTextEditor->clear();
-    
     // Items for removing empty directories
     removeEmptyDirectoriesObject.clearListOfFoldersRemoved();
     removeEmptyDirectoriesObject.clearNumberOfFilesRemoved();
