@@ -102,11 +102,13 @@ Interface::Interface ()
     filesOptionToggle->setButtonText (TRANS("Files"));
     filesOptionToggle->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     filesOptionToggle->addListener (this);
+    filesOptionToggle->setColour (TextButton::textColourOnId, Colours::grey);
 
     addAndMakeVisible (foldersOptionToggle2 = new TextButton ("foldersOptionToggle2"));
     foldersOptionToggle2->setButtonText (TRANS("Folders"));
     foldersOptionToggle2->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     foldersOptionToggle2->addListener (this);
+    foldersOptionToggle2->setColour (TextButton::textColourOnId, Colours::grey);
 
     addAndMakeVisible (listExtensionCount = new TextButton ("listExtensionCount"));
     listExtensionCount->setButtonText (TRANS("List Extension Count"));
@@ -284,10 +286,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == listExtensionCount)
     {
         //[UserButtonCode_listExtensionCount] -- add your button handler code here..
-        
+
         analyzeFilesObject.collectFileExtensions();
         summaryTextEditor->setText(analyzeFilesObject.getListOfExtensions());
-        
+
         //[/UserButtonCode_listExtensionCount]
     }
     else if (buttonThatWasClicked == listAllFiles)
@@ -298,10 +300,11 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == clearSummary)
     {
         //[UserButtonCode_clearSummary] -- add your button handler code here..
-        
+
         summaryTextEditor->clear();
         removeEmptyDirectoriesObject.clearListOfFoldersRemoved();
         
+
         //[/UserButtonCode_clearSummary]
     }
 
@@ -377,11 +380,11 @@ BEGIN_JUCER_METADATA
               textCol="ffffffff" buttonText="Capitilize Files" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="filesOptionToggle" id="631d75a04a9c0263" memberName="filesOptionToggle"
-              virtualName="" explicitFocusOrder="0" pos="0 225 100 50" buttonText="Files"
-              connectedEdges="3" needsCallback="1" radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="0 225 100 50" textColOn="ff808080"
+              buttonText="Files" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="foldersOptionToggle2" id="812321b70b3732b6" memberName="foldersOptionToggle2"
-              virtualName="" explicitFocusOrder="0" pos="100 225 100 50" buttonText="Folders"
-              connectedEdges="3" needsCallback="1" radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="100 225 100 50" textColOn="ff808080"
+              buttonText="Folders" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="listExtensionCount" id="67eba16b5a48409" memberName="listExtensionCount"
               virtualName="" explicitFocusOrder="0" pos="0 275 200 50" bgColOff="ff6495ed"
               buttonText="List Extension Count" connectedEdges="3" needsCallback="1"

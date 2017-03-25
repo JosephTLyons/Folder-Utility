@@ -25,7 +25,7 @@ void AnalyzeFiles::collectFileExtensions()
     // Get all extensions from the file array into the string array
     for(int i = 0; i < temporaryFileHolderArray.size(); i++)
     {
-        extensionArray.add(temporaryFileHolderArray[i].getFileExtension());
+        extensionArray.add(temporaryFileHolderArray[i].getFileName());
         extensionArray[i] += "\n";
     }
     

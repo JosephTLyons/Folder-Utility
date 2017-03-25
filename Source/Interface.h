@@ -63,7 +63,7 @@ private:
 
     RemoveEmptyDirectories removeEmptyDirectoriesObject;
     CapitalizeItems capitalizeItemsObject;
-    
+
     AnalyzeFiles analyzeFilesObject;
     File directoryPath;
 
