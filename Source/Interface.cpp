@@ -115,6 +115,7 @@ Interface::Interface ()
     listAllFiles->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     listAllFiles->addListener (this);
     listAllFiles->setColour (TextButton::buttonColourId, Colours::cornflowerblue);
+    listAllFiles->setColour (TextButton::textColourOffId, Colours::white);
 
 
     //[UserPreSize]
@@ -375,8 +376,8 @@ BEGIN_JUCER_METADATA
               buttonText="Folders" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="listAllFiles" id="97829cf1ebb3f6d2" memberName="listAllFiles"
               virtualName="" explicitFocusOrder="0" pos="0 275 400 50" bgColOff="ff6495ed"
-              buttonText="List All Files" connectedEdges="3" needsCallback="1"
-              radioGroupId="0"/>
+              textCol="ffffffff" buttonText="List All Files" connectedEdges="3"
+              needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
