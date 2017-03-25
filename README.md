@@ -1,5 +1,5 @@
 # Folder Utility
-A simple application for cleaning up folders / directories.
+Folder Utility is a simple tool that can clean up the contents of any directory (folder), tidy up the names of items, and analyze the contents within any directory and return the results all in a single summary output section.
 
 * Remove all empty folders within a chosen directory.
 * Capitalize folders names, file names, or both.
