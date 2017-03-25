@@ -24,6 +24,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "CapitalizeItems.hpp"
 #include "RemoveEmptyDirectories.hpp"
+#include "AnalyzeFiles.hpp"
 //[/Headers]
 
 
@@ -62,6 +63,8 @@ private:
 
     RemoveEmptyDirectories removeEmptyDirectoriesObject;
     CapitalizeItems capitalizeItemsObject;
+    
+    AnalyzeFiles analyzeFilesObject;
     File directoryPath;
 
     //[/UserVariables]

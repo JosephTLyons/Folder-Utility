@@ -235,6 +235,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         // Assign path chosen to my class' path holder
         removeEmptyDirectoriesObject.setMainPathway(directoryPath);
         capitalizeItemsObject.setMainPathway(directoryPath);
+        analyzeFilesObject.setMainPathway(directoryPath);
         // set path to all other function classes as well
 
         //[/UserButtonCode_selectDirectoryButton]
@@ -283,6 +284,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == listExtensionCount)
     {
         //[UserButtonCode_listExtensionCount] -- add your button handler code here..
+        
+        analyzeFilesObject.collectFileExtensions();
+        summaryTextEditor->setText(analyzeFilesObject.getListOfExtensions());
+        
         //[/UserButtonCode_listExtensionCount]
     }
     else if (buttonThatWasClicked == listAllFiles)
