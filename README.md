@@ -3,6 +3,7 @@ A simple application for cleaning up folders / directories.
 
 * Remove all empty folders within a chosen directory.
 * Capitalize folders names, file names, or both.
+* List all files and list a count of all file extensions
 
 ![alt tag](https://github.com/JosephTLyons/Folder-Utility/blob/master/Images/Folder%20Utility%20GUI.png)
 
