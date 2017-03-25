@@ -26,7 +26,6 @@ void AnalyzeFiles::collectFileExtensions()
     for(int i = 0; i < temporaryFileHolderArray.size(); i++)
     {
         extensionArray.add(temporaryFileHolderArray[i].getFileName());
-        extensionArray[i] += "\n";
     }
     
     extensionArray.sort();
@@ -34,6 +33,7 @@ void AnalyzeFiles::collectFileExtensions()
     for(int i = 0; i < extensionArray.size(); i++)
     {
         Base::addToOutputString(extensionArray[i]);
+        Base::addToOutputString("\n");
     }
     
     #include <iostream>
@@ -44,4 +44,9 @@ void AnalyzeFiles::collectFileExtensions()
 String AnalyzeFiles::getListOfExtensions()
 {
     return Base::getOutputString();
+}
+
+void AnalyzeFiles::clearListOfFiles()
+{
+    Base::clearOutputString();
 }

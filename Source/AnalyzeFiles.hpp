@@ -19,6 +19,7 @@ public:
     void setMainPathway(File holdsFirstPathSelected);
     void collectFileExtensions();
     String getListOfExtensions();
+    void clearListOfFiles();
 };
 
 #endif /* AnalyzeFiles_hpp */
