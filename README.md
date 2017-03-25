@@ -4,6 +4,7 @@ Folder Utility is a simple tool that can clean up the contents of any directory 
 * Remove all empty folders within a chosen directory.
 * Capitalize folders names, file names, or both.
 * List all files and list a count of all file extensions
+* An output window shows the details of what Folder Utility does specifically when an action is chosen.
 
 ![alt tag](https://github.com/JosephTLyons/Folder-Utility/blob/master/Images/Folder%20Utility%20GUI.png)
 
