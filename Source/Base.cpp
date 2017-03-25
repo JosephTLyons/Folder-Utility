@@ -50,6 +50,8 @@ void Base::clearOutputString()
 
 Array<File> Base::returnDirIterItemsArray(DirectoryIterator &dirIter)
 {
+    Array<File> allItemsArray;
+    
     // Iterate and collect all files and store in filesArray
     while(dirIter.next())
     {

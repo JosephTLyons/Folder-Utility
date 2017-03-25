@@ -16,7 +16,6 @@ class Base
 private:
     File mainPathway;
     File fileHolder;
-    Array<File> allItemsArray;
     String outputString;
     
 public:

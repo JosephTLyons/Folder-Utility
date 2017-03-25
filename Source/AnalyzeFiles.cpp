@@ -19,26 +19,28 @@ void AnalyzeFiles::collectFilenames()
                                      File::findFiles + File::ignoreHiddenFiles);
     
     Array<File> temporaryFileHolderArray = Base::returnDirIterItemsArray(dirIter);
-    Array<String> extensionArray;
+    Array<String> filenameArray;
     Array<int> countOfFiles;
     
     // Get all extensions from the file array into the string array
     for(int i = 0; i < temporaryFileHolderArray.size(); i++)
     {
-        extensionArray.add(temporaryFileHolderArray[i].getFileName());
+        filenameArray.add(temporaryFileHolderArray[i].getFileName());
     }
     
-    extensionArray.sort();
+    filenameArray.sort();
     
-    for(int i = 0; i < extensionArray.size(); i++)
+    for(int i = 0; i < filenameArray.size(); i++)
     {
-        Base::addToOutputString(extensionArray[i]);
+        Base::addToOutputString((String) (i + 1));
+        Base::addToOutputString(") ");
+        Base::addToOutputString(filenameArray[i]);
         Base::addToOutputString("\n");
     }
     
-    #include <iostream>
-    using namespace std;
-    cout << Base::getOutputString();
+    Base::addToOutputString("\nCompleted: ");
+    Base::addToOutputString((String) filenameArray.size());
+    Base::addToOutputString(" files found.");
 }
 
 String AnalyzeFiles::getListOfItems()
