@@ -1,54 +1,54 @@
 //
-//  Base.cpp
+//  FunctionBase.cpp
 //  Folder Utility
 //
 //  Created by Joseph Lyons on 3/24/17.
 //
 //
 
-#include "Base.hpp"
+#include "FunctionBase.hpp"
 
-File Base::getMainPathway()
+File FunctionBase::getMainPathway()
 {
     return mainPathway;
 }
 
-File Base::getFileHolder()
+File FunctionBase::getFileHolder()
 {
     return fileHolder;
 }
 
-String Base::getOutputString()
+String FunctionBase::getOutputString()
 {
     return outputString;
 }
 
-void Base::setMainPathway(File holdsFirstPathSelected)
+void FunctionBase::setMainPathway(File holdsFirstPathSelected)
 {
     mainPathway = holdsFirstPathSelected;
 }
 
-void Base::setFileHolder(const File &inputFileHolder)
+void FunctionBase::setFileHolder(const File &inputFileHolder)
 {
     fileHolder = inputFileHolder;
 }
 
-void Base::addToOutputString(const char *inputText)
+void FunctionBase::addToOutputString(const char *inputText)
 {
     outputString += inputText;
 }
 
-void Base::addToOutputString(const String &inputString)
+void FunctionBase::addToOutputString(const String &inputString)
 {
     outputString += inputString;
 }
 
-void Base::clearOutputString()
+void FunctionBase::clearOutputString()
 {
     outputString.clear();
 }
 
-Array<File> Base::returnDirIterItemsArray(DirectoryIterator &dirIter)
+Array<File> FunctionBase::returnDirIterItemsArray(DirectoryIterator &dirIter)
 {
     Array<File> allItemsArray;
     

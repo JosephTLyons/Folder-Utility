@@ -1,17 +1,17 @@
 //
-//  Base.hpp
+//  FunctionBase.hpp
 //  Folder Utility
 //
 //  Created by Joseph Lyons on 3/24/17.
 //
 //
 
-#ifndef Base_hpp
-#define Base_hpp
+#ifndef FunctionBase_hpp
+#define FunctionBase_hpp
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class Base
+class FunctionBase
 {
 private:
     File mainPathway;
@@ -33,4 +33,4 @@ public:
     Array<File> returnDirIterItemsArray(DirectoryIterator &dirIter);
 };
 
-#endif /* Base_hpp */
+#endif /* FunctionBase_hpp */

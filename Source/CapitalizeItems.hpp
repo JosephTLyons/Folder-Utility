@@ -9,9 +9,9 @@
 #ifndef CapitalizeItems_hpp
 #define CapitalizeItems_hpp
 
-#include "Base.hpp"
+#include "FunctionBase.hpp"
 
-class CapitalizeItems : public Base
+class CapitalizeItems : public FunctionBase
 {
 private:
     

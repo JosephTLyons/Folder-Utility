@@ -9,9 +9,9 @@
 #ifndef AnalyzeFiles_hpp
 #define AnalyzeFiles_hpp
 
-#include "Base.hpp"
+#include "FunctionBase.hpp"
 
-class AnalyzeFiles : public Base
+class AnalyzeFiles : public FunctionBase
 {
 private:
 public:

@@ -9,9 +9,9 @@
 #ifndef RemoveEmptyDirectories_hpp
 #define RemoveEmptyDirectories_hpp
 
-#include "Base.hpp"
+#include "FunctionBase.hpp"
 
-class RemoveEmptyDirectories : public Base
+class RemoveEmptyDirectories : public FunctionBase
 {
 private:
     
