@@ -96,7 +96,7 @@ Interface::Interface ()
     directoryPathwayLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     addAndMakeVisible (capitalizeItemsButton = new TextButton ("capitalizeItemsButton"));
-    capitalizeItemsButton->setButtonText (TRANS("Capitilize Files"));
+    capitalizeItemsButton->setButtonText (TRANS("Capitilize Items"));
     capitalizeItemsButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     capitalizeItemsButton->addListener (this);
     capitalizeItemsButton->setColour (TextButton::buttonColourId, Colours::cornflowerblue);
@@ -399,7 +399,7 @@ BEGIN_JUCER_METADATA
          justification="36"/>
   <TEXTBUTTON name="capitalizeItemsButton" id="bd92522c60a73c65" memberName="capitalizeItemsButton"
               virtualName="" explicitFocusOrder="0" pos="200 300 200 50" bgColOff="ff6495ed"
-              textCol="ffffffff" buttonText="Capitilize Files" connectedEdges="3"
+              textCol="ffffffff" buttonText="Capitilize Items" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="filesOptionToggle" id="631d75a04a9c0263" memberName="filesOptionToggle"
               virtualName="" explicitFocusOrder="0" pos="0 300 100 50" textColOn="ff808080"
