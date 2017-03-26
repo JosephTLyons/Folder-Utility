@@ -8,11 +8,6 @@
 
 #include "AnalyzeFiles.hpp"
 
-void AnalyzeFiles::setMainPathway(File holdsFirstPathSelected)
-{
-    setMainPathway(holdsFirstPathSelected);
-}
-
 void AnalyzeFiles::collectFilenames()
 {
     DirectoryIterator dirIter (File (getMainPathway().getFullPathName()), true, "*",
@@ -41,14 +36,4 @@ void AnalyzeFiles::collectFilenames()
     addToOutputString("\nCompleted: ");
     addToOutputString((String) filenameArray.size());
     addToOutputString(" files found.");
-}
-
-String AnalyzeFiles::getListOfItems()
-{
-    return getOutputString();
-}
-
-void AnalyzeFiles::clearListOfFiles()
-{
-    clearOutputString();
 }

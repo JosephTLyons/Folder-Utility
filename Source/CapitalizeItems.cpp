@@ -69,8 +69,3 @@ void CapitalizeItems::makeUpperCase()
     
     getFileHolder().createLegalFileName(fileName);
 }
-
-void CapitalizeItems::setMainPathway(File holdsFirstPathSelected)
-{
-    setMainPathway(holdsFirstPathSelected);
-}

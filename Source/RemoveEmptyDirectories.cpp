@@ -90,29 +90,9 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
     numberOfFilesRemoved++;
 }
 
-void RemoveEmptyDirectories::setMainPathway(File holdsFirstPathSelected)
-{
-    setMainPathway(holdsFirstPathSelected);
-}
-
-File RemoveEmptyDirectories::getMainPathway()
-{
-    return getMainPathway();
-}
-
-String RemoveEmptyDirectories::getListOfFoldersRemoved()
-{
-    return getOutputString();
-}
-
 int RemoveEmptyDirectories::getNumberOfFilesRemoved()
 {
     return numberOfFilesRemoved;
-}
-
-void RemoveEmptyDirectories::clearListOfFoldersRemoved()
-{
-    clearOutputString();
 }
 
 void RemoveEmptyDirectories::clearNumberOfFilesRemoved()

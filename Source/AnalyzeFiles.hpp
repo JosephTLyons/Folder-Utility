@@ -16,10 +16,7 @@ class AnalyzeFiles : public Base
 private:
 public:
     
-    void setMainPathway(File holdsFirstPathSelected);
     void collectFilenames();
-    String getListOfItems();
-    void clearListOfFiles();
 };
 
 #endif /* AnalyzeFiles_hpp */

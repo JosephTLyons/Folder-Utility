@@ -25,11 +25,7 @@ public:
     
     RemoveEmptyDirectories();
     void removeAllEmptyFolders();
-    void setMainPathway(File holdsFirstPathSelected);
-    File getMainPathway();
-    String getListOfFoldersRemoved();
     int getNumberOfFilesRemoved();
-    void clearListOfFoldersRemoved();
     void clearNumberOfFilesRemoved();
 };
 

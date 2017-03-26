@@ -20,7 +20,6 @@ private:
     
 public:
     void capitalizeItemsDriver(const bool &files, const bool &folders);
-    void setMainPathway(File holdsFirstPathSelected);
     
 };
 

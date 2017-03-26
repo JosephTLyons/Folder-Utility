@@ -294,7 +294,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         analyzeFilesObject.collectFilenames();
 
         // Set summary string to text editor
-        summaryTextEditor->setText(analyzeFilesObject.getListOfItems());
+        summaryTextEditor->setText(analyzeFilesObject.getOutputString());
 
         // Reset summary fields
         clearSummaryItems();
@@ -337,14 +337,14 @@ void Interface::enableAllButtons(const bool &enableSafeItems, const bool&enableD
 void Interface::clearSummaryItems()
 {
     // Items for removing empty directories
-    removeEmptyDirectoriesObject.clearListOfFoldersRemoved();
+    removeEmptyDirectoriesObject.clearOutputString();
     removeEmptyDirectoriesObject.clearNumberOfFilesRemoved();
 
     // Items for capitalize items
     //capitalizeItemsObject.
 
     // Items for analyze files
-    analyzeFilesObject.clearListOfFiles();
+    analyzeFilesObject.clearOutputString();
 }
 
 //[/MiscUserCode]
