@@ -18,6 +18,7 @@ private:
     int numberOfFilesRemoved;
     bool iterateAgain;
     
+    // Private function member
     bool folderIsEmpty();
     void removeSingleEmptyFolder();
     
