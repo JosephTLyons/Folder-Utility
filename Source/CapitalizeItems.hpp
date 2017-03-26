@@ -11,7 +11,7 @@
 
 #include "Base.hpp"
 
-class CapitalizeItems : private Base
+class CapitalizeItems : public Base
 {
 private:
     

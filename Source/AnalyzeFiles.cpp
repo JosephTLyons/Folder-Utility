@@ -10,7 +10,7 @@
 
 void AnalyzeFiles::setMainPathway(File holdsFirstPathSelected)
 {
-    Base::setMainPathway(holdsFirstPathSelected);
+    setMainPathway(holdsFirstPathSelected);
 }
 
 void AnalyzeFiles::collectFilenames()
@@ -18,7 +18,7 @@ void AnalyzeFiles::collectFilenames()
     DirectoryIterator dirIter (File (getMainPathway().getFullPathName()), true, "*",
                                      File::findFiles + File::ignoreHiddenFiles);
     
-    Array<File> temporaryFileHolderArray = Base::returnDirIterItemsArray(dirIter);
+    Array<File> temporaryFileHolderArray = returnDirIterItemsArray(dirIter);
     Array<String> filenameArray;
     Array<int> countOfFiles;
     
@@ -32,23 +32,23 @@ void AnalyzeFiles::collectFilenames()
     
     for(int i = 0; i < filenameArray.size(); i++)
     {
-        Base::addToOutputString((String) (i + 1));
-        Base::addToOutputString(") ");
-        Base::addToOutputString(filenameArray[i]);
-        Base::addToOutputString("\n");
+        addToOutputString((String) (i + 1));
+        addToOutputString(") ");
+        addToOutputString(filenameArray[i]);
+        addToOutputString("\n");
     }
     
-    Base::addToOutputString("\nCompleted: ");
-    Base::addToOutputString((String) filenameArray.size());
-    Base::addToOutputString(" files found.");
+    addToOutputString("\nCompleted: ");
+    addToOutputString((String) filenameArray.size());
+    addToOutputString(" files found.");
 }
 
 String AnalyzeFiles::getListOfItems()
 {
-    return Base::getOutputString();
+    return getOutputString();
 }
 
 void AnalyzeFiles::clearListOfFiles()
 {
-    Base::clearOutputString();
+    clearOutputString();
 }

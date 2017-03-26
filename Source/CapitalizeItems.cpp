@@ -21,7 +21,7 @@ void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folde
                                                       File::findFilesAndDirectories +
                                                       File::ignoreHiddenFiles);
             
-            Array<File> allFilesAndFoldersArray = Base::returnDirIterItemsArray(dirIterFilesAndFolders);
+            Array<File> allFilesAndFoldersArray = returnDirIterItemsArray(dirIterFilesAndFolders);
             
             capitalizeItems(allFilesAndFoldersArray);
         }
@@ -31,7 +31,7 @@ void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folde
             DirectoryIterator dirIterFiles (File (getMainPathway().getFullPathName()), true, "*",
                                             File::findFiles + File::ignoreHiddenFiles);
             
-            Array<File> allFilesArray = Base::returnDirIterItemsArray(dirIterFiles);
+            Array<File> allFilesArray = returnDirIterItemsArray(dirIterFiles);
             
             capitalizeItems(allFilesArray);
         }
@@ -42,7 +42,7 @@ void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folde
             DirectoryIterator dirIterFolders (File (getMainPathway().getFullPathName()), true, "*",
                                               File::findDirectories + File::ignoreHiddenFiles);
             
-            Array<File> allFoldersArray = Base::returnDirIterItemsArray(dirIterFolders);
+            Array<File> allFoldersArray = returnDirIterItemsArray(dirIterFolders);
             
             capitalizeItems(allFoldersArray);
         }
@@ -53,24 +53,24 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
 {
     for(int i = 0; i < items.size(); i++)
     {
-        Base::setFileHolder(items[i]);
+        setFileHolder(items[i]);
         makeUpperCase();
     }
 }
 
 void CapitalizeItems::makeUpperCase()
 {
-    String fileName = Base::getFileHolder().getFileNameWithoutExtension();
+    String fileName = getFileHolder().getFileNameWithoutExtension();
     
     //fileName = fileName.getFile
     // NOT DONE HERE
     
     fileName = fileName.toUpperCase();
     
-    Base::getFileHolder().createLegalFileName(fileName);
+    getFileHolder().createLegalFileName(fileName);
 }
 
 void CapitalizeItems::setMainPathway(File holdsFirstPathSelected)
 {
-    Base::setMainPathway(holdsFirstPathSelected);
+    setMainPathway(holdsFirstPathSelected);
 }

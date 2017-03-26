@@ -11,7 +11,7 @@
 
 #include "Base.hpp"
 
-class AnalyzeFiles : private Base
+class AnalyzeFiles : public Base
 {
 private:
 public:

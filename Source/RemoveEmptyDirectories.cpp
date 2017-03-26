@@ -17,10 +17,10 @@ RemoveEmptyDirectories::RemoveEmptyDirectories()
 void RemoveEmptyDirectories::removeAllEmptyFolders()
 {
     // Scans files and directories recursively, but skips hidden files
-    DirectoryIterator dirIter (File (Base::getMainPathway().getFullPathName()), true, "*",
+    DirectoryIterator dirIter (File (getMainPathway().getFullPathName()), true, "*",
                                File::findFilesAndDirectories + File::ignoreHiddenFiles);
     
-    Array<File> allFilesAndFoldersArray = Base::returnDirIterItemsArray(dirIter);
+    Array<File> allFilesAndFoldersArray = returnDirIterItemsArray(dirIter);
     
     do
     {
@@ -28,9 +28,9 @@ void RemoveEmptyDirectories::removeAllEmptyFolders()
         
         for(int i = 0; (i < allFilesAndFoldersArray.size()) && (iterateAgain == false); i++)
         {
-            Base::setFileHolder(allFilesAndFoldersArray[i]);
+            setFileHolder(allFilesAndFoldersArray[i]);
             
-            if(Base::getFileHolder().isDirectory())
+            if(getFileHolder().isDirectory())
             {
                 if(folderIsEmpty())
                 {
@@ -44,15 +44,15 @@ void RemoveEmptyDirectories::removeAllEmptyFolders()
     while(iterateAgain);
     
     // Add remaining infomrmation to text string for textEditor
-    Base::addToOutputString("Completed: ");
-    Base::addToOutputString((String) numberOfFilesRemoved);
-    Base::addToOutputString(" empty folder(s) moved to trash.\n\n");
+    addToOutputString("Completed: ");
+    addToOutputString((String) numberOfFilesRemoved);
+    addToOutputString(" empty folder(s) moved to trash.\n\n");
 }
 
 bool RemoveEmptyDirectories::folderIsEmpty()
 {
     // Scans files and directories non-recursively, but skips hidden files
-    DirectoryIterator dirIter (File (Base::getFileHolder().getFullPathName()), false, "*",
+    DirectoryIterator dirIter (File (getFileHolder().getFullPathName()), false, "*",
                                File::findFilesAndDirectories + File::ignoreHiddenFiles);
     
     // This will return true if the directory iterator can advance to a file or folder
@@ -74,17 +74,17 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
     
     // This code is to fix the broken Apple code that doesn't always move items to trash
     // Continually try until the file doesn't exist
-    for(; (loopCounter < END_LOOP_AFTER_100_ATTEMPTS) && (Base::getFileHolder().exists()); loopCounter++)
+    for(; (loopCounter < END_LOOP_AFTER_100_ATTEMPTS) && (getFileHolder().exists()); loopCounter++)
     {
-        Base::getFileHolder().moveToTrash();
+        getFileHolder().moveToTrash();
         Thread::sleep(15);
     }
 
     // Add filename to list of removed files
-    Base::addToOutputString((String) (numberOfFilesRemoved + 1));
-    Base::addToOutputString(": /");
-    Base::addToOutputString(Base::getFileHolder().getRelativePathFrom(Base::getMainPathway().getFullPathName()));
-    Base::addToOutputString("\n\n");
+    addToOutputString((String) (numberOfFilesRemoved + 1));
+    addToOutputString(": /");
+    addToOutputString(getFileHolder().getRelativePathFrom(getMainPathway().getFullPathName()));
+    addToOutputString("\n\n");
 
     // Increment number of files removed
     numberOfFilesRemoved++;
@@ -92,17 +92,17 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
 
 void RemoveEmptyDirectories::setMainPathway(File holdsFirstPathSelected)
 {
-    Base::setMainPathway(holdsFirstPathSelected);
+    setMainPathway(holdsFirstPathSelected);
 }
 
 File RemoveEmptyDirectories::getMainPathway()
 {
-    return Base::getMainPathway();
+    return getMainPathway();
 }
 
 String RemoveEmptyDirectories::getListOfFoldersRemoved()
 {
-    return Base::getOutputString();
+    return getOutputString();
 }
 
 int RemoveEmptyDirectories::getNumberOfFilesRemoved()
@@ -112,7 +112,7 @@ int RemoveEmptyDirectories::getNumberOfFilesRemoved()
 
 void RemoveEmptyDirectories::clearListOfFoldersRemoved()
 {
-    Base::clearOutputString();
+    clearOutputString();
 }
 
 void RemoveEmptyDirectories::clearNumberOfFilesRemoved()

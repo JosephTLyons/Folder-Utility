@@ -11,7 +11,7 @@
 
 #include "Base.hpp"
 
-class RemoveEmptyDirectories : private Base
+class RemoveEmptyDirectories : public Base
 {
 private:
     
