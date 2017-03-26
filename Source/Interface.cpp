@@ -246,10 +246,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         // Commence Action
         removeEmptyDirectoriesObject.removeAllEmptyFolders();
 
-        // Set history string to text editor
-        summaryTextEditor->setText(removeEmptyDirectoriesObject.getListOfFoldersRemoved());
+        // Set summary string to text editor
+        summaryTextEditor->setText(removeEmptyDirectoriesObject.getOutputString());
 
-        // Reset history fields
+        // Reset summary fields
         clearSummaryItems();
 
         // Disengage buttons again
@@ -265,10 +265,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         capitalizeItemsObject.capitalizeItemsDriver(filesOptionToggle->getToggleState() ,
                                                     foldersOptionToggle2->getToggleState());
 
-        // Set history string to text editor
+        // Set summary string to text editor
         // STUFF
 
-        // Reset history fields
+        // Reset summary fields
         clearSummaryItems();
 
         // Disengage buttons again
@@ -293,10 +293,10 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         // Commence Action
         analyzeFilesObject.collectFilenames();
 
-        // Set history string to text editor
+        // Set summary string to text editor
         summaryTextEditor->setText(analyzeFilesObject.getListOfItems());
 
-        // Reset history fields
+        // Reset summary fields
         clearSummaryItems();
 
         // Disengage buttons again
