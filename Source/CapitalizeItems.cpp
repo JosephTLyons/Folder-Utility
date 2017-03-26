@@ -13,7 +13,6 @@ void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folde
     // Only execute function if either or is selected
     if (files || folders)
     {
-        
         // Call function here and pass correct iter into it
         if(files && folders)
         {
