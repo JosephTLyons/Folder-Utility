@@ -14,13 +14,11 @@
 class CapitalizeItems : public FunctionBase
 {
 private:
-    
     // Private function members
     void capitalizeItems(Array<File> &items);
     void makeUpperCase();
     
 public:
-    
     void capitalizeItemsDriver(const bool &files, const bool &folders);
     
 };

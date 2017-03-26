@@ -14,7 +14,6 @@
 class RemoveEmptyDirectories : public FunctionBase
 {
 private:
-    
     int numberOfFilesRemoved;
     bool iterateAgain;
     
@@ -23,7 +22,6 @@ private:
     void removeSingleEmptyFolder();
     
 public:
-    
     RemoveEmptyDirectories();
     void removeAllEmptyFolders();
     int getNumberOfFilesRemoved();

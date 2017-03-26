@@ -15,7 +15,6 @@ class AnalyzeFiles : public FunctionBase
 {
 private:
 public:
-    
     void collectFilenames();
 };
 
