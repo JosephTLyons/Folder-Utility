@@ -6,6 +6,7 @@
 //
 //
 
+#include <ctype.h> // For touppper function
 #include "CapitalizeItems.hpp"
 
 void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folders)
@@ -60,12 +61,24 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
 
 void CapitalizeItems::makeUpperCase()
 {
-    String fileName = getFileHolder().getFileNameWithoutExtension();
+    String fullPath = getFileHolder().getFullPathName();
+    int positionOfBackSlash;
     
-    //fileName = fileName.getFile
-    // NOT DONE HERE
+    for(int i = 0; i < fullPath.length(); i++)
+    {
+        if(fullPath[i] == '/')
+        {
+            positionOfBackSlash = i;
+        }
+    }
     
-    fileName = fileName.toUpperCase();
+    //fullPath[positionOfBackSlash + 1] = (fullPath[positionOfBackSlash + 1]);
     
-    getFileHolder().createLegalFileName(fileName);
+    
+    // Algorithm to identify letters to make uppercase
+    // -first occuring character, every chareacter after a space
+    
+    // rebuild the name of the item here
+    
+    getFileHolder().moveFileTo(fullPath);
 }
