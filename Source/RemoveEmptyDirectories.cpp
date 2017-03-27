@@ -81,7 +81,7 @@ void RemoveEmptyDirectories::removeSingleEmptyFolder()
     addToOutputString((String) (numberOfFilesRemoved + 1));
     addToOutputString(": /");
     addToOutputString(getFileHolder().getRelativePathFrom(getMainPathway().getFullPathName()));
-    addToOutputString("\n\n");
+    addToOutputString("\n");
 
     // Increment number of files removed
     numberOfFilesRemoved++;
