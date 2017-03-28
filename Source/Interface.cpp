@@ -54,7 +54,7 @@ Interface::Interface ()
     selectDirectoryButton->setButtonText (TRANS("Select Directory"));
     selectDirectoryButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
     selectDirectoryButton->addListener (this);
-    selectDirectoryButton->setColour (TextButton::buttonColourId, Colour (0xff48b96d));
+    selectDirectoryButton->setColour (TextButton::buttonColourId, Colour (0xff48b988));
     selectDirectoryButton->setColour (TextButton::textColourOffId, Colours::white);
 
     addAndMakeVisible (removeEmptyFolders = new TextButton ("removeEmptyFolders"));
@@ -425,7 +425,7 @@ BEGIN_JUCER_METADATA
          bold="0" italic="0" justification="36"/>
   <TEXTBUTTON name="selectDirectoryselectDirectoryButton" id="48724a493ca7e66e"
               memberName="selectDirectoryButton" virtualName="" explicitFocusOrder="0"
-              pos="0 125 400 25" bgColOff="ff48b96d" textCol="ffffffff" buttonText="Select Directory"
+              pos="0 125 400 25" bgColOff="ff48b988" textCol="ffffffff" buttonText="Select Directory"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="removeEmptyFolders" id="4ad96e211ef69bb7" memberName="removeEmptyFolders"
               virtualName="" explicitFocusOrder="0" pos="0 200 400 25" bgColOff="ff6495ed"
