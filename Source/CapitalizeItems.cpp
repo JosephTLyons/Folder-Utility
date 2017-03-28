@@ -62,39 +62,55 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
 void CapitalizeItems::makeUpperCase()
 {
     Array<juce_wchar> stringOfCharToCapitalize;
+    Array<juce_wchar> fileNameArray;
     String fullPath = getFileHolder().getFullPathName();
     int positionOfFirstCharacter;
     
-    // Find last part of directory
     for(int i = 0; i < fullPath.length(); i++)
     {
+        fileNameArray.add(fullPath[i]);
+    }
+    
+    // Find last part of directory
+    for(int i = 0; i < fileNameArray.size(); i++)
+    {
         // Capitalize first letter of item
-        if(fullPath[i] == '/')
+        if(fileNameArray[i] == '/')
         {
-            positionOfFirstCharacter = (++i);
-            // Capitalize i + 1 here
+            positionOfFirstCharacter = (i);
         }
     }
     
-    for(int i = positionOfFirstCharacter; i < fullPath.length(); i++)
+    // Capitalize i + 1 here
+    fileNameArray.set(positionOfFirstCharacter + 1,
+                     CharacterFunctions::toUpperCase(fileNameArray[positionOfFirstCharacter + 1]));
+    
+    for(int i = positionOfFirstCharacter; i < fileNameArray.size(); i++)
     {
-        // Capitalize spaces
-        if(CharacterFunctions::isWhitespace(fullPath[i]))
+        // Capitalize after spaces
+        if(CharacterFunctions::isWhitespace(fileNameArray[i]))
         {
-            fullPath[i + 1] = CharacterFunctions::toUpperCase(fullPath[i + 1]);
+            fileNameArray.set(i + 1, CharacterFunctions::toUpperCase(fileNameArray[i + 1]));
         }
         
-        // Capitalize underscores
+        // Capitalize after underscores
         if((fullPath[i]) == '_')
         {
-            fullPath[i + 1] = CharacterFunctions::toUpperCase(fullPath[i + 1]);
+            fileNameArray.set(i + 1, CharacterFunctions::toUpperCase(fileNameArray[i + 1]));
         }
         
-        // Capitalize dashes
+        // Capitalize after dashes
         if((fullPath[i]) == '-')
         {
-            fullPath[i + 1] = CharacterFunctions::toUpperCase(fullPath[i + 1]);
+            fileNameArray.set(i + 1, CharacterFunctions::toUpperCase(fileNameArray[i + 1]));
         }
+    }
+    
+    fullPath.clear();
+    
+    for(int i = 0; i < fileNameArray.size(); i++)
+    {
+        fullPath += fileNameArray[i];
     }
     
     getFileHolder().moveFileTo(fullPath);
