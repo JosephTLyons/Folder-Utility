@@ -150,7 +150,7 @@ Interface::Interface ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (400, 625);
+    setSize (400, 550);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -210,21 +210,21 @@ void Interface::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    summaryLabel->setBounds (0, 400, 400, 25);
+    summaryLabel->setBounds (0, 275, 400, 25);
     folderUtilityLabel->setBounds (0, 0, 400, 50);
-    selectDirectoryButton->setBounds (0, 125, 400, 50);
-    removeEmptyFolders->setBounds (0, 250, 400, 50);
+    selectDirectoryButton->setBounds (0, 125, 400, 25);
+    removeEmptyFolders->setBounds (0, 200, 400, 25);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
-    summaryTextEditor->setBounds (0, 425, 400, 200);
+    summaryTextEditor->setBounds (0, 300, 400, 250);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
-    capitalizeItemsButton->setBounds (200, 300, 200, 50);
-    filesOptionToggle->setBounds (0, 300, 100, 50);
-    foldersOptionToggle2->setBounds (100, 300, 100, 50);
-    listAllFiles->setBounds (0, 175, 400, 50);
-    unlockButton->setBounds (0, 225, 400, 25);
-    stripCharactersButton->setBounds (200, 350, 200, 50);
-    stripUnderscoreToggle->setBounds (0, 350, 100, 50);
-    stripHyphenToggle->setBounds (100, 350, 100, 50);
+    capitalizeItemsButton->setBounds (200, 225, 200, 25);
+    filesOptionToggle->setBounds (0, 225, 100, 25);
+    foldersOptionToggle2->setBounds (100, 225, 100, 25);
+    listAllFiles->setBounds (0, 150, 400, 25);
+    unlockButton->setBounds (0, 175, 400, 25);
+    stripCharactersButton->setBounds (200, 250, 200, 25);
+    stripUnderscoreToggle->setBounds (0, 250, 100, 25);
+    stripHyphenToggle->setBounds (100, 250, 100, 25);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -410,10 +410,10 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="Interface" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="400" initialHeight="625">
+                 fixedSize="1" initialWidth="400" initialHeight="550">
   <BACKGROUND backgroundColour="ff3e3e3e"/>
   <LABEL name="summaryLabel" id="66a66b2dca7d8008" memberName="summaryLabel"
-         virtualName="" explicitFocusOrder="0" pos="0 400 400 25" textCol="ffc6c6c6"
+         virtualName="" explicitFocusOrder="0" pos="0 275 400 25" textCol="ffc6c6c6"
          edTextCol="ff000000" edBkgCol="0" labelText="Summary:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="American Typewriter"
          fontsize="15" bold="0" italic="0" justification="36"/>
@@ -425,10 +425,10 @@ BEGIN_JUCER_METADATA
          bold="0" italic="0" justification="36"/>
   <TEXTBUTTON name="selectDirectoryselectDirectoryButton" id="48724a493ca7e66e"
               memberName="selectDirectoryButton" virtualName="" explicitFocusOrder="0"
-              pos="0 125 400 50" bgColOff="ff48b96d" textCol="ffffffff" buttonText="Select Directory"
+              pos="0 125 400 25" bgColOff="ff48b96d" textCol="ffffffff" buttonText="Select Directory"
               connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="removeEmptyFolders" id="4ad96e211ef69bb7" memberName="removeEmptyFolders"
-              virtualName="" explicitFocusOrder="0" pos="0 250 400 50" bgColOff="ff6495ed"
+              virtualName="" explicitFocusOrder="0" pos="0 200 400 25" bgColOff="ff6495ed"
               textCol="ffffffff" buttonText="Remove Empty Folders" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTEDITOR name="directoryPathDisplay" id="1fdfeaa5b403b983" memberName="directoryPathDisplay"
@@ -436,7 +436,7 @@ BEGIN_JUCER_METADATA
               bkgcol="ff3e3e3e" initialText="" multiline="1" retKeyStartsLine="0"
               readonly="1" scrollbars="1" caret="0" popupmenu="1"/>
   <TEXTEDITOR name="summaryTextEditor" id="e96280133f57cb22" memberName="summaryTextEditor"
-              virtualName="" explicitFocusOrder="0" pos="0 425 400 200" textcol="ffffffff"
+              virtualName="" explicitFocusOrder="0" pos="0 300 400 250" textcol="ffffffff"
               bkgcol="ff3e3e3e" initialText="" multiline="1" retKeyStartsLine="0"
               readonly="1" scrollbars="1" caret="0" popupmenu="1"/>
   <LABEL name="directoryPathwayLabel" id="1b6b6d72a7200e14" memberName="directoryPathwayLabel"
@@ -446,32 +446,32 @@ BEGIN_JUCER_METADATA
          fontname="American Typewriter" fontsize="15" bold="0" italic="0"
          justification="36"/>
   <TEXTBUTTON name="capitalizeItemsButton" id="bd92522c60a73c65" memberName="capitalizeItemsButton"
-              virtualName="" explicitFocusOrder="0" pos="200 300 200 50" bgColOff="ff6495ed"
+              virtualName="" explicitFocusOrder="0" pos="200 225 200 25" bgColOff="ff6495ed"
               textCol="ffffffff" buttonText="Capitilize Items" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="filesOptionToggle" id="631d75a04a9c0263" memberName="filesOptionToggle"
-              virtualName="" explicitFocusOrder="0" pos="0 300 100 50" textColOn="ff808080"
+              virtualName="" explicitFocusOrder="0" pos="0 225 100 25" textColOn="ff808080"
               buttonText="Files" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="foldersOptionToggle2" id="812321b70b3732b6" memberName="foldersOptionToggle2"
-              virtualName="" explicitFocusOrder="0" pos="100 300 100 50" textColOn="ff808080"
+              virtualName="" explicitFocusOrder="0" pos="100 225 100 25" textColOn="ff808080"
               buttonText="Folders" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="listAllFiles" id="97829cf1ebb3f6d2" memberName="listAllFiles"
-              virtualName="" explicitFocusOrder="0" pos="0 175 400 50" bgColOff="ff6495ed"
+              virtualName="" explicitFocusOrder="0" pos="0 150 400 25" bgColOff="ff6495ed"
               textCol="ffffffff" buttonText="List All Files" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="unlockButton" id="915f32148b22746d" memberName="unlockButton"
-              virtualName="" explicitFocusOrder="0" pos="0 225 400 25" bgColOff="ffe86565"
+              virtualName="" explicitFocusOrder="0" pos="0 175 400 25" bgColOff="ffe86565"
               buttonText="Unlock" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="stripCharactersButton" id="783c96e8cb55d851" memberName="stripCharactersButton"
-              virtualName="" explicitFocusOrder="0" pos="200 350 200 50" bgColOff="ff6495ed"
+              virtualName="" explicitFocusOrder="0" pos="200 250 200 25" bgColOff="ff6495ed"
               textCol="ffffffff" buttonText="Strip Characters" connectedEdges="3"
               needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="stripUnderscoreToggle" id="2010abe8c28768f6" memberName="stripUnderscoreToggle"
-              virtualName="" explicitFocusOrder="0" pos="0 350 100 50" textColOn="ff808080"
+              virtualName="" explicitFocusOrder="0" pos="0 250 100 25" textColOn="ff808080"
               buttonText="&quot;_&quot;" connectedEdges="3" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="stripHyphenToggle" id="3363f687a46e387d" memberName="stripHyphenToggle"
-              virtualName="" explicitFocusOrder="0" pos="100 350 100 50" textColOn="ff808080"
+              virtualName="" explicitFocusOrder="0" pos="100 250 100 25" textColOn="ff808080"
               buttonText="&quot;-&quot;" connectedEdges="3" needsCallback="1"
               radioGroupId="0"/>
 </JUCER_COMPONENT>
