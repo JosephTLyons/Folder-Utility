@@ -65,12 +65,14 @@ void CapitalizeItems::makeUpperCase()
     String fullPath = getFileHolder().getFullPathName();
     int positionOfFirstCharacter;
     
+    // Find last part of directory
     for(int i = 0; i < fullPath.length(); i++)
     {
+        // Capitalize first letter of item
         if(fullPath[i] == '/')
         {
+            positionOfFirstCharacter = (++i);
             // Capitalize i + 1 here
-            positionOfFirstCharacter = (i + 1);
         }
     }
     
