@@ -52,7 +52,7 @@ void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folde
 
 void CapitalizeItems::capitalizeItems(Array<File> &items)
 {
-    for(int i = items.size(); i >= 0; i--)
+    for(int i = 0; i < items.size(); i++)
     {
         setFileHolder(items[i]);
         makeUpperCase();
@@ -64,6 +64,7 @@ void CapitalizeItems::makeUpperCase()
     Array<juce_wchar> fullPathArray;
     String fullPathString = getFileHolder().getFullPathName();
     int positionOfFirstCharacter;
+    bool didAChangeOccur = false;
     
     for(int i = 0; i < fullPathString.length(); i++)
     {
@@ -81,8 +82,13 @@ void CapitalizeItems::makeUpperCase()
     }
     
     // Capitalize first letter after last '/'
-    fullPathArray.set(positionOfFirstCharacter + 1,
-                     CharacterFunctions::toUpperCase(fullPathArray[positionOfFirstCharacter + 1]));
+    if(CharacterFunctions::isLowerCase(fullPathArray[positionOfFirstCharacter + 1]))
+    {
+        fullPathArray.set(positionOfFirstCharacter + 1,
+                          CharacterFunctions::toUpperCase(fullPathArray[positionOfFirstCharacter + 1]));
+        
+        didAChangeOccur = true;
+    }
     
     for(int i = positionOfFirstCharacter; i < fullPathArray.size(); i++)
     {
@@ -90,18 +96,24 @@ void CapitalizeItems::makeUpperCase()
         if(CharacterFunctions::isWhitespace(fullPathArray[i]))
         {
             fullPathArray.set(i + 1, CharacterFunctions::toUpperCase(fullPathArray[i + 1]));
+            
+            didAChangeOccur = true;
         }
         
         // Capitalize after underscores
         if((fullPathString[i]) == '_')
         {
             fullPathArray.set(i + 1, CharacterFunctions::toUpperCase(fullPathArray[i + 1]));
+            
+            didAChangeOccur = true;
         }
         
         // Capitalize after dashes
         if((fullPathString[i]) == '-')
         {
             fullPathArray.set(i + 1, CharacterFunctions::toUpperCase(fullPathArray[i + 1]));
+            
+            didAChangeOccur = true;
         }
     }
     
@@ -112,6 +124,11 @@ void CapitalizeItems::makeUpperCase()
     {
         fullPathString += fullPathArray[i];
     }
+    
+    addToOutputString(getFileHolder().getFileName());
+    addToOutputString(" -> ");
+    addToOutputString(fullPathString);
+    addToOutputString("\n\n");
     
     // move will actually rename the file if its in the same location
     getFileHolder().moveFileTo(fullPathString);

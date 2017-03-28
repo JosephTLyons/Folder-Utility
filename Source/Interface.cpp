@@ -127,11 +127,30 @@ Interface::Interface ()
     unlockButton->addListener (this);
     unlockButton->setColour (TextButton::buttonColourId, Colour (0xffe86565));
 
+    addAndMakeVisible (stripCharactersButton = new TextButton ("stripCharactersButton"));
+    stripCharactersButton->setButtonText (TRANS("Strip Characters"));
+    stripCharactersButton->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    stripCharactersButton->addListener (this);
+    stripCharactersButton->setColour (TextButton::buttonColourId, Colours::cornflowerblue);
+    stripCharactersButton->setColour (TextButton::textColourOffId, Colours::white);
+
+    addAndMakeVisible (stripUnderscoreToggle = new TextButton ("stripUnderscoreToggle"));
+    stripUnderscoreToggle->setButtonText (TRANS("\"_\""));
+    stripUnderscoreToggle->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    stripUnderscoreToggle->addListener (this);
+    stripUnderscoreToggle->setColour (TextButton::textColourOnId, Colours::grey);
+
+    addAndMakeVisible (stripHyphenToggle = new TextButton ("stripHyphenToggle"));
+    stripHyphenToggle->setButtonText (TRANS("\"-\""));
+    stripHyphenToggle->setConnectedEdges (Button::ConnectedOnLeft | Button::ConnectedOnRight);
+    stripHyphenToggle->addListener (this);
+    stripHyphenToggle->setColour (TextButton::textColourOnId, Colours::grey);
+
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (400, 575);
+    setSize (400, 625);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -142,6 +161,8 @@ Interface::Interface ()
     // Set these buttons to be toggle switches
     filesOptionToggle->setClickingTogglesState(true);
     foldersOptionToggle2->setClickingTogglesState(true);
+    stripUnderscoreToggle->setClickingTogglesState(true);
+    stripHyphenToggle->setClickingTogglesState(true);
 
     //[/Constructor]
 }
@@ -163,6 +184,9 @@ Interface::~Interface()
     foldersOptionToggle2 = nullptr;
     listAllFiles = nullptr;
     unlockButton = nullptr;
+    stripCharactersButton = nullptr;
+    stripUnderscoreToggle = nullptr;
+    stripHyphenToggle = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -186,18 +210,21 @@ void Interface::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    summaryLabel->setBounds (0, 350, 400, 25);
+    summaryLabel->setBounds (0, 400, 400, 25);
     folderUtilityLabel->setBounds (0, 0, 400, 50);
     selectDirectoryButton->setBounds (0, 125, 400, 50);
     removeEmptyFolders->setBounds (0, 250, 400, 50);
     directoryPathDisplay->setBounds (0, 75, 400, 50);
-    summaryTextEditor->setBounds (0, 375, 400, 200);
+    summaryTextEditor->setBounds (0, 425, 400, 200);
     directoryPathwayLabel->setBounds (0, 50, 400, 25);
     capitalizeItemsButton->setBounds (200, 300, 200, 50);
     filesOptionToggle->setBounds (0, 300, 100, 50);
     foldersOptionToggle2->setBounds (100, 300, 100, 50);
     listAllFiles->setBounds (0, 175, 400, 50);
     unlockButton->setBounds (0, 225, 400, 25);
+    stripCharactersButton->setBounds (200, 350, 200, 50);
+    stripUnderscoreToggle->setBounds (0, 350, 100, 50);
+    stripHyphenToggle->setBounds (100, 350, 100, 50);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -266,7 +293,7 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
                                                     foldersOptionToggle2->getToggleState());
 
         // Set summary string to text editor
-        // STUFF
+        summaryTextEditor->setText(capitalizeItemsObject.getOutputString());
 
         // Reset summary fields
         clearSummaryItems();
@@ -312,6 +339,21 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
 
         //[/UserButtonCode_unlockButton]
     }
+    else if (buttonThatWasClicked == stripCharactersButton)
+    {
+        //[UserButtonCode_stripCharactersButton] -- add your button handler code here..
+        //[/UserButtonCode_stripCharactersButton]
+    }
+    else if (buttonThatWasClicked == stripUnderscoreToggle)
+    {
+        //[UserButtonCode_stripUnderscoreToggle] -- add your button handler code here..
+        //[/UserButtonCode_stripUnderscoreToggle]
+    }
+    else if (buttonThatWasClicked == stripHyphenToggle)
+    {
+        //[UserButtonCode_stripHyphenToggle] -- add your button handler code here..
+        //[/UserButtonCode_stripHyphenToggle]
+    }
 
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
@@ -329,9 +371,15 @@ void Interface::enableAllButtons(const bool &enableSafeItems, const bool&enableD
 
     // Dangerous items
     removeEmptyFolders->setEnabled(enableDangerousItems);
+
     filesOptionToggle->setEnabled(enableDangerousItems);
     foldersOptionToggle2->setEnabled(enableDangerousItems);
     capitalizeItemsButton->setEnabled(enableDangerousItems);
+
+    stripUnderscoreToggle->setEnabled(enableDangerousItems);
+    stripHyphenToggle->setEnabled(enableDangerousItems);
+    stripCharactersButton->setEnabled(enableDangerousItems);
+
 }
 
 void Interface::clearSummaryItems()
@@ -340,8 +388,8 @@ void Interface::clearSummaryItems()
     removeEmptyDirectoriesObject.clearOutputString();
     removeEmptyDirectoriesObject.clearNumberOfFilesRemoved();
 
-    // Items for capitalize items
-    //capitalizeItemsObject.
+    // Items for capitalization
+    capitalizeItemsObject.clearOutputString();
 
     // Items for analyze files
     analyzeFilesObject.clearOutputString();
@@ -362,10 +410,10 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="Interface" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="4" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="400" initialHeight="575">
+                 fixedSize="1" initialWidth="400" initialHeight="625">
   <BACKGROUND backgroundColour="ff3e3e3e"/>
   <LABEL name="summaryLabel" id="66a66b2dca7d8008" memberName="summaryLabel"
-         virtualName="" explicitFocusOrder="0" pos="0 350 400 25" textCol="ffc6c6c6"
+         virtualName="" explicitFocusOrder="0" pos="0 400 400 25" textCol="ffc6c6c6"
          edTextCol="ff000000" edBkgCol="0" labelText="Summary:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="American Typewriter"
          fontsize="15" bold="0" italic="0" justification="36"/>
@@ -388,7 +436,7 @@ BEGIN_JUCER_METADATA
               bkgcol="ff3e3e3e" initialText="" multiline="1" retKeyStartsLine="0"
               readonly="1" scrollbars="1" caret="0" popupmenu="1"/>
   <TEXTEDITOR name="summaryTextEditor" id="e96280133f57cb22" memberName="summaryTextEditor"
-              virtualName="" explicitFocusOrder="0" pos="0 375 400 200" textcol="ffffffff"
+              virtualName="" explicitFocusOrder="0" pos="0 425 400 200" textcol="ffffffff"
               bkgcol="ff3e3e3e" initialText="" multiline="1" retKeyStartsLine="0"
               readonly="1" scrollbars="1" caret="0" popupmenu="1"/>
   <LABEL name="directoryPathwayLabel" id="1b6b6d72a7200e14" memberName="directoryPathwayLabel"
@@ -414,6 +462,18 @@ BEGIN_JUCER_METADATA
   <TEXTBUTTON name="unlockButton" id="915f32148b22746d" memberName="unlockButton"
               virtualName="" explicitFocusOrder="0" pos="0 225 400 25" bgColOff="ffe86565"
               buttonText="Unlock" connectedEdges="3" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="stripCharactersButton" id="783c96e8cb55d851" memberName="stripCharactersButton"
+              virtualName="" explicitFocusOrder="0" pos="200 350 200 50" bgColOff="ff6495ed"
+              textCol="ffffffff" buttonText="Strip Characters" connectedEdges="3"
+              needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="stripUnderscoreToggle" id="2010abe8c28768f6" memberName="stripUnderscoreToggle"
+              virtualName="" explicitFocusOrder="0" pos="0 350 100 50" textColOn="ff808080"
+              buttonText="&quot;_&quot;" connectedEdges="3" needsCallback="1"
+              radioGroupId="0"/>
+  <TEXTBUTTON name="stripHyphenToggle" id="3363f687a46e387d" memberName="stripHyphenToggle"
+              virtualName="" explicitFocusOrder="0" pos="100 350 100 50" textColOn="ff808080"
+              buttonText="&quot;-&quot;" connectedEdges="3" needsCallback="1"
+              radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

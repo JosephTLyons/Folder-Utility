@@ -83,6 +83,9 @@ private:
     ScopedPointer<TextButton> foldersOptionToggle2;
     ScopedPointer<TextButton> listAllFiles;
     ScopedPointer<TextButton> unlockButton;
+    ScopedPointer<TextButton> stripCharactersButton;
+    ScopedPointer<TextButton> stripUnderscoreToggle;
+    ScopedPointer<TextButton> stripHyphenToggle;
 
 
     //==============================================================================
