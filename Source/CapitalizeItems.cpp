@@ -52,7 +52,7 @@ void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folde
 
 void CapitalizeItems::capitalizeItems(Array<File> &items)
 {
-    for(int i = 0; i < items.size(); i++)
+    for(int i = items.size(); i >= 0; i--)
     {
         setFileHolder(items[i]);
         makeUpperCase();
