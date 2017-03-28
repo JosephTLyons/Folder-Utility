@@ -61,24 +61,39 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
 
 void CapitalizeItems::makeUpperCase()
 {
+    Array<juce_wchar> stringOfCharToCapitalize;
     String fullPath = getFileHolder().getFullPathName();
-    int positionOfBackSlash;
+    int positionOfFirstCharacter;
     
     for(int i = 0; i < fullPath.length(); i++)
     {
         if(fullPath[i] == '/')
         {
-            positionOfBackSlash = i;
+            // Capitalize i + 1 here
+            positionOfFirstCharacter = (i + 1);
         }
     }
     
-    //fullPath[positionOfBackSlash + 1] = (fullPath[positionOfBackSlash + 1]);
-    
-    
-    // Algorithm to identify letters to make uppercase
-    // -first occuring character, every chareacter after a space
-    
-    // rebuild the name of the item here
+    for(int i = positionOfFirstCharacter; i < fullPath.length(); i++)
+    {
+        // Capitalize spaces
+        if(CharacterFunctions::isWhitespace(fullPath[i]))
+        {
+            fullPath[i + 1] = CharacterFunctions::toUpperCase(fullPath[i + 1]);
+        }
+        
+        // Capitalize underscores
+        if((fullPath[i]) == '_')
+        {
+            fullPath[i + 1] = CharacterFunctions::toUpperCase(fullPath[i + 1]);
+        }
+        
+        // Capitalize dashes
+        if((fullPath[i]) == '-')
+        {
+            fullPath[i + 1] = CharacterFunctions::toUpperCase(fullPath[i + 1]);
+        }
+    }
     
     getFileHolder().moveFileTo(fullPath);
 }
