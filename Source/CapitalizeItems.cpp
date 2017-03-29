@@ -6,7 +6,6 @@
 //
 //
 
-#include <ctype.h> // For touppper function
 #include "CapitalizeItems.hpp"
 
 void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folders)
