@@ -152,7 +152,7 @@ void CapitalizeItems::outputChangesToSummary()
 {
     if(changeOccured)
     {
-        addToOutputString(getFileHolder().getFileName());
+        addToOutputString(getFileHolder().getFullPathName());
         addToOutputString(" -> ");
         addToOutputString(fullPathString);
         addToOutputString("\n\n");
