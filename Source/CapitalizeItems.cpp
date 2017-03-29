@@ -61,16 +61,31 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
 
 void CapitalizeItems::makeUpperCase()
 {
-    Array<juce_wchar> fullPathArray;
-    String fullPathString = getFileHolder().getFullPathName();
-    int positionOfFirstCharacter;
-    bool didAChangeOccur = false;
+    fullPathString  = getFileHolder().getFullPathName();
+    changeOccured = false;
     
+    copyStringToArray();
+    findLastBackslashInPath();
+    capitalizeFirstLetterInPath();
+    capitalizeOtherOccurances();
+    fullPathString.clear();
+    copyArrayBackToString();
+    outputChangesToSummary();
+    
+    // move will actually rename the file if its in the same location
+    getFileHolder().moveFileTo(fullPathString);
+}
+
+void CapitalizeItems::copyStringToArray()
+{
     for(int i = 0; i < fullPathString.length(); i++)
     {
         fullPathArray.add(fullPathString[i]);
     }
-    
+}
+
+void CapitalizeItems::findLastBackslashInPath()
+{
     // Find last part of directory
     for(int i = 0; i < fullPathArray.size(); i++)
     {
@@ -80,56 +95,66 @@ void CapitalizeItems::makeUpperCase()
             positionOfFirstCharacter = (i);
         }
     }
-    
+}
+
+void CapitalizeItems::capitalizeFirstLetterInPath()
+{
     // Capitalize first letter after last '/'
     if(CharacterFunctions::isLowerCase(fullPathArray[positionOfFirstCharacter + 1]))
     {
         fullPathArray.set(positionOfFirstCharacter + 1,
                           CharacterFunctions::toUpperCase(fullPathArray[positionOfFirstCharacter + 1]));
         
-        didAChangeOccur = true;
+        changeOccured = true;
     }
-    
+}
+
+void CapitalizeItems::capitalizeOtherOccurances()
+{
     for(int i = positionOfFirstCharacter; i < fullPathArray.size(); i++)
     {
         // Capitalize after spaces
         if(CharacterFunctions::isWhitespace(fullPathArray[i]))
         {
-            fullPathArray.set(i + 1, CharacterFunctions::toUpperCase(fullPathArray[i + 1]));
-            
-            didAChangeOccur = true;
+            capitalizeLetter(i);
         }
         
         // Capitalize after underscores
         if((fullPathString[i]) == '_')
         {
-            fullPathArray.set(i + 1, CharacterFunctions::toUpperCase(fullPathArray[i + 1]));
-            
-            didAChangeOccur = true;
+            capitalizeLetter(i);
         }
         
         // Capitalize after dashes
         if((fullPathString[i]) == '-')
         {
-            fullPathArray.set(i + 1, CharacterFunctions::toUpperCase(fullPathArray[i + 1]));
-            
-            didAChangeOccur = true;
+            capitalizeLetter(i);
         }
     }
-    
-    fullPathString.clear();
-    
+}
+
+void CapitalizeItems::capitalizeLetter(const int &position)
+{
+    fullPathArray.set(position + 1, CharacterFunctions::toUpperCase(fullPathArray[position + 1]));
+    changeOccured = true;
+}
+
+void CapitalizeItems::copyArrayBackToString()
+{
     // Copy from array over to string
     for(int i = 0; i < fullPathArray.size(); i++)
     {
         fullPathString += fullPathArray[i];
     }
-    
-    addToOutputString(getFileHolder().getFileName());
-    addToOutputString(" -> ");
-    addToOutputString(fullPathString);
-    addToOutputString("\n\n");
-    
-    // move will actually rename the file if its in the same location
-    getFileHolder().moveFileTo(fullPathString);
+}
+
+void CapitalizeItems::outputChangesToSummary()
+{
+    if(changeOccured)
+    {
+        addToOutputString(getFileHolder().getFileName());
+        addToOutputString(" -> ");
+        addToOutputString(fullPathString);
+        addToOutputString("\n\n");
+    }
 }

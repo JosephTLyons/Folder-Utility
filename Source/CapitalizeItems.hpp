@@ -14,11 +14,25 @@
 class CapitalizeItems : public FunctionBase
 {
 private:
+    
+    Array<juce_wchar> fullPathArray;
+    String fullPathString;
+    int positionOfFirstCharacter;
+    bool changeOccured;
+
     // Private function members
     void capitalizeItems(Array<File> &items);
     void makeUpperCase();
+    void copyStringToArray();
+    void findLastBackslashInPath();
+    void capitalizeFirstLetterInPath();
+    void capitalizeOtherOccurances();
+    void capitalizeLetter(const int &position);
+    void copyArrayBackToString();
+    void outputChangesToSummary();
     
 public:
+    
     void capitalizeItemsDriver(const bool &files, const bool &folders);
     
 };
