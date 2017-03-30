@@ -51,6 +51,23 @@ void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folde
 
 void CapitalizeItems::capitalizeItems(Array<File> &items)
 {
+    bool iterateAgain = true;
+    
+    // make bubble sort to organize files by descending lenght
+    for(int i = 0; i < items.size(); i++)
+    {
+        if(items[i].getFullPathName().length() < items[i].getFullPathName().length())
+        {
+            items.swap(i, (i + 1));
+            iterateAgain = true;
+        }
+        
+        if(iterateAgain)
+        {
+            i = 0;
+        }
+    }
+    
     for(int i = 0; i < items.size(); i++)
     {
         setFileHolder(items[i]);
@@ -61,7 +78,16 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
 void CapitalizeItems::makeUpperCase()
 {
     fullPathString  = getFileHolder().getFullPathName();
-    changeOccured = false;
+    changeOccured   = false;
+    
+    // sort array based on size (descending)
+    
+    
+    // then collect last file name
+    // capitalize
+    // Remove that item from array
+    // This will let me rename the last items in an a path, then rename its parents
+    // doing it in the other order will ruin the pathway to get to the children
     
     copyStringToArray();
     findLastBackslashInPath();
