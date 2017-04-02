@@ -52,19 +52,28 @@ void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folde
 void CapitalizeItems::capitalizeItems(Array<File> &items)
 {
     bool iterateAgain = true;
+    int countOfBackslashesFileOne, countOfBackslashesFileTwo;
     
-    // make bubble sort to organize files by descending lenght
-    for(int i = 0; i < items.size(); i++)
+    // make bubble sort to organize files by descending length
+    for(int i = 0; i < items.size() && iterateAgain == true; i++)
     {
-        if(items[i].getFullPathName().length() < items[i].getFullPathName().length())
+        countOfBackslashesFileOne = countBackslashesInString(items[i].getFullPathName());
+        countOfBackslashesFileTwo = countBackslashesInString(items[i + 1].getFullPathName());
+        
+        if(countOfBackslashesFileOne < countOfBackslashesFileTwo)
         {
             items.swap(i, (i + 1));
             iterateAgain = true;
         }
         
-        if(iterateAgain)
+        // Reset loop if a swap was made
+        if(i == items.size())
         {
-            i = 0;
+            if(iterateAgain == true)
+            {
+                i = 0;
+                iterateAgain = false;
+            }
         }
     }
     
@@ -73,6 +82,21 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
         setFileHolder(items[i]);
         makeUpperCase();
     }
+}
+
+int CapitalizeItems::countBackslashesInString(const String &directoryPath)
+{
+    int count = 0;
+    
+    for(int i = 0; i < directoryPath.length(); i++)
+    {
+        if(directoryPath[i] == '/')
+        {
+            count++;
+        }
+    }
+    
+    return count;
 }
 
 void CapitalizeItems::makeUpperCase()
