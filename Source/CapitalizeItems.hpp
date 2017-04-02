@@ -22,6 +22,7 @@ private:
 
     // Private function members
     void capitalizeItems(Array<File> &items);
+    void sortItems(Array<File> &items);
     int  countBackslashesInString(const String &directoryPath);
     void makeUpperCase();
     void copyStringToArray();

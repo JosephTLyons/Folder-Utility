@@ -51,36 +51,42 @@ void CapitalizeItems::capitalizeItemsDriver(const bool &files, const bool &folde
 
 void CapitalizeItems::capitalizeItems(Array<File> &items)
 {
-    bool iterateAgain = true;
-    int countOfBackslashesFileOne, countOfBackslashesFileTwo;
-    
-    // make bubble sort to organize files by descending length
-    for(int i = 0; i < items.size() && iterateAgain == true; i++)
-    {
-        countOfBackslashesFileOne = countBackslashesInString(items[i].getFullPathName());
-        countOfBackslashesFileTwo = countBackslashesInString(items[i + 1].getFullPathName());
-        
-        if(countOfBackslashesFileOne < countOfBackslashesFileTwo)
-        {
-            items.swap(i, (i + 1));
-            iterateAgain = true;
-        }
-        
-        // Reset loop if a swap was made
-        if(i == items.size())
-        {
-            if(iterateAgain == true)
-            {
-                i = 0;
-                iterateAgain = false;
-            }
-        }
-    }
+    sortItems(items);
     
     for(int i = 0; i < items.size(); i++)
     {
         setFileHolder(items[i]);
         makeUpperCase();
+    }
+}
+
+void CapitalizeItems::sortItems(Array<File> &items)
+{
+    bool iterateAndSortAgain = true;
+    int countOfBackslashesInFilePathOne, countOfBackslashesInFilePathTwo;
+    
+    // make bubble sort to organize files by how deep the folder / item is
+    // The deepest folders / items are sorted to the beginning of the array
+    for(int i = 0; i < (items.size() - 1) && iterateAndSortAgain == true; i++)
+    {
+        countOfBackslashesInFilePathOne = countBackslashesInString(items[i].getFullPathName());
+        countOfBackslashesInFilePathTwo = countBackslashesInString(items[i + 1].getFullPathName());
+        
+        if(countOfBackslashesInFilePathOne < countOfBackslashesInFilePathTwo)
+        {
+            items.swap(i, (i + 1));
+            iterateAndSortAgain = true;
+        }
+        
+        // Reset loop if a swap was made
+        if((i + 1) == items.size())
+        {
+            if(iterateAndSortAgain == true)
+            {
+                i = 0;
+                iterateAndSortAgain = false;
+            }
+        }
     }
 }
 
