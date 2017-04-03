@@ -173,6 +173,8 @@ Interface::Interface ()
     foldersOptionToggle2->setClickingTogglesState(true);
     stripUnderscoreToggle->setClickingTogglesState(true);
     stripHyphenToggle->setClickingTogglesState(true);
+    
+    fontSizeSlider->setValue(25);
 
     //[/Constructor]
 }
