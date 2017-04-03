@@ -15,11 +15,12 @@ class CapitalizeItems : public FunctionBase
 {
 private:
     
-    Array<juce_wchar> fullPathArray;
-    String fullPathString;
+    Array<juce_wchar> fileNameArray;
+    String fileNameString;
+    File parentDirectoryFile;
+    String parentDirectoryString;
     int positionOfFirstCharacter;
     bool changeOccured;
-    bool isFolder;
 
     // Private function members
     void capitalizeItems(Array<File> &items);
@@ -27,7 +28,6 @@ private:
     int  countBackslashesInString(const String &directoryPath);
     void makeUpperCase();
     void copyStringToArray();
-    void findLastBackslashInPath();
     void capitalizeFirstLetterInPath();
     void capitalizeOtherOccurances();
     void capitalizeLetter(const int &position);

@@ -38,7 +38,8 @@
                                                                     //[/Comments]
 */
 class Interface  : public Component,
-                   public ButtonListener
+                   public ButtonListener,
+                   public SliderListener
 {
 public:
     //==============================================================================
@@ -56,6 +57,7 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void buttonClicked (Button* buttonThatWasClicked) override;
+    void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
 
 
@@ -86,6 +88,7 @@ private:
     ScopedPointer<TextButton> stripCharactersButton;
     ScopedPointer<TextButton> stripUnderscoreToggle;
     ScopedPointer<TextButton> stripHyphenToggle;
+    ScopedPointer<Slider> fontSizeSlider;
 
 
     //==============================================================================

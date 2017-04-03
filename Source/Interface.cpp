@@ -146,6 +146,12 @@ Interface::Interface ()
     stripHyphenToggle->addListener (this);
     stripHyphenToggle->setColour (TextButton::textColourOnId, Colours::grey);
 
+    addAndMakeVisible (fontSizeSlider = new Slider ("fontSizeSlider"));
+    fontSizeSlider->setRange (10, 50, 1);
+    fontSizeSlider->setSliderStyle (Slider::LinearHorizontal);
+    fontSizeSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
+    fontSizeSlider->addListener (this);
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -187,6 +193,7 @@ Interface::~Interface()
     stripCharactersButton = nullptr;
     stripUnderscoreToggle = nullptr;
     stripHyphenToggle = nullptr;
+    fontSizeSlider = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -225,6 +232,7 @@ void Interface::resized()
     stripCharactersButton->setBounds (200, 250, 200, 25);
     stripUnderscoreToggle->setBounds (0, 250, 100, 25);
     stripHyphenToggle->setBounds (100, 250, 100, 25);
+    fontSizeSlider->setBounds (0, 275, 150, 25);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -359,6 +367,21 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
     //[/UserbuttonClicked_Post]
 }
 
+void Interface::sliderValueChanged (Slider* sliderThatWasMoved)
+{
+    //[UsersliderValueChanged_Pre]
+    //[/UsersliderValueChanged_Pre]
+
+    if (sliderThatWasMoved == fontSizeSlider)
+    {
+        //[UserSliderCode_fontSizeSlider] -- add your slider handling code here..
+        //[/UserSliderCode_fontSizeSlider]
+    }
+
+    //[UsersliderValueChanged_Post]
+    //[/UsersliderValueChanged_Post]
+}
+
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
@@ -474,6 +497,11 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="100 250 100 25" textColOn="ff808080"
               buttonText="&quot;-&quot;" connectedEdges="3" needsCallback="1"
               radioGroupId="0"/>
+  <SLIDER name="fontSizeSlider" id="1f64f0f2eb3a57f3" memberName="fontSizeSlider"
+          virtualName="" explicitFocusOrder="0" pos="0 275 150 25" min="10"
+          max="50" int="1" style="LinearHorizontal" textBoxPos="TextBoxLeft"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"
+          needsCallback="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
