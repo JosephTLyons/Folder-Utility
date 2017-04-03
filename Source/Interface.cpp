@@ -286,7 +286,8 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         removeEmptyDirectoriesObject.removeAllEmptyFolders();
 
         // Set summary string to text editor
-        summaryTextEditor->setText(removeEmptyDirectoriesObject.getOutputString());
+        outputSummaryString = removeEmptyDirectoriesObject.getOutputString();
+        summaryTextEditor->setText(outputSummaryString);
 
         // Reset summary fields
         clearSummaryItems();
@@ -305,7 +306,8 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
                                                     foldersOptionToggle2->getToggleState());
 
         // Set summary string to text editor
-        summaryTextEditor->setText(capitalizeItemsObject.getOutputString());
+        outputSummaryString = capitalizeItemsObject.getOutputString();
+        summaryTextEditor->setText(outputSummaryString);
 
         // Reset summary fields
         clearSummaryItems();
@@ -333,7 +335,8 @@ void Interface::buttonClicked (Button* buttonThatWasClicked)
         analyzeFilesObject.collectFilenames();
 
         // Set summary string to text editor
-        summaryTextEditor->setText(analyzeFilesObject.getOutputString());
+        outputSummaryString = analyzeFilesObject.getOutputString();
+        summaryTextEditor->setText(outputSummaryString);
 
         // Reset summary fields
         clearSummaryItems();
@@ -379,10 +382,27 @@ void Interface::sliderValueChanged (Slider* sliderThatWasMoved)
     if (sliderThatWasMoved == fontSizeSlider)
     {
         //[UserSliderCode_fontSizeSlider] -- add your slider handling code here..
+        
+        int fontHeight;
+        
+        Font summaryOutputFont;
+        
+        fontHeight = fontSizeSlider->getValue();
+        
+        summaryTextEditor->clear();
+        
+        summaryOutputFont.setHeight(fontHeight);
+        
+        summaryTextEditor->setFont(summaryOutputFont);
+        
+        summaryTextEditor->setText(outputSummaryString);
+        
         //[/UserSliderCode_fontSizeSlider]
     }
 
     //[UsersliderValueChanged_Post]
+
+    
     //[/UsersliderValueChanged_Post]
 }
 

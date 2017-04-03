@@ -69,6 +69,8 @@ private:
 
     AnalyzeFiles analyzeFilesObject;
     File directoryPath;
+    
+    String outputSummaryString;
 
     //[/UserVariables]
 
