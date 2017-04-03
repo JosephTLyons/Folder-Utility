@@ -62,29 +62,26 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
 
 void CapitalizeItems::sortItems(Array<File> &items)
 {
-    bool iterateAndSortAgain = true;
+    bool sortAgain = true;  // set flag to true to start first pass
     int countOfBackslashesInFilePathOne, countOfBackslashesInFilePathTwo;
+    int i, j;
+    int itemsSize = items.size();
     
     // make bubble sort to organize files by how deep the folder / item is
     // The deepest folders / items are sorted to the beginning of the array
-    for(int i = 0; i < (items.size() - 1) && iterateAndSortAgain == true; i++)
+    while(sortAgain)
     {
-        countOfBackslashesInFilePathOne = countBackslashesInString(items[i].getFullPathName());
-        countOfBackslashesInFilePathTwo = countBackslashesInString(items[i + 1].getFullPathName());
+        sortAgain = false;
         
-        if(countOfBackslashesInFilePathOne < countOfBackslashesInFilePathTwo)
+        for (j = 0; j < itemsSize - 1; j++)
         {
-            items.swap(i, (i + 1));
-            iterateAndSortAgain = true;
-        }
-        
-        // Reset loop if a swap was made
-        if((i + 1) == items.size())
-        {
-            if(iterateAndSortAgain == true)
+            countOfBackslashesInFilePathOne = countBackslashesInString(items[i].getFullPathName());
+            countOfBackslashesInFilePathTwo = countBackslashesInString(items[i + 1].getFullPathName());
+            
+            if (countOfBackslashesInFilePathTwo > countOfBackslashesInFilePathOne)
             {
-                i = 0;
-                iterateAndSortAgain = false;
+                items.swap(j, (j + 1));
+                sortAgain = true;             // indicates that a swap occurred.
             }
         }
     }
@@ -142,7 +139,7 @@ void CapitalizeItems::copyStringToArray()
 void CapitalizeItems::findLastBackslashInPath()
 {
     // Find last part of directory
-    for(int i = 0; i < fullPathArray.size(); i++)
+    for(int i = fullPathArray.size(); i >= 0; i--)
     {
         // Capitalize first letter of item
         if(fullPathArray[i] == '/')
