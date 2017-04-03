@@ -57,6 +57,7 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
     {
         setFileHolder(items[i]);
         makeUpperCase();
+        items.remove(i);
     }
 }
 
@@ -66,7 +67,7 @@ void CapitalizeItems::sortItems(Array<File> &items)
     int countOfBackslashesInFilePathOne, countOfBackslashesInFilePathTwo;
     int itemsSize = items.size();
     
-    // make bubble sort to organize files by how deep the folder / item is
+    // Make bubble sort to organize files by how deep the folder / item is
     // The deepest folders / items are sorted to the beginning of the array
     while(sortAgain)
     {
@@ -107,15 +108,6 @@ void CapitalizeItems::makeUpperCase()
     fullPathString  = getFileHolder().getFullPathName();
     changeOccured   = false;
     
-    // sort array based on size (descending)
-    
-    
-    // then collect last file name
-    // capitalize
-    // Remove that item from array
-    // This will let me rename the last items in an a path, then rename its parents
-    // doing it in the other order will ruin the pathway to get to the children
-    
     copyStringToArray();
     findLastBackslashInPath();
     capitalizeFirstLetterInPath();
@@ -133,6 +125,14 @@ void CapitalizeItems::copyStringToArray()
     for(int i = 0; i < fullPathString.length(); i++)
     {
         fullPathArray.add(fullPathString[i]);
+    }
+    
+#include <iostream>
+    using namespace std;
+    
+    for(int i = 0; i < fullPathString.length(); i++)
+    {
+        cout << fullPathString[i] << " ";
     }
 }
 
