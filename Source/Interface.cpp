@@ -149,7 +149,11 @@ Interface::Interface ()
     addAndMakeVisible (fontSizeSlider = new Slider ("fontSizeSlider"));
     fontSizeSlider->setRange (10, 50, 1);
     fontSizeSlider->setSliderStyle (Slider::LinearHorizontal);
-    fontSizeSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
+    fontSizeSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 25, 20);
+    fontSizeSlider->setColour (Slider::rotarySliderOutlineColourId, Colour (0xff3e3e3e));
+    fontSizeSlider->setColour (Slider::textBoxTextColourId, Colours::white);
+    fontSizeSlider->setColour (Slider::textBoxBackgroundColourId, Colour (0xff3e3e3e));
+    fontSizeSlider->setColour (Slider::textBoxOutlineColourId, Colour (0xff3e3e3e));
     fontSizeSlider->addListener (this);
 
 
@@ -498,9 +502,10 @@ BEGIN_JUCER_METADATA
               buttonText="&quot;-&quot;" connectedEdges="3" needsCallback="1"
               radioGroupId="0"/>
   <SLIDER name="fontSizeSlider" id="1f64f0f2eb3a57f3" memberName="fontSizeSlider"
-          virtualName="" explicitFocusOrder="0" pos="0 275 150 25" min="10"
-          max="50" int="1" style="LinearHorizontal" textBoxPos="TextBoxLeft"
-          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"
+          virtualName="" explicitFocusOrder="0" pos="0 275 150 25" rotaryslideroutline="ff3e3e3e"
+          textboxtext="ffffffff" textboxbkgd="ff3e3e3e" textboxoutline="ff3e3e3e"
+          min="10" max="50" int="1" style="LinearHorizontal" textBoxPos="TextBoxLeft"
+          textBoxEditable="1" textBoxWidth="25" textBoxHeight="20" skewFactor="1"
           needsCallback="1"/>
 </JUCER_COMPONENT>
 
