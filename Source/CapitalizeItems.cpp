@@ -64,7 +64,6 @@ void CapitalizeItems::sortItems(Array<File> &items)
 {
     bool sortAgain = true;  // set flag to true to start first pass
     int countOfBackslashesInFilePathOne, countOfBackslashesInFilePathTwo;
-    int i;
     int itemsSize = items.size();
     
     // make bubble sort to organize files by how deep the folder / item is
@@ -73,7 +72,7 @@ void CapitalizeItems::sortItems(Array<File> &items)
     {
         sortAgain = false;
         
-        for (i = 0; i < itemsSize - 1; i++)
+        for (int i = 0; i < itemsSize - 1; i++)
         {
             countOfBackslashesInFilePathOne = countBackslashesInString(items[i].getFullPathName());
             countOfBackslashesInFilePathTwo = countBackslashesInString(items[i + 1].getFullPathName());
@@ -81,6 +80,7 @@ void CapitalizeItems::sortItems(Array<File> &items)
             if (countOfBackslashesInFilePathOne < countOfBackslashesInFilePathTwo)
             {
                 items.swap(i, (i + 1));
+                
                 sortAgain = true;             // indicates that a swap occurred.
             }
         }
@@ -139,12 +139,12 @@ void CapitalizeItems::copyStringToArray()
 void CapitalizeItems::findLastBackslashInPath()
 {
     // Find last part of directory
-    for(int i = fullPathArray.size(); i >= 0; i--)
+    for(int i = fullPathString.length(); i >= 0; i--)
     {
         // Capitalize first letter of item
         if(fullPathArray[i] == '/')
         {
-            positionOfFirstCharacter = (i);
+            positionOfFirstCharacter = i;
             return;
         }
     }
