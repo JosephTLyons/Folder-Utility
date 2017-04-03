@@ -126,14 +126,6 @@ void CapitalizeItems::copyStringToArray()
     {
         fullPathArray.add(fullPathString[i]);
     }
-    
-#include <iostream>
-    using namespace std;
-    
-    for(int i = 0; i < fullPathString.length(); i++)
-    {
-        cout << fullPathString[i] << " ";
-    }
 }
 
 void CapitalizeItems::findLastBackslashInPath()
