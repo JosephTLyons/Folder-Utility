@@ -64,7 +64,7 @@ void CapitalizeItems::sortItems(Array<File> &items)
 {
     bool sortAgain = true;  // set flag to true to start first pass
     int countOfBackslashesInFilePathOne, countOfBackslashesInFilePathTwo;
-    int i, j;
+    int i;
     int itemsSize = items.size();
     
     // make bubble sort to organize files by how deep the folder / item is
@@ -73,14 +73,14 @@ void CapitalizeItems::sortItems(Array<File> &items)
     {
         sortAgain = false;
         
-        for (j = 0; j < itemsSize - 1; j++)
+        for (i = 0; i < itemsSize - 1; i++)
         {
             countOfBackslashesInFilePathOne = countBackslashesInString(items[i].getFullPathName());
             countOfBackslashesInFilePathTwo = countBackslashesInString(items[i + 1].getFullPathName());
             
-            if (countOfBackslashesInFilePathTwo > countOfBackslashesInFilePathOne)
+            if (countOfBackslashesInFilePathOne < countOfBackslashesInFilePathTwo)
             {
-                items.swap(j, (j + 1));
+                items.swap(i, (i + 1));
                 sortAgain = true;             // indicates that a swap occurred.
             }
         }
