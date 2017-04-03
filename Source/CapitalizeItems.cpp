@@ -55,6 +55,7 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
     
     for(int i = 0; i < items.size(); i++)
     {
+        isFolder = items[i].isDirectory();
         setFileHolder(items[i]);
         makeUpperCase();
         items.remove(i);
@@ -110,6 +111,7 @@ void CapitalizeItems::makeUpperCase()
     
     copyStringToArray();
     findLastBackslashInPath();
+    
     capitalizeFirstLetterInPath();
     capitalizeOtherOccurances();
     fullPathString.clear();
@@ -130,8 +132,17 @@ void CapitalizeItems::copyStringToArray()
 
 void CapitalizeItems::findLastBackslashInPath()
 {
+    int i = fullPathString.length();
+    
+    // If this is a directory, the last character will automatically be a '/'
+    // So we need to move past this one to keep it from tripping up the algorithm
+    if(isFolder)
+    {
+        i--;
+    }
+    
     // Find last part of directory
-    for(int i = fullPathString.length(); i >= 0; i--)
+    for(; i >= 0; i--)
     {
         // Capitalize first letter of item
         if(fullPathArray[i] == '/')

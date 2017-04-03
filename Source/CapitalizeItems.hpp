@@ -19,6 +19,7 @@ private:
     String fullPathString;
     int positionOfFirstCharacter;
     bool changeOccured;
+    bool isFolder;
 
     // Private function members
     void capitalizeItems(Array<File> &items);
