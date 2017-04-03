@@ -145,6 +145,7 @@ void CapitalizeItems::findLastBackslashInPath()
         if(fullPathArray[i] == '/')
         {
             positionOfFirstCharacter = (i);
+            return;
         }
     }
 }
