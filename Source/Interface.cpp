@@ -386,17 +386,12 @@ void Interface::sliderValueChanged (Slider* sliderThatWasMoved)
         //[UserSliderCode_fontSizeSlider] -- add your slider handling code here..
         
         int fontHeight;
-        
         Font summaryOutputFont;
         
-        fontHeight = fontSizeSlider->getValue();
-        
         summaryTextEditor->clear();
-        
+        fontHeight = fontSizeSlider->getValue();
         summaryOutputFont.setHeight(fontHeight);
-        
         summaryTextEditor->setFont(summaryOutputFont);
-        
         summaryTextEditor->setText(outputSummaryString);
         
         //[/UserSliderCode_fontSizeSlider]
