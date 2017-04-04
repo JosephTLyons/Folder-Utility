@@ -108,34 +108,15 @@ int CapitalizeItems::countBackslashesInString(const String &directoryPath)
 
 void CapitalizeItems::makeUpperCase()
 {
-    fileNameString.clear();
+    changeOccured         = false;
     fileNameString        = getFileHolder().getFileName();
-    
-    
-    
-#include <iostream>
-    using namespace std;
-    
-    cout << endl << endl;
-    
-    for (int i = 0; i < fileNameString.length(); i++)
-    {
-        cout << (char) fileNameString[i];
-    }
-    
-    cout << endl << endl;
-    
-    
     parentDirectoryFile   = getFileHolder().getParentDirectory();
     parentDirectoryString = parentDirectoryFile.getFullPathName();
-    changeOccured         = false;
-    
-    
-    
     
     copyStringToArray();
     capitalizeFirstLetterInPath();
     capitalizeOtherOccurances();
+    fileNameString.clear();
     copyArrayBackToString();
     fileNameArray.clear();
     
