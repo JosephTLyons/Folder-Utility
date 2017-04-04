@@ -110,9 +110,27 @@ void CapitalizeItems::makeUpperCase()
 {
     fileNameString.clear();
     fileNameString        = getFileHolder().getFileName();
+    
+    
+    
+#include <iostream>
+    using namespace std;
+    
+    cout << endl << endl;
+    
+    for (int i = 0; i < fileNameString.length(); i++)
+    {
+        cout << (char) fileNameString[i];
+    }
+    
+    cout << endl << endl;
+    
+    
     parentDirectoryFile   = getFileHolder().getParentDirectory();
     parentDirectoryString = parentDirectoryFile.getFullPathName();
     changeOccured         = false;
+    
+    
     
     
     copyStringToArray();
@@ -127,6 +145,7 @@ void CapitalizeItems::makeUpperCase()
     outputChangesToSummary();
     
     // Move will actually rename the file if its in the same location
+    // Much like renaming in shell with mv
     getFileHolder().moveFileTo(parentDirectoryString);
 }
 
