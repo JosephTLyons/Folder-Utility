@@ -59,7 +59,6 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
     {
         setFileHolder(items[i]);
         makeUpperCase();
-        items.remove(i);
     }
 }
 
