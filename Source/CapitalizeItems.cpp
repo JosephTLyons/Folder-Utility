@@ -108,10 +108,13 @@ int CapitalizeItems::countBackslashesInString(const String &directoryPath)
 void CapitalizeItems::makeUpperCase()
 {
     changeOccured         = false;
+    
+    // Split last item off of directory path
     fileNameString        = getFileHolder().getFileName();
     parentDirectoryFile   = getFileHolder().getParentDirectory();
     parentDirectoryString = parentDirectoryFile.getFullPathName();
     
+    // Move name to array for manipulation, capitalize, move back to string for setting new path
     copyStringToArray();
     capitalizeFirstLetterInPath();
     capitalizeOtherOccurances();
