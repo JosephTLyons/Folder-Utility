@@ -69,7 +69,7 @@ private:
 
     AnalyzeFiles analyzeFilesObject;
     File directoryPath;
-    
+
     String outputSummaryString;
 
     //[/UserVariables]
@@ -90,7 +90,8 @@ private:
     ScopedPointer<TextButton> stripCharactersButton;
     ScopedPointer<TextButton> stripUnderscoreToggle;
     ScopedPointer<TextButton> stripHyphenToggle;
-    ScopedPointer<Slider> fontSizeSlider;
+    ScopedPointer<Slider> fontSizeForOutputSlider;
+    ScopedPointer<Slider> fontSizeForDirectoryPathSlider;
 
 
     //==============================================================================

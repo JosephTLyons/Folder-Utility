@@ -146,15 +146,25 @@ Interface::Interface ()
     stripHyphenToggle->addListener (this);
     stripHyphenToggle->setColour (TextButton::textColourOnId, Colours::grey);
 
-    addAndMakeVisible (fontSizeSlider = new Slider ("fontSizeSlider"));
-    fontSizeSlider->setRange (10, 50, 1);
-    fontSizeSlider->setSliderStyle (Slider::LinearHorizontal);
-    fontSizeSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 25, 20);
-    fontSizeSlider->setColour (Slider::rotarySliderOutlineColourId, Colour (0xff3e3e3e));
-    fontSizeSlider->setColour (Slider::textBoxTextColourId, Colours::white);
-    fontSizeSlider->setColour (Slider::textBoxBackgroundColourId, Colour (0xff3e3e3e));
-    fontSizeSlider->setColour (Slider::textBoxOutlineColourId, Colour (0xff3e3e3e));
-    fontSizeSlider->addListener (this);
+    addAndMakeVisible (fontSizeForOutputSlider = new Slider ("fontSizeForOutputSlider"));
+    fontSizeForOutputSlider->setRange (10, 50, 1);
+    fontSizeForOutputSlider->setSliderStyle (Slider::LinearHorizontal);
+    fontSizeForOutputSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 25, 20);
+    fontSizeForOutputSlider->setColour (Slider::rotarySliderOutlineColourId, Colour (0xff3e3e3e));
+    fontSizeForOutputSlider->setColour (Slider::textBoxTextColourId, Colours::white);
+    fontSizeForOutputSlider->setColour (Slider::textBoxBackgroundColourId, Colour (0xff3e3e3e));
+    fontSizeForOutputSlider->setColour (Slider::textBoxOutlineColourId, Colour (0xff3e3e3e));
+    fontSizeForOutputSlider->addListener (this);
+
+    addAndMakeVisible (fontSizeForDirectoryPathSlider = new Slider ("fontSizeSlider"));
+    fontSizeForDirectoryPathSlider->setRange (10, 50, 1);
+    fontSizeForDirectoryPathSlider->setSliderStyle (Slider::LinearHorizontal);
+    fontSizeForDirectoryPathSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 25, 20);
+    fontSizeForDirectoryPathSlider->setColour (Slider::rotarySliderOutlineColourId, Colour (0xff3e3e3e));
+    fontSizeForDirectoryPathSlider->setColour (Slider::textBoxTextColourId, Colours::white);
+    fontSizeForDirectoryPathSlider->setColour (Slider::textBoxBackgroundColourId, Colour (0xff3e3e3e));
+    fontSizeForDirectoryPathSlider->setColour (Slider::textBoxOutlineColourId, Colour (0xff3e3e3e));
+    fontSizeForDirectoryPathSlider->addListener (this);
 
 
     //[UserPreSize]
@@ -173,8 +183,10 @@ Interface::Interface ()
     foldersOptionToggle2->setClickingTogglesState(true);
     stripUnderscoreToggle->setClickingTogglesState(true);
     stripHyphenToggle->setClickingTogglesState(true);
-    
-    fontSizeSlider->setValue(25);
+
+    // Set initial font heights for text editors
+    fontSizeForOutputSlider->setValue(25);
+    fontSizeForDirectoryPathSlider->setValue(25);
 
     //[/Constructor]
 }
@@ -199,7 +211,8 @@ Interface::~Interface()
     stripCharactersButton = nullptr;
     stripUnderscoreToggle = nullptr;
     stripHyphenToggle = nullptr;
-    fontSizeSlider = nullptr;
+    fontSizeForOutputSlider = nullptr;
+    fontSizeForDirectoryPathSlider = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -238,7 +251,8 @@ void Interface::resized()
     stripCharactersButton->setBounds (200, 250, 200, 25);
     stripUnderscoreToggle->setBounds (0, 250, 100, 25);
     stripHyphenToggle->setBounds (100, 250, 100, 25);
-    fontSizeSlider->setBounds (0, 275, 150, 25);
+    fontSizeForOutputSlider->setBounds (0, 275, 150, 25);
+    fontSizeForDirectoryPathSlider->setBounds (0, 50, 130, 25);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -381,30 +395,38 @@ void Interface::sliderValueChanged (Slider* sliderThatWasMoved)
     //[UsersliderValueChanged_Pre]
     //[/UsersliderValueChanged_Pre]
 
-    if (sliderThatWasMoved == fontSizeSlider)
+    if (sliderThatWasMoved == fontSizeForOutputSlider)
     {
-        //[UserSliderCode_fontSizeSlider] -- add your slider handling code here..
+        //[UserSliderCode_fontSizeForOutputSlider] -- add your slider handling code here..
         
         int fontHeightForSummary;
-        fontHeightForSummary = fontSizeSlider->getValue();
-        
+        fontHeightForSummary = fontSizeForOutputSlider->getValue();
+
         // Increase font size of summary output
         summaryTextEditor->clear();
         summaryTextEditor->setFont(fontHeightForSummary);
         summaryTextEditor->setText(outputSummaryString);
+
+        //[/UserSliderCode_fontSizeForOutputSlider]
+    }
+    else if (sliderThatWasMoved == fontSizeForDirectoryPathSlider)
+    {
+        //[UserSliderCode_fontSizeForDirectoryPathSlider] -- add your slider handling code here..
+        
+        int fontHeightForDirectoryPath;
+        fontHeightForDirectoryPath = fontSizeForDirectoryPathSlider->getValue();
         
         // Increase font size of directory path output
         directoryPathDisplay->clear();
-        directoryPathDisplay->setFont(fontHeightForSummary);
+        directoryPathDisplay->setFont(fontHeightForDirectoryPath);
         directoryPathDisplay->setText(directoryPath.getFullPathName());
         
-        
-        //[/UserSliderCode_fontSizeSlider]
+        //[/UserSliderCode_fontSizeForDirectoryPathSlider]
     }
 
     //[UsersliderValueChanged_Post]
 
-    
+
     //[/UsersliderValueChanged_Post]
 }
 
@@ -523,8 +545,14 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="100 250 100 25" textColOn="ff808080"
               buttonText="&quot;-&quot;" connectedEdges="3" needsCallback="1"
               radioGroupId="0"/>
-  <SLIDER name="fontSizeSlider" id="1f64f0f2eb3a57f3" memberName="fontSizeSlider"
+  <SLIDER name="fontSizeForOutputSlider" id="1f64f0f2eb3a57f3" memberName="fontSizeForOutputSlider"
           virtualName="" explicitFocusOrder="0" pos="0 275 150 25" rotaryslideroutline="ff3e3e3e"
+          textboxtext="ffffffff" textboxbkgd="ff3e3e3e" textboxoutline="ff3e3e3e"
+          min="10" max="50" int="1" style="LinearHorizontal" textBoxPos="TextBoxLeft"
+          textBoxEditable="1" textBoxWidth="25" textBoxHeight="20" skewFactor="1"
+          needsCallback="1"/>
+  <SLIDER name="fontSizeSlider" id="507de9c129766a37" memberName="fontSizeForDirectoryPathSlider"
+          virtualName="" explicitFocusOrder="0" pos="0 50 130 25" rotaryslideroutline="ff3e3e3e"
           textboxtext="ffffffff" textboxbkgd="ff3e3e3e" textboxoutline="ff3e3e3e"
           min="10" max="50" int="1" style="LinearHorizontal" textBoxPos="TextBoxLeft"
           textBoxEditable="1" textBoxWidth="25" textBoxHeight="20" skewFactor="1"
