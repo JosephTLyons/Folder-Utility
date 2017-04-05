@@ -14,6 +14,14 @@
 class AnalyzeFiles : public FunctionBase
 {
 private:
+    
+    Array<File> temporaryFileHolderArray;
+    Array<String> filenameArray;
+    
+    void collectFileNamesInStrinArray();
+    void addEachItemToOutputString();
+    void addCompletionInfoToOutputString();
+    
 public:
     void collectFilenames();
 };

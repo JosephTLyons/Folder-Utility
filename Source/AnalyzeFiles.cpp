@@ -13,18 +13,25 @@ void AnalyzeFiles::collectFilenames()
     DirectoryIterator dirIter (File (getMainPathway().getFullPathName()), true, "*",
                                      File::findFiles + File::ignoreHiddenFiles);
     
-    Array<File> temporaryFileHolderArray = returnDirIterItemsArray(dirIter);
-    Array<String> filenameArray;
+    temporaryFileHolderArray = returnDirIterItemsArray(dirIter);
     Array<int> countOfFiles;
     
-    // Get all extensions from the file array into the string array
+    collectFileNamesInStrinArray();
+    filenameArray.sort();
+    addEachItemToOutputString();
+    addCompletionInfoToOutputString();
+}
+
+void AnalyzeFiles::collectFileNamesInStrinArray()
+{
     for(int i = 0; i < temporaryFileHolderArray.size(); i++)
     {
         filenameArray.add(temporaryFileHolderArray[i].getFileName());
     }
-    
-    filenameArray.sort();
-    
+}
+
+void AnalyzeFiles::addEachItemToOutputString()
+{
     for(int i = 0; i < filenameArray.size(); i++)
     {
         addToOutputString((String) (i + 1));
@@ -32,7 +39,10 @@ void AnalyzeFiles::collectFilenames()
         addToOutputString(filenameArray[i]);
         addToOutputString("\n");
     }
-    
+}
+
+void AnalyzeFiles::addCompletionInfoToOutputString()
+{
     addToOutputString("\nCompleted: ");
     addToOutputString((String) filenameArray.size());
     addToOutputString(" files found.");
