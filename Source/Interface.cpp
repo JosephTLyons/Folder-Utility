@@ -157,7 +157,7 @@ Interface::Interface ()
     fontSizeForOutputSlider->addListener (this);
 
     addAndMakeVisible (fontSizeForDirectoryPathSlider = new Slider ("fontSizeSlider"));
-    fontSizeForDirectoryPathSlider->setRange (10, 50, 1);
+    fontSizeForDirectoryPathSlider->setRange (10, 25, 1);
     fontSizeForDirectoryPathSlider->setSliderStyle (Slider::LinearHorizontal);
     fontSizeForDirectoryPathSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 25, 20);
     fontSizeForDirectoryPathSlider->setColour (Slider::rotarySliderOutlineColourId, Colour (0xff3e3e3e));
@@ -185,8 +185,8 @@ Interface::Interface ()
     stripHyphenToggle->setClickingTogglesState(true);
 
     // Set initial font heights for text editors
+    fontSizeForDirectoryPathSlider->setValue(10);
     fontSizeForOutputSlider->setValue(25);
-    fontSizeForDirectoryPathSlider->setValue(25);
 
     //[/Constructor]
 }
@@ -398,7 +398,7 @@ void Interface::sliderValueChanged (Slider* sliderThatWasMoved)
     if (sliderThatWasMoved == fontSizeForOutputSlider)
     {
         //[UserSliderCode_fontSizeForOutputSlider] -- add your slider handling code here..
-        
+
         int fontHeightForSummary;
         fontHeightForSummary = fontSizeForOutputSlider->getValue();
 
@@ -412,15 +412,15 @@ void Interface::sliderValueChanged (Slider* sliderThatWasMoved)
     else if (sliderThatWasMoved == fontSizeForDirectoryPathSlider)
     {
         //[UserSliderCode_fontSizeForDirectoryPathSlider] -- add your slider handling code here..
-        
+
         int fontHeightForDirectoryPath;
         fontHeightForDirectoryPath = fontSizeForDirectoryPathSlider->getValue();
-        
+
         // Increase font size of directory path output
         directoryPathDisplay->clear();
         directoryPathDisplay->setFont(fontHeightForDirectoryPath);
         directoryPathDisplay->setText(directoryPath.getFullPathName());
-        
+
         //[/UserSliderCode_fontSizeForDirectoryPathSlider]
     }
 
@@ -554,7 +554,7 @@ BEGIN_JUCER_METADATA
   <SLIDER name="fontSizeSlider" id="507de9c129766a37" memberName="fontSizeForDirectoryPathSlider"
           virtualName="" explicitFocusOrder="0" pos="0 50 130 25" rotaryslideroutline="ff3e3e3e"
           textboxtext="ffffffff" textboxbkgd="ff3e3e3e" textboxoutline="ff3e3e3e"
-          min="10" max="50" int="1" style="LinearHorizontal" textBoxPos="TextBoxLeft"
+          min="10" max="25" int="1" style="LinearHorizontal" textBoxPos="TextBoxLeft"
           textBoxEditable="1" textBoxWidth="25" textBoxHeight="20" skewFactor="1"
           needsCallback="1"/>
 </JUCER_COMPONENT>
