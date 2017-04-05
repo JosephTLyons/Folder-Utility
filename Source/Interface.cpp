@@ -399,12 +399,9 @@ void Interface::sliderValueChanged (Slider* sliderThatWasMoved)
     {
         //[UserSliderCode_fontSizeForOutputSlider] -- add your slider handling code here..
 
-        int fontHeightForSummary;
-        fontHeightForSummary = fontSizeForOutputSlider->getValue();
-
         // Increase font size of summary output
         summaryTextEditor->clear();
-        summaryTextEditor->setFont(fontHeightForSummary);
+        summaryTextEditor->setFont(fontSizeForOutputSlider->getValue());
         summaryTextEditor->setText(outputSummaryString);
 
         //[/UserSliderCode_fontSizeForOutputSlider]
@@ -413,12 +410,9 @@ void Interface::sliderValueChanged (Slider* sliderThatWasMoved)
     {
         //[UserSliderCode_fontSizeForDirectoryPathSlider] -- add your slider handling code here..
 
-        int fontHeightForDirectoryPath;
-        fontHeightForDirectoryPath = fontSizeForDirectoryPathSlider->getValue();
-
         // Increase font size of directory path output
         directoryPathDisplay->clear();
-        directoryPathDisplay->setFont(fontHeightForDirectoryPath);
+        directoryPathDisplay->setFont(fontSizeForDirectoryPathSlider->getValue());
         directoryPathDisplay->setText(directoryPath.getFullPathName());
 
         //[/UserSliderCode_fontSizeForDirectoryPathSlider]
