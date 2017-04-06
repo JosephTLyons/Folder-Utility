@@ -23,7 +23,7 @@ String FunctionBase::getOutputString()
     return outputString;
 }
 
-void FunctionBase::setMainPathway(File holdsFirstPathSelected)
+void FunctionBase::setMainPathway(const File &holdsFirstPathSelected)
 {
     mainPathway = holdsFirstPathSelected;
 }

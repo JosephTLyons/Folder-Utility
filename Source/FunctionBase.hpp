@@ -23,7 +23,7 @@ public:
     File getFileHolder();
     String getOutputString();
     
-    void setMainPathway(File holdsFirstPathSelected);
+    void setMainPathway(const File &holdsFirstPathSelected);
     void setFileHolder(const File &inputFileHolder);
     
     void addToOutputString(const char *inputText);
