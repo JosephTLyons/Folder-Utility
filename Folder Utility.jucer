@@ -7,6 +7,8 @@
     <GROUP id="{35B94C3C-C228-AC80-21C5-42CA0627A92E}" name="Images">
       <FILE id="KHuba0" name="Folder Utility GUI.png" compile="0" resource="1"
             file="Images/Folder Utility GUI.png"/>
+      <FILE id="B7irMU" name="Folder Utility Icon.png" compile="0" resource="1"
+            file="Images/Folder Utility Icon.png"/>
     </GROUP>
     <GROUP id="{F7BBF46C-4554-EE6B-8855-EFAA5016CCF0}" name="Source">
       <FILE id="UDUUzK" name="Folder Utility Notes.rtf" compile="0" resource="1"
@@ -32,7 +34,7 @@
     <FILE id="lPvxSC" name="README.md" compile="0" resource="1" file="README.md"/>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX">
+    <XCODE_MAC targetFolder="Builds/MacOSX" bigIcon="B7irMU">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Folder Utility"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Folder Utility"
