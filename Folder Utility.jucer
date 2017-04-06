@@ -18,6 +18,8 @@
             file="Source/FunctionBase.hpp"/>
       <FILE id="jpqLuY" name="FunctionBase.cpp" compile="1" resource="0"
             file="Source/FunctionBase.cpp"/>
+      <FILE id="GLQyBu" name="ListFiles.cpp" compile="1" resource="0" file="Source/ListFiles.cpp"/>
+      <FILE id="zs5ZzH" name="ListFiles.hpp" compile="0" resource="0" file="Source/ListFiles.hpp"/>
       <FILE id="a50Gfv" name="RemoveEmptyDirectories.hpp" compile="0" resource="0"
             file="Source/RemoveEmptyDirectories.hpp"/>
       <FILE id="gKJwqg" name="RemoveEmptyDirectories.cpp" compile="1" resource="0"
@@ -26,10 +28,6 @@
             file="Source/CapitalizeItems.hpp"/>
       <FILE id="tCd2Sl" name="CapitalizeItems.cpp" compile="1" resource="0"
             file="Source/CapitalizeItems.cpp"/>
-      <FILE id="qbg8TY" name="AnalyzeFiles.hpp" compile="0" resource="0"
-            file="Source/AnalyzeFiles.hpp"/>
-      <FILE id="l5b2Ux" name="AnalyzeFiles.cpp" compile="1" resource="0"
-            file="Source/AnalyzeFiles.cpp"/>
     </GROUP>
     <FILE id="lPvxSC" name="README.md" compile="0" resource="1" file="README.md"/>
   </MAINGROUP>

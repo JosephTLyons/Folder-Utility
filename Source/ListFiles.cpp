@@ -1,14 +1,14 @@
 //
-//  AnalyzeFiles.cpp
+//  ListFiles.cpp
 //  Folder Utility
 //
 //  Created by Joseph Lyons on 3/24/17.
 //
 //
 
-#include "AnalyzeFiles.hpp"
+#include "ListFiles.hpp"
 
-void AnalyzeFiles::collectFilenames()
+void ListFiles::collectFilenames()
 {
     DirectoryIterator dirIter (File (getMainPathway().getFullPathName()), true, "*",
                                      File::findFiles + File::ignoreHiddenFiles);
@@ -24,7 +24,7 @@ void AnalyzeFiles::collectFilenames()
     addCompletionInfoToOutputString();
 }
 
-void AnalyzeFiles::collectFileNamesInStrinArray()
+void ListFiles::collectFileNamesInStrinArray()
 {
     for(int i = 0; i < temporaryFileHolderArray.size(); i++)
     {
@@ -32,7 +32,7 @@ void AnalyzeFiles::collectFileNamesInStrinArray()
     }
 }
 
-void AnalyzeFiles::addEachItemToOutputString()
+void ListFiles::addEachItemToOutputString()
 {
     for(int i = 0; i < filenameArray.size(); i++)
     {
@@ -43,7 +43,7 @@ void AnalyzeFiles::addEachItemToOutputString()
     }
 }
 
-void AnalyzeFiles::addCompletionInfoToOutputString()
+void ListFiles::addCompletionInfoToOutputString()
 {
     addToOutputString("\nCompleted: ");
     addToOutputString((String) filenameArray.size());

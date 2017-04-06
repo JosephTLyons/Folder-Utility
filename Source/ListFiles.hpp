@@ -1,17 +1,17 @@
 //
-//  AnalyzeFiles.hpp
+//  ListFiles.hpp
 //  Folder Utility
 //
 //  Created by Joseph Lyons on 3/24/17.
 //
 //
 
-#ifndef AnalyzeFiles_hpp
-#define AnalyzeFiles_hpp
+#ifndef ListFiles_hpp
+#define ListFiles_hpp
 
 #include "FunctionBase.hpp"
 
-class AnalyzeFiles : public FunctionBase
+class ListFiles : public FunctionBase
 {
 private:
     
@@ -26,4 +26,4 @@ public:
     void collectFilenames();
 };
 
-#endif /* AnalyzeFiles_hpp */
+#endif /* ListFiles_hpp */
