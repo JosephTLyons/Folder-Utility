@@ -36,8 +36,9 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Empty Folder Remover"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Empty Folder Remover"/>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Folder Utility"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Folder Utility"
+                       binaryPath=""/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../Libraries/JUCE/modules"/>
