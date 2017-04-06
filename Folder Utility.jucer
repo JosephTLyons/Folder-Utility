@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="jiFYE7" name="Folder Utility" projectType="guiapp" version="0.5"
               bundleIdentifier="com.yourcompany.FolderUtility" includeBinaryInAppConfig="1"
-              jucerVersion="4.3.1">
+              jucerVersion="4.3.1" companyName="The Lyons' Den">
   <MAINGROUP id="TJo61r" name="Folder Utility">
     <GROUP id="{35B94C3C-C228-AC80-21C5-42CA0627A92E}" name="Images">
       <FILE id="KHuba0" name="Folder Utility GUI.png" compile="0" resource="1"
