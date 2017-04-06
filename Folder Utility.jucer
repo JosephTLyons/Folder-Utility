@@ -24,8 +24,8 @@
             file="Source/FunctionBase.hpp"/>
       <FILE id="jpqLuY" name="FunctionBase.cpp" compile="1" resource="0"
             file="Source/FunctionBase.cpp"/>
-      <FILE id="GLQyBu" name="ListFiles.cpp" compile="1" resource="0" file="Source/ListFiles.cpp"/>
       <FILE id="zs5ZzH" name="ListFiles.hpp" compile="0" resource="0" file="Source/ListFiles.hpp"/>
+      <FILE id="GLQyBu" name="ListFiles.cpp" compile="1" resource="0" file="Source/ListFiles.cpp"/>
       <FILE id="a50Gfv" name="RemoveEmptyDirectories.hpp" compile="0" resource="0"
             file="Source/RemoveEmptyDirectories.hpp"/>
       <FILE id="gKJwqg" name="RemoveEmptyDirectories.cpp" compile="1" resource="0"
