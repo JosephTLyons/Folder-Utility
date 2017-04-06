@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="jiFYE7" name="Folder Utility" projectType="guiapp" version="1.0.0"
+<JUCERPROJECT id="jiFYE7" name="Folder Utility" projectType="guiapp" version="0.5"
               bundleIdentifier="com.yourcompany.FolderUtility" includeBinaryInAppConfig="1"
               jucerVersion="4.3.1">
   <MAINGROUP id="TJo61r" name="Folder Utility">
@@ -57,4 +57,7 @@
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS/>
+  <LIVE_SETTINGS>
+    <OSX/>
+  </LIVE_SETTINGS>
 </JUCERPROJECT>
