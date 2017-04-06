@@ -16,6 +16,8 @@ void AnalyzeFiles::collectFilenames()
     temporaryFileHolderArray = returnDirIterItemsArray(dirIter);
     Array<int> countOfFiles;
     
+    // Start off with clean array, in case we run it multiple times
+    filenameArray.clear();
     collectFileNamesInStrinArray();
     filenameArray.sort();
     addEachItemToOutputString();
