@@ -5,19 +5,18 @@
 \margl1440\margr1440\vieww10800\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\fs34 \cf0 Notes for Empty Folder Remover:\
+\f0\fs34 \cf0 Notes for Folder Utility:\
 \
 Bugs:\
-1) Deal with errors in terminal display in xcode after clicking the button to select directories\
-2) Can't rename files in hierarchy, assertion errors (I assume from changing a folders name and then trying to access the old path)\
-3) Files shown in summary after capitalize are not always files that were capitalized\
+1) Deal with errors in terminal display in Xcode after clicking the button to select directories\
+2) Files shown in summary after capitalize are not always files that were capitalized (Still here or not?)\
 \
 Features: \
 \
-1) Fixup output of capitalized items, unify the look of the output of all functions\
+1) Fix up output of capitalized items, unify the look of the output of all functions\
 
-\b 1) Maybe add a percent completion window, which would help with larger files (use getEstimate in directory iterator).\
-2) Find a way to display output more intuitive where the scrolling auto advances or reverse reverse the string and have it\
+\b 2) Maybe add a percent completion window, which would help with larger files (use getEstimate in directory iterator).\
+3) Find a way to display output more intuitive where the scrolling auto advances or reverse reverse the string and have it\
     add new items to the front of the sting
 \b0 \
 \
@@ -32,8 +31,5 @@ Distant Goals:\
 \
 1) Expand into full folder utility app\
     - Strip space holders "_" and "-"\
-    - Strip all folders (moves files into root)\
-    - Set permissions recursively\
-    - List file size of all folders and files\
 \
 2) Turn the button that removes the folder into a "gather empty folders" then add checkmarks to output next to files and a "remove" button to confirm removing said folders.  By default, all will be selected, but choices to deselect all or a individual ones will be available.  This will call for a total overhaul of everything.}
