@@ -34,8 +34,6 @@
             file="Source/CapitalizeItems.hpp"/>
       <FILE id="tCd2Sl" name="CapitalizeItems.cpp" compile="1" resource="0"
             file="Source/CapitalizeItems.cpp"/>
-      <FILE id="FpbmO4" name="Settings.hpp" compile="0" resource="0" file="Source/Settings.hpp"/>
-      <FILE id="ukAt0H" name="Settings.cpp" compile="1" resource="0" file="Source/Settings.cpp"/>
     </GROUP>
     <FILE id="lPvxSC" name="README.md" compile="0" resource="1" file="README.md"/>
   </MAINGROUP>
