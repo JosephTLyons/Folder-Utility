@@ -114,7 +114,7 @@ int CapitalizeItems::countBackslashesInString(const String &directoryPath)
 
 void CapitalizeItems::makeUpperCase()
 {
-    changeOccured         = false;
+    capitalizationOccured         = false;
     
     // Split last item off of directory path
     fileNameString        = getFileHolder().getFileName();
@@ -155,7 +155,7 @@ void CapitalizeItems::capitalizeFirstLetterInPath()
     {
         fileNameArray.set(0, CharacterFunctions::toUpperCase(fileNameArray[0]));
         
-        changeOccured = true;
+        capitalizationOccured = true;
     }
 }
 
@@ -188,7 +188,7 @@ void CapitalizeItems::capitalizeOtherOccurances()
 void CapitalizeItems::capitalizeLetter(const int &position)
 {
     fileNameArray.set(position + 1, CharacterFunctions::toUpperCase(fileNameArray[position + 1]));
-    changeOccured = true;
+    capitalizationOccured = true;
 }
 
 void CapitalizeItems::copyArrayBackToString()
@@ -204,7 +204,7 @@ void CapitalizeItems::copyArrayBackToString()
 
 void CapitalizeItems::outputChangesToSummary()
 {
-    if(changeOccured)
+    if(capitalizationOccured)
     {
         addToOutputString(getFileHolder().getFullPathName());
         addToOutputString(" -> ");

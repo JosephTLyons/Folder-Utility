@@ -20,7 +20,7 @@ private:
     File parentDirectoryFile;
     String parentDirectoryString;
     int positionOfFirstCharacter;
-    bool changeOccured;
+    bool capitalizationOccured;
 
     // Private function members
     void capitalizeItems(Array<File> &items);
