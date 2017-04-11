@@ -28,7 +28,7 @@ void ListFiles::collectFileNamesInStrinArray()
 {
     for(int i = 0; i < temporaryFileHolderArray.size(); i++)
     {
-        filenameArray.add(temporaryFileHolderArray[i].getFileName());
+        filenameArray.add(temporaryFileHolderArray[i].getRelativePathFrom(getMainPathway()));
     }
 }
 
@@ -47,5 +47,5 @@ void ListFiles::addCompletionInfoToOutputString()
 {
     addToOutputString("\nCompleted: ");
     addToOutputString((String) filenameArray.size());
-    addToOutputString(" files found.");
+    addToOutputString(" file(s) found.");
 }
