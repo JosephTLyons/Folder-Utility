@@ -57,9 +57,16 @@ void CapitalizeItems::capitalizeItems(Array<File> &items)
     
     for(int i = 0; i < itemsSize; i++)
     {
+        addToOutputString((String) (i + 1));
+        addToOutputString(") ");
+        
         setFileHolder(items[i]);
         makeUpperCase();
     }
+    
+    addToOutputString("Completed: ");
+    addToOutputString((String) itemsSize);
+    addToOutputString(" items(s) capitalized.");
 }
 
 void CapitalizeItems::sortItems(Array<File> &items)
